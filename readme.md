@@ -8,6 +8,8 @@ Asynchronous operations made easy.
 
 ## Code example
 ```js
+var f_ = require('f_');
+
 
 var Download = function (o){
 	o = o || {};
