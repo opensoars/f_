@@ -2,5 +2,7 @@
   "name": "f_",
   "version": "0.0.1",
   "dependencies": {
+  	"ezlog": "*",
+  	"opensoars_cls": "*"
   }
 }

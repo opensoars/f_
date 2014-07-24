@@ -4,7 +4,8 @@ f_
 Asynchronous operations made easy.
 
 ## Dependencies
-* None
+* opensoars_cls
+* ezlog
 
 ## Code example
 ```js
@@ -71,7 +72,7 @@ Download.prototype.functionFlow =  [
 ];
 
 Download.prototype.toReset = [ 
-	{ d: {}; },
+	{ d: {} },
 	{ defaultVideoId: 'NnTg4vzli5s' } 
 ];
 
