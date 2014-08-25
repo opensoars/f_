@@ -1,90 +1,154 @@
 f_
 ==
+Asynchronous Node.js made easier.
 
-Asynchronous operations made easy.
+### Problem to be solved;
+Every (good) Node program is mainly written asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
+* String concatenation
+* Simple equation solving
+* Variable declaration
 
-## Dependencies
-* opensoars_cls
-* ezlog
+And then there are the asynchronous tasks, such as:
+* HTTP requests
+* Complex equation solving
+* Audio/video compressing
 
-## Code example
+When we're looking at the two lists above, we can categorize computational tasks in two separate groups:
+1. Synchronous (small and quick).
+2. Asynchronous (both small and quick or large and long lasting).
+
+When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is most likely due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
+
 ```js
-var f_ = require('f_');
-
-
-var Download = function (o){
-	o = o || {};
-
-	for(var key in o) this[key] = o[key];
-
-	// required for f_ feedback of err stack
-	this.errs = [];
-};
-
-Download.prototype.start = function (){
-	if(!this.url) this.errs.push('no url given');
-	// ... More validating could be done here
-
-	if(this.errs.length !== 0)
-		return this.f_abort('err(s) @start, no reason to retry');
-
-	this.next();
-};
-
-Download.prototype.getData = function (){
-	var self = this;
-
-	http.get(url, function (res){
-		var data='';res.on('data', function(c){ data+=c; });
-
-		res.on('end', function (){
-			if(data.length < 5000)
-				return self.retry('data.length < 5000');
-
-			self.d.data = data;
-
-			return self.next();
-		});
-
-	}).on('error', function (){
-		return self.retry('http.get error');
-	});
-};
-
-Download.prototype.convertFile = function (){
-	// ... More async operations
-};
-
-Download.prototype.clean = function (){
-	// ... And more async operations,
-	//     to finish just do:
-
-	this.next();
-};
-
 /**
- * Two required arrays for f_ to work
+ * Simple task which will first GET google.com source code, write it to a HTML
+ * file. When those two tasks are complete it will GET google.nl source code
+ * and also write that to a HTML file. Written the most ugly way possible,
+ * we're not even using named function declaration above the the async logic.
  */
-Download.prototype.functionFlow =  [
-	'getData',
-	'convertFile',
-	'clean'
-];
+http.get('http://www.google.com', function (googleRes){
+  
+  var googleSource = '';
+  
+  googleRes.on('data', function (googleChunk){
+    googleSource = googleSource + googleChunk;
+  });
+  
+  googleRes.on('end', function (){
+    fs.writeFile('googleSource.html', googleSource, function (googleWriteErr){
+      if(googleWriteErr) return console.log(googleWriteErr);
+      
+      http.get('http://www.youtube.com', function (ytRes){
+        
+        var ytSource = '';
+        
+        ytRes.on('data', function (ytChunk){
+          ytSource = ytSource + ytChunk;
+        });
+        
+        ytRes.on('end', function (){
+          fs.writeFile('ytSource.html', ytSource, function (ytWriteErr){
+            if(ytWriteErr) return console.log(ytWriteErr);
+            
+            return console.log('Tasks complete!');
+          });
+        });
+      
+      });
 
-Download.prototype.toReset = [ 
-	{ d: {} },
-	{ defaultVideoId: 'NnTg4vzli5s' } 
-];
+    });
+
+  });
+
+});
+```
+
+As you can see, this code hard to read write and maintain. We're not even taking error handling and dependecy management in account here... Making it even harder to read, write and maintain.
 
 
-/** Augmenting Download prototype object */
-Download = f_.augment(Download);
+Now let's take a look at the way I want to write this simple task!
+
+```js
+/**
+ * Please notice we're still not using a good error handling mehtod,
+ * the same logic as the ugly example is used.
+ * Also note we're not using a class based approach. Just a simple object
+ * namespace, since this is a simple demonstration.
+ */
+
+var getAndWriteTasks = {};
+
+getAndWriteTasks.getGoogle = function (){
+  var self = this;
+
+  http.get('http://www.google.com', function (res){
+
+    var source = '';
+    res.on('data', function (chunk){ source = source + chunk; });
+
+    res.on('end', function (){
+      // Using the d object namespace to store data we
+      // need to use in other/later function scopes
+      self.d.googleSource = source;
+
+      // return statement isn't necessary, using it to show we're
+      // done with this task.
+      return self.next();
+    });
+
+  });
+};
 
 
-/** Now let's initiate the download(s) */
-for(var i = 0; i < 100; i += 1){
-	var downloadInstance = new Download({ url: 'http://someurl.com/file' + i });
-	downloadInstance.start();
-}
+getAndWriteTasks.writeGoogle = function (){
+  var self = this,
+      googleSource = self.d.googleSource;
+
+  fs.writeFile('googleSource.html', googleSource, function (err){
+    if(err) return console.log(err);
+    return self.next();
+  });
+
+};
+
+getAndWriteTasks.getYt = function (){
+  var self = this;
+
+  http.get('http://www.youtube.com', function (res){
+
+    var source = '';
+    res.on('data', function (chunk){ source = source + chunk; });
+
+    res.on('end', function (){
+      self.d.ytSource = source;
+      return self.next();
+    });
+
+  });
+};
+
+getAndWriteTasks.writeYt = function (){
+  var self = this,
+      ytSource = self.d.ytSource;
+
+  fs.writeFile('ytSource.html', ytSource, function (err){
+    if(err) return console.log(err);
+
+    // Using next when there are no more tasks will result in a low
+    // level f_ API 'f_.finish' method call. Clearing up used memory, etc..
+    return self.next();
+  });
+
+};
+```
+
+Yes, we did it! Separation of concerns. We could even make this modularized to the max. Since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
+
+So far we can say that `f_` will allow us to program modularized. Which is great already! Well, more greatness incoming!
+
+Next up will be error handling. Take a look at a full `f_` example (this time we're using a class based approach, so we can use prototypal inheritance and minimize function creation overhead, getting closer to real world examples!):
+```js
+
+
 
 ```
