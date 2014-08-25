@@ -150,4 +150,5 @@ So far we can say that `f_` will allow us to program modularized. Which is great
 
 Next up will be error handling. Take a look at a full `f_` example (this time we're using a class based approach, so we can use prototypal inheritance and minimize function creation overhead, getting closer to real world examples!):
 ```js
+
 ```
