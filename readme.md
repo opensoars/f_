@@ -144,11 +144,8 @@ getAndWriteTasks.writeYt = function (){
 
 Yes, we did it! Separation of concerns. We could even make this modularized to the max. Since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
 
-So far we can say that `f_` will allow us to program modularized. Which is great already! Well, more greatness incoming!
+So far we can say that `f_` will allow us to program modularized. Which is great already! Well, more greatness is coming your way!
 
 Next up will be error handling. Take a look at a full `f_` example (this time we're using a class based approach, so we can use prototypal inheritance and minimize function creation overhead, getting closer to real world examples!):
 ```js
-
-
-
 ```
