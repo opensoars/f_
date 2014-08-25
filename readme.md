@@ -2,9 +2,10 @@ f_
 ==
 Asynchronous Node.js made easier.
 
-### Problem to be solved;
+### Problem to be solved
 Write asynchronous Node.js programs without ending up with hard to maintain 'cristmas tree' code. So we won't end up in (callback) hell!
 
+### Introduction
 Every (good) Node program is mainly written asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
 * String concatenation
 * Simple equation solving
@@ -15,11 +16,15 @@ And then there are the asynchronous tasks, such as:
 * Complex equation solving
 * Audio/video compressing
 
-
-When we're looking at the two lists above, we can categorize computational tasks in two separate groups:
+When we look at the two lists above, we can categorize computational tasks into two separate groups:
 
 1. Synchronous (small and quick)
 2. Asynchronous (both small and quick or large and long lasting)
+
+### How are we going to solve 'the problem' described above
+Allow programmers to use a simple API which will take care of separation of concerns in a modularized way.
+
+### In depth look at the way f_ works and how it will fix our previously described problem.
 
 When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is most likely due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
 
