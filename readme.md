@@ -15,7 +15,6 @@ And then there are the asynchronous tasks, such as:
 
 
 When we're looking at the two lists above, we can categorize computational tasks in two separate groups:
-
 1. Synchronous (small and quick)
 2. Asynchronous (both small and quick or large and long lasting)
 
