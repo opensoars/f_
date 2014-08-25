@@ -13,9 +13,11 @@ And then there are the asynchronous tasks, such as:
 * Complex equation solving
 * Audio/video compressing
 
+
 When we're looking at the two lists above, we can categorize computational tasks in two separate groups:
-1. Synchronous (small and quick).
-2. Asynchronous (both small and quick or large and long lasting).
+
+1. Synchronous (small and quick)
+2. Asynchronous (both small and quick or large and long lasting)
 
 When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is most likely due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
 
