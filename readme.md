@@ -26,7 +26,7 @@ Allow programmers to use a simple API which will take care of separation of conc
 
 ### In depth look at the way f_ works and how it will fix our previously described problem.
 
-When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is most likely due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
+When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
 
 ```js
 /**
@@ -79,7 +79,7 @@ Now let's take a look at the way I want to write this simple task!
 
 ```js
 /**
- * Please notice we're still not using a good error handling mehtod,
+ * Please note we're still not using a good error handling mehtod,
  * the same logic as the ugly example is used.
  * Also note we're not using a class based approach. Just a simple object
  * namespace, since this is a simple demonstration.
