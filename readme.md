@@ -21,7 +21,7 @@ When we look at the two lists above, we can categorize computational tasks into 
 1. Synchronous (small and quick)
 2. Asynchronous (both small and quick or large and long lasting)
 
-### How are we going to solve 'the problem' described above
+### How are we going to solve the problem described above?
 Allow programmers to use a simple API which will take care of separation of concerns in a modularized way.
 
 ### In depth look at the way f_ works and how it will fix our previously described problem.
