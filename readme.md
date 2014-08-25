@@ -3,7 +3,7 @@ f_
 Asynchronous Node.js made easier.
 
 ### Problem to be solved
-Write asynchronous Node.js programs without ending up with hard to maintain 'cristmas tree' code. So we won't end up in (callback) hell!
+Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
 
 ### Introduction
 Every (good) Node program is mainly written asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
