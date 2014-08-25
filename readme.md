@@ -3,6 +3,8 @@ f_
 Asynchronous Node.js made easier.
 
 ### Problem to be solved;
+Write asynchronous Node.js programs without ending up with hard to maintain 'cristmas tree' code. So we won't end up in (callback) hell!
+
 Every (good) Node program is mainly written asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
 * String concatenation
 * Simple equation solving
@@ -15,6 +17,7 @@ And then there are the asynchronous tasks, such as:
 
 
 When we're looking at the two lists above, we can categorize computational tasks in two separate groups:
+
 1. Synchronous (small and quick)
 2. Asynchronous (both small and quick or large and long lasting)
 
@@ -147,6 +150,9 @@ Yes, we did it! Separation of concerns. We could even make this modularized to t
 
 So far we can say that `f_` will allow us to program modularized. Which is great already! Well, more greatness is coming your way!
 
-Next up will be error handling. Take a look at a full `f_` example (this time we're using a class based approach, so we can use prototypal inheritance and minimize function creation overhead, getting closer to real world examples!):
+Now let's take a look at the way we can handle errors (updating the previous example):
 ```js
+var
+
+
 ```
