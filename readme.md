@@ -199,3 +199,54 @@ getAndWriteTasks.writeGoogle = function (){
 
 };
 ```
+
+So we've got a way to create an error stack, now we need a way to do something when an error occurs. This could ofcourse be done traditionally with 
+`on('error')` event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing `on('error')` listeners everytime is tedious. Something we try to remove from programming Node programs. So with `f_` we can do it directly from a piece of code that causes an error. Take a look at this example:
+```js
+/**
+ * Immediately retry this asynchronous part of a larger task list
+ */
+getAndWriteTasks.getGoogle = function (){
+  var self = this;
+
+  http.get('http://www.google.com', function (res){
+    // ...
+  }).on('error', function (err){
+    // With this function call we still add errors to the stack,
+    // but immediately retry it if wanted
+    return self.retryThis('http.get error', err);
+  });
+};
+```
+
+Let's say we use the source code received from Google.com in a later function but the `GET` request fails the first time, we want to make sure every piece of data we stored is removed from our RAM. We need a way to make `f_` know what data to remove from the data namespace object. We can do this by manualy providing `f_` with property names.
+
+```js
+getAndWriteTasks.getGoogle = function (){
+  var self = this;
+
+  http.get('http://www.google.com', function (res){
+    self.d.googleSource = '';
+    res.on('data', function (chunk){
+      self.d.googleSource = self.d.googleSource + chunk;
+    });
+
+    res.on('end', function (){
+      return self.next();
+    });
+
+  }).on('error', function (err){
+    // Providing 'dataToReset' with an object, f_ will reset properties
+    // with given values when we use the retryThis method
+    self.dataToReset = { googleSource: '' };
+
+    // The following syntax is also supported, this way we can reset
+    // objects deeper in the data namespace object
+    self.dataToReset = { 'dataObjectNamespace.someProperty': {} }
+
+    return self.retryThis('http.get error', err);
+  });
+};
+```
+
+This way we can ensure data is removed, ofcourse you could also override properties. But this could cause unwanted and hard to find corrupt data.
