@@ -252,5 +252,10 @@ getAndWriteTasks.getGoogle = function (){
 This way we can ensure data is removed, ofcourse you could also override properties. But this could result in unwanted and hard to find corrupted data. There also is way to make sure EVERY piece of data is removed from our data object namespace: `self.resetAllData();`
 
 So far we've talked about the data object namespace quite a lot. Let's take a closer look at how it works. We used the `d` namespace in our examples. This is just a plain JS object. With `f_` we can set our data object like this: `self.setDataObject('d')`. If you want more namespaces, simply do the following:
-`self.d.newNameSpace = {}`
+`self.d.newNameSpace = {}`. 
+Please note that when you use the `self.resetAllData();` all namespaces in the top level namespace will be cleared. In case this is unwanted there is a way to let `f_` know we want to keep certain properties in our main namespace: 
+`self.keepOnReset(['newNameSpace'])`.
+Let's put everything in a piece of real world code:
+```js
+```
 
