@@ -75,8 +75,9 @@ http.get('http://www.google.com', function (googleRes){
 });
 ```
 
-As you can see, this code hard to read write and maintain. We're not even taking error handling and dependecy management in account here... Making it even harder to read, write and maintain.
 
+
+As you can see, this code hard to read, write and maintain. We're not even taking error handling and dependecy management in account here... Making it even harder to read, write and maintain.
 
 Now let's take a look at the way I want to write this simple task!
 
@@ -154,12 +155,17 @@ getAndWriteTasks.writeYt = function (){
 };
 ```
 
-Yes, we did it! Separation of concerns. We could even make this modularized to the max. Since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
+Yes, we did it, separation of concerns. We could even modularize it, since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
 
-So far we can say that `f_` will allow us to program modularized. Which is great already! Well, more greatness is coming your way!
+So far we can say that `f_` will allow us to program in a modularized way. Which is great already! Well, more greatness is coming your way!
 
 Now let's take a look at the way we will be handling errors (using a piece of the previous example):
 ```js
+/**
+ * In this piece of code, we will catch error messages so we can display
+ * the complete error stack when the task is aborted, or when we look up
+ * the f_ 'errs' array filled with error objects.
+ */
 getAndWriteTasks.getGoogle = function (){
   var self = this;
 
@@ -169,15 +175,13 @@ getAndWriteTasks.getGoogle = function (){
     res.on('data', function (chunk){ source = source + chunk; });
 
     res.on('end', function (){
-      // Using the d object namespace to store data we
-      // need to use in other/later function scopes
       self.d.googleSource = source;
-
-      // return statement isn't necessary, using it to show we're
-      // done with this task.
       return self.next();
     });
 
+  }).on('error', function (err){
+    // We provide a custom error message string and the original err object
+    return self.addErr('http.get error', err);
   });
 };
 
@@ -187,7 +191,9 @@ getAndWriteTasks.writeGoogle = function (){
       googleSource = self.d.googleSource;
 
   fs.writeFile('googleSource.html', googleSource, function (err){
-    if(err) return console.log(err);
+    // Same as with http.get
+    if(err) return self.addErr('fs.writeFile error', err);
+
     return self.next();
   });
 
