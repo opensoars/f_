@@ -1,4 +1,4 @@
-f_ (f.low, flow)
+`f_` (f.low, flow)
 ==
 Asynchronous Node.js made easier.
 
@@ -27,7 +27,7 @@ When we look at the two lists above, we can categorize computational tasks into 
 2. Asynchronous (both small and quick or large and long lasting)
 
 
-### In depth look at the way f_ works and how it will fix our previously described problem.
+### In depth look at the way `f_` works and how it will fix our previously described problem.
 
 When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand, yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
 
