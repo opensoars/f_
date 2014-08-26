@@ -6,7 +6,7 @@ Asynchronous Node.js made easier.
 Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't find ourself in (callback) hell!
 
 
-### How are we going to solve this problem?
+### How is `f_` going to solve this problem?
 Allow programmers to use a simple API which will take care of separation of concerns in a modularized way.
 
 
