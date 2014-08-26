@@ -3,7 +3,12 @@ f_
 Asynchronous Node.js made easier.
 
 ### Problem to be solved
-Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
+Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't find ourself in (callback) hell!
+
+
+### How are we going to solve this problem?
+Allow programmers to use a simple API which will take care of separation of concerns in a modularized way.
+
 
 ### Introduction
 Every (good) Node program is mainly written asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
@@ -21,8 +26,6 @@ When we look at the two lists above, we can categorize computational tasks into 
 1. Synchronous (small and quick)
 2. Asynchronous (both small and quick or large and long lasting)
 
-### How are we going to solve the problem described above?
-Allow programmers to use a simple API which will take care of separation of concerns in a modularized way.
 
 ### In depth look at the way f_ works and how it will fix our previously described problem.
 
@@ -155,9 +158,38 @@ Yes, we did it! Separation of concerns. We could even make this modularized to t
 
 So far we can say that `f_` will allow us to program modularized. Which is great already! Well, more greatness is coming your way!
 
-Now let's take a look at the way we can handle errors (updating the previous example):
+Now let's take a look at the way we will be handling errors (using a piece of the previous example):
 ```js
-var
+getAndWriteTasks.getGoogle = function (){
+  var self = this;
+
+  http.get('http://www.google.com', function (res){
+
+    var source = '';
+    res.on('data', function (chunk){ source = source + chunk; });
+
+    res.on('end', function (){
+      // Using the d object namespace to store data we
+      // need to use in other/later function scopes
+      self.d.googleSource = source;
+
+      // return statement isn't necessary, using it to show we're
+      // done with this task.
+      return self.next();
+    });
+
+  });
+};
 
 
+getAndWriteTasks.writeGoogle = function (){
+  var self = this,
+      googleSource = self.d.googleSource;
+
+  fs.writeFile('googleSource.html', googleSource, function (err){
+    if(err) return console.log(err);
+    return self.next();
+  });
+
+};
 ```
