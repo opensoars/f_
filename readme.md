@@ -219,7 +219,7 @@ getAndWriteTasks.getGoogle = function (){
 };
 ```
 
-Let's say we use the source code received from Google.com in a later function but the `GET` request fails the first time, we want to make sure every piece of data we stored is removed from our RAM. We need a way to make `f_` know what data to remove from the data namespace object. We can do this by manualy providing `f_` with property names.
+Let's say we use the source code received from Google.com in a later function but the `GET` request fails the first time, we want to make sure every piece of data we stored is removed from our RAM. We need a way to make `f_` know what data to remove from the data namespace object. We can do this by manualy providing `f_` with objects.
 
 ```js
 getAndWriteTasks.getGoogle = function (){
@@ -249,4 +249,10 @@ getAndWriteTasks.getGoogle = function (){
 };
 ```
 
-This way we can ensure data is removed, ofcourse you could also override properties. But this could cause unwanted and hard to find corrupt data.
+This way we can ensure data is removed, ofcourse you could also override properties. But this could result in unwanted and hard to find corrupted data. There also is way to make sure EVERY piece of data is removed from our data object namespace: `self.resetAllData();`
+
+So far we've talked about the data object namespace quite a lot. Let's take a closer look at how it works.
+
+We used the `d` namespace in our examples. This is just a plain JS object. With `f_` we can set our data object like this: `self.setDataObject('d')`. Ofcourse you need more than a single namespace, simply do
+`self.d.newNameSpace = {}`
+
