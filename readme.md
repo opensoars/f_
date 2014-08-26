@@ -1,4 +1,4 @@
-f_
+f_ (f.low, flow)
 ==
 Asynchronous Node.js made easier.
 
@@ -29,7 +29,7 @@ When we look at the two lists above, we can categorize computational tasks into 
 
 ### In depth look at the way f_ works and how it will fix our previously described problem.
 
-When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
+When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand, yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
 
 ```js
 /**
@@ -65,13 +65,9 @@ http.get('http://www.google.com', function (googleRes){
             return console.log('Tasks complete!');
           });
         });
-      
       });
-
     });
-
   });
-
 });
 ```
 
@@ -155,7 +151,7 @@ getAndWriteTasks.writeYt = function (){
 };
 ```
 
-Yes, we did it, separation of concerns. We could even modularize it, since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
+Yes, we did it, separation of concerns and loose coupling! We could even modularize it, since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
 
 So far we can say that `f_` will allow us to program in a modularized way. Which is great already! Well, more greatness is coming your way!
 
@@ -201,7 +197,7 @@ getAndWriteTasks.writeGoogle = function (){
 ```
 
 So we've got a way to create an error stack, now we need a way to do something when an error occurs. This could ofcourse be done traditionally with 
-`on('error')` event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing `on('error')` listeners everytime is tedious. Something we try to remove from programming Node programs. So with `f_` we can do it directly from a piece of code that causes an error. Take a look at this example:
+`on('error')` event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing `on('error')` listeners everytime is tedious. Something we try to remove from programming Node programs (don't forget you can still use them!). So with `f_` we can do it directly from a piece of code that causes an error. Take a look at this example:
 ```js
 /**
  * Immediately retry this asynchronous part of a larger task list
@@ -213,7 +209,7 @@ getAndWriteTasks.getGoogle = function (){
     // ...
   }).on('error', function (err){
     // With this function call we still add errors to the stack,
-    // but immediately retry it if wanted
+    // but immediately retry the current function
     return self.retryThis('http.get error', err);
   });
 };
@@ -251,11 +247,78 @@ getAndWriteTasks.getGoogle = function (){
 
 This way we can ensure data is removed, ofcourse you could also override properties. But this could result in unwanted and hard to find corrupted data. There also is way to make sure EVERY piece of data is removed from our data object namespace: `self.resetAllData();`
 
-So far we've talked about the data object namespace quite a lot. Let's take a closer look at how it works. We used the `d` namespace in our examples. This is just a plain JS object. With `f_` we can set our data object like this: `self.setDataObject('d')`. If you want more namespaces, simply do the following:
+So far we've talked about the data object namespace quite a lot. Let's take a closer look at how it works. We used the `d` namespace in our examples. This is just a plain JS object. With `f_` we can set our data object like this: `self.setDataObject('d')` or like this: `self.d = {};`. If you want more namespaces, simply do the following:
 `self.d.newNameSpace = {}`. 
 Please note that when you use the `self.resetAllData();` all namespaces in the top level namespace will be cleared. In case this is unwanted there is a way to let `f_` know we want to keep certain properties in our main namespace: 
-`self.keepOnReset(['newNameSpace'])`.
-Let's put everything in a piece of real world code:
+`self.keepOnReset(['newNameSpace'])`. There might even be cases where you don't want to reset anything at all, use: `self.resetOnRetry = false;`
+
+
+
+
+
+
+
+DISCUSS: `retryAll();`
+DISCUSS: `retry('methodToRetry');`
+DISCUSS: `retryFrom('methodToRetryFrom');`
+
+
+
+
+
+
+
+Let's put everything in a piece of 'real world' code:
 ```js
+/**
+ * When using f_, I tend to use 'start' as a function which will check
+ * for dependencies and as a setup.
+ */
+getAndWriteTasks.start = function (){
+  // ... dependency verification could/should be here ...
+
+  self.setDataObject('d');
+  // ^ Could also be written like this: self.d = {};
+  // might result in overriding data, since setDataObject won't
+  // change the property if it's set already
+
+  self.d.newNameSpace = {};       // this one will be kept
+  self.d.someOtherNamespace = {}; // this one will be removed
+
+  // Which properties to keep when we use a reset
+  self.keepOnReset(['newNameSpace']);
+
+  // Do we actualy want a data reset? In this case; true!
+  self.resetOnRetry = true;
+
+};
+
+getAndWriteTasks.getGoogle = function (){
+  var self = this;
+
+  self.d.googleSource = '';
+  res.on('data', function (chunk){
+    self.d.googleSource = self.d.googleSource + chunk;
+  });
+
+  res.on('end', function (){
+    return self.next();
+  }).on('error', function (err){
+    // With this function call we still add errors to the stack,
+    // but immediately retry the current function
+    return self.retryThis('http.get error', err);
+  });
+
+};
+
+getAndWriteTasks.writeGoogle = function (){
+  // Check if the required data is present. In case it isn't,
+  // we retry our whole task list
+
+
+
+
+};
+
 ```
 
