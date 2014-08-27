@@ -27,7 +27,7 @@ When we look at the two lists above, we can categorize computational tasks into 
 2. Asynchronous (both small and quick or large and long lasting)
 
 ### API
-Everything `f_` offers will be used in the code example below. We will be using a class based approach, since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
+Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended), since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
 ```js
 var f_ = require('f_');
 
@@ -44,7 +44,8 @@ var TaskList = function TaskList (o){
 };
 
 /**
- * @method start        Check if requirements are met
+ * @method start      Check if requirements are met
+ * @req url {string}  Url to grab source code from
  */
 TaskList.prototype.start = function (){
 
@@ -59,7 +60,8 @@ TaskList.prototype.getSource = function (){
 };
 
 /**
- * @method writeSource  Writes a source code on HD
+ * @method writeSource        Writes a source code on HD
+ * @req    d.source {string}  Website it's source page
  */
 TaskList.prototype.writeSource = function (){
 
@@ -86,21 +88,29 @@ var f_config = {
   // Function order f_ uses to call methods
   functionFlow: ['getSource', 'writeSource', 'notify'],
 
+  // Name given to the errors array
+  // default: errs
+  errorArray: 'errs', 
+
   // Do we want a data reset when we use 'retryAll'. Can be changed later on
-  // in our code ofcourse! 
-  resetOnRetry: true, // Default: true
+  // in our code ofcourse!
+  // Default: true
+  resetOnRetry: true,
 
   // Object in which we store our shared data.
-  dataNamespace: 'd', // Default: 'd'
+  // Default: 'd'
+  dataNamespace: 'd',
 
   // Data namespace properties to keep on reset.
   keepOnReset: ['testNamespace'],
 
   // How many times f_ will retry the whole task list
-  maxTotalRetries: 15, // Default: 10
+  // Default: 10
+  maxTotalRetries: 15,
 
   // How many times f_ will retry a single method
-  maxMethodRetries: 5, // Default: 10
+  // Default: 10
+  maxMethodRetries: 5,
 
   // Specific methods will be retried specified times.
   // Will override maxMethodRetries
@@ -110,12 +120,15 @@ var f_config = {
   },
 
   // What to log
-  // next:   when a method is called, we log the method name
-  // retry:  when a retry occurs, log everything known about it
-  // abort:  when f_ aborts a task list, log error stack and method
-  //         which caused error
-  // all:    log 'everything' f_ does, all above triggers will be true
-  // silent: log nothing at all
+  // next:    A method is called, we log the method name.
+  // retry:   A retry occurs, log everything known about it.
+  // error:   An error gets pushed to errs array, log err description and
+  //          origional error object.
+  // abort:   f_ aborts a task list, log error stack and method
+  //          which caused error.
+  // all:     log 'everything' f_ does, all above triggers will be true.
+  // silent:  log nothing at all.
+  // Default: ['all']
   toLog: ['next', 'retry']
 
 };
@@ -124,7 +137,7 @@ var f_config = {
 // a config object.
 TaskList = f_.augment(TaskList, f_config);
 
-
+// Initiate 100 instances 
 for(var i = 0; i < 100; i+=1){
   // Provide data which will be set to the instance it's properties.
   var tasksInstance = new TaskList();
@@ -191,13 +204,9 @@ Now let's take a look at the way I want to write this simple task!
 /**
  * Please note we're still not using a good error handling mehtod,
  * the same logic as the ugly example is used.
- * Also note we're not using a class based approach. Just a simple object
- * namespace, since this is a simple demonstration.
  */
 
-var getAndWriteTasks = {};
-
-getAndWriteTasks.getGoogle = function (){
+getAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -219,7 +228,7 @@ getAndWriteTasks.getGoogle = function (){
 };
 
 
-getAndWriteTasks.writeGoogle = function (){
+getAndWriteTasks.prototype.writeGoogle = function (){
   var self = this,
       googleSource = self.d.googleSource;
 
@@ -230,7 +239,7 @@ getAndWriteTasks.writeGoogle = function (){
 
 };
 
-getAndWriteTasks.getYt = function (){
+getAndWriteTasks.prototype.getYt = function (){
   var self = this;
 
   http.get('http://www.youtube.com', function (res){
@@ -246,7 +255,7 @@ getAndWriteTasks.getYt = function (){
   });
 };
 
-getAndWriteTasks.writeYt = function (){
+getAndWriteTasks.prototype.writeYt = function (){
   var self = this,
       ytSource = self.d.ytSource;
 
@@ -272,7 +281,7 @@ Now let's take a look at the way we will be handling errors (using a piece of th
  * the complete error stack when the task is aborted, or when we look up
  * the f_ 'errs' array filled with error objects.
  */
-getAndWriteTasks.getGoogle = function (){
+getAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -292,7 +301,7 @@ getAndWriteTasks.getGoogle = function (){
 };
 
 
-getAndWriteTasks.writeGoogle = function (){
+getAndWriteTasks.prototype.writeGoogle = function (){
   var self = this,
       googleSource = self.d.googleSource;
 
@@ -309,10 +318,8 @@ getAndWriteTasks.writeGoogle = function (){
 So we've got a way to create an error stack, now we need a way to do something when an error occurs. This could ofcourse be done traditionally with 
 `on('error')` event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing `on('error')` listeners everytime is tedious. Something we try to remove from programming Node programs (don't forget you CAN still use them!). So with `f_` we can do it directly from a piece of code that causes an error. Take a look at this example:
 ```js
-/**
- * Immediately retry this asynchronous part of a larger task list
- */
-getAndWriteTasks.getGoogle = function (){
+// Immediately retry this asynchronous part of a larger task list
+getAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -328,7 +335,7 @@ getAndWriteTasks.getGoogle = function (){
 Let's say we use the source code received from Google.com in a later function but the `GET` request fails the first time, we want to make sure every piece of data we stored is removed from our RAM. We need a way to make `f_` know what data to remove from the data namespace object. We can do this by manualy providing `f_` with objects.
 
 ```js
-getAndWriteTasks.getGoogle = function (){
+getAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -379,13 +386,13 @@ DISCUSS: `retryThis(optErrMsgString, optErrObj);`
 
 
 
-Let's put everything in a piece of 'real world' code:
+Let's put everything in a part of a 'real world' code example:
 ```js
 /**
  * When using f_, I tend to use 'start' as a function which will check
  * for dependencies and as a setup.
  */
-getAndWriteTasks.start = function (){
+getAndWriteTasks.prototype.start = function (){
   // ... dependency verification could/should be here ...
 
   self.setDataObject('d');
@@ -404,7 +411,7 @@ getAndWriteTasks.start = function (){
 
 };
 
-getAndWriteTasks.getGoogle = function (){
+getAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   self.d.googleSource = '';
@@ -422,7 +429,7 @@ getAndWriteTasks.getGoogle = function (){
 
 };
 
-getAndWriteTasks.writeGoogle = function (){
+getAndWriteTasks.prototype.writeGoogle = function (){
   // Check if the required data is present. In case it isn't,
   // we retry our whole task list
 };
