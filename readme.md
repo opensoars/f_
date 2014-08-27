@@ -44,8 +44,8 @@ var TaskList = function TaskList (o){
 };
 
 /**
- * @method start      Check if requirements are met
- * @req url {string}  Url to grab source code from
+ * @method start         Check if requirements are met
+ * @req    url {string}  Url to grab source code from
  */
 TaskList.prototype.start = function (){
 
