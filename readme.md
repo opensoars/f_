@@ -31,37 +31,56 @@ Everything `f_` offers will be used in the code example below. We will be using 
 ```js
 var f_ = require('f_');
 
-var TasksClass = function TasksClass (o){
+/** Class based TaskList.
+ * All methods are written in this class
+ * @class TaskList      Class which holds all methods, used to set data
+ *                      on initialization
+ * @arg o.url {string}  Url to grab source code from
+ */
+var TaskList = function TaskList (o){
   o = o || {};
 
   return this;
 };
 
-TasksClass.prototype.start = function (){
+/**
+ * @method start        Check if requirements are met
+ */
+TaskList.prototype.start = function (){
 
 };
 
-TasksClass.prototype.getSource = function (){
+/**
+ * @method getSource          Gets a website source code
+ * @data   d.source {string}  Website it's source code
+ */
+TaskList.prototype.getSource = function (){
 
 };
 
-TasksClass.prototype.writeSource = function (){
+/**
+ * @method writeSource  Writes a source code on HD
+ */
+TaskList.prototype.writeSource = function (){
 
 };
 
-TasksClass.prototype.notify = function (){
+/**
+ * @method notify  Log what happened in the previous methods
+ */
+TaskList.prototype.notify = function (){
 
 };
 
 // Adding data to Class prototype object, will be same in every instance.
 // No need to add in our shared data object namespace, which could be reset.
 // Also using the prototype object, we only assign it once.
-TasksClass.prototype.writeDir = './sourceCodes';
+TaskList.prototype.writeDir = './sourceCodes';
 
 var f_config = {
 
   // Note that we dont use a f_ namespace, methods are just prefixed
-  // with 'f_'. Will save us quite some object lookup time. 
+  // with 'f_'. Will save us quite some object lookup overhead. 
   prefixed_or_namespaced: 'prefixed', // Default: 'namespaced'
 
   // Function order f_ uses to call methods
@@ -77,21 +96,38 @@ var f_config = {
   // Data namespace properties to keep on reset.
   keepOnReset: ['testNamespace'],
 
-  // How many times f_ will retry the whole tasks list
-  maxTotalRetries: 10, // Default: 10
+  // How many times f_ will retry the whole task list
+  maxTotalRetries: 15, // Default: 10
 
-  // How many times f_ will retry a single function
-  maxMethodRetries: 10 // Default: 10
+  // How many times f_ will retry a single method
+  maxMethodRetries: 5, // Default: 10
+
+  // Specific methods will be retried specified times.
+  // Will override maxMethodRetries
+  maxMethodRetriesByName: {
+    getSource: 10,
+    writeSource: 5
+  },
+
+  // What to log
+  // next:   when a method is called, we log the method name
+  // retry:  when a retry occurs, log everything known about it
+  // abort:  when f_ aborts a task list, log error stack and method
+  //         which caused error
+  // all:    log 'everything' f_ does, all above triggers will be true
+  // silent: log nothing at all
+  toLog: ['next', 'retry']
 
 };
 
 // 'augment' method takes two arguments: object/class to augment and
 // a config object.
-TasksClass = f_.augment(TasksClass, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
 
 for(var i = 0; i < 100; i+=1){
-  var tasksInstance = new TasksClass();
+  // Provide data which will be set to the instance it's properties.
+  var tasksInstance = new TaskList();
   tasksInstance.start();
 
   if(tasksInstance.errs.length === 0)
@@ -99,9 +135,6 @@ for(var i = 0; i < 100; i+=1){
   else
     console.log('Errors at start, probably we do not want to continue w/', i);
 }
-
-
-
 ```
 
 ### In depth look at the way `f_` works.
@@ -335,9 +368,10 @@ Please note that when you use the `self.resetAllData();` all namespaces in the t
 
 
 
-DISCUSS: `retryAll();`
-DISCUSS: `retry('methodToRetry');`
-DISCUSS: `retryFrom('methodToRetryFrom');`
+DISCUSS: `retryAll(optErrMsgString, optErrObj);`
+DISCUSS: `retry('methodToRetry', optErrMsgString, optErrObj);`
+DISCUSS: `retryFrom('methodToRetryFrom', optErrMsgString, optErrObj);`
+DISCUSS: `retryThis(optErrMsgString, optErrObj);`
 
 
 
@@ -391,10 +425,6 @@ getAndWriteTasks.getGoogle = function (){
 getAndWriteTasks.writeGoogle = function (){
   // Check if the required data is present. In case it isn't,
   // we retry our whole task list
-
-
-
-
 };
 
 ```
