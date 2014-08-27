@@ -26,8 +26,48 @@ When we look at the two lists above, we can categorize computational tasks into 
 1. Synchronous (small and quick)
 2. Asynchronous (both small and quick or large and long lasting)
 
+### API
+Everything `f_` offers will be used in the code example below. We will be using a class based approach, since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
+```js
+var f_ = require('f_');
 
-### In depth look at the way `f_` works and how it will fix our previously described problem.
+var TasksClass = function TasksClass (o){
+  o = o || {};
+
+  if(!)
+
+  return this;
+};
+
+TasksClass.prototype.start = function (){
+
+};
+
+TasksClass.prototype.getSource = function (){
+
+};
+
+TasksClass.prototype.writeSource = function (){
+
+};
+
+TasksClass = f_.augment(TasksClass);
+
+for(var i = 0; i < 100; i+=1){
+  var tasksInstance = new TasksClass();
+  tasksInstance.start();
+
+  if(tasksInstance.errs.length === 0)
+    console.log('Ok, everything has started correctly, task:', i);
+  else
+    console.log('Errors at start, probably we do not want to continue w/', i);
+}
+
+
+
+```
+
+### In depth look at the way `f_` works.
 
 When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand, yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
 
@@ -151,7 +191,7 @@ getAndWriteTasks.writeYt = function (){
 };
 ```
 
-Yes, we did it, separation of concerns and loose coupling! We could even modularize it, since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
+Yes, we did it; separation of concerns and loose coupling! We could even modularize (litteraly) it, since all those smaller asynchronous tasks could be single modules, if wanted they can even be put in single files. In this case I would keep it in a single file, since all tasks are small and easy to read/maintain. Even though we are using more lines of code.
 
 So far we can say that `f_` will allow us to program in a modularized way. Which is great already! Well, more greatness is coming your way!
 
@@ -197,7 +237,7 @@ getAndWriteTasks.writeGoogle = function (){
 ```
 
 So we've got a way to create an error stack, now we need a way to do something when an error occurs. This could ofcourse be done traditionally with 
-`on('error')` event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing `on('error')` listeners everytime is tedious. Something we try to remove from programming Node programs (don't forget you can still use them!). So with `f_` we can do it directly from a piece of code that causes an error. Take a look at this example:
+`on('error')` event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing `on('error')` listeners everytime is tedious. Something we try to remove from programming Node programs (don't forget you CAN still use them!). So with `f_` we can do it directly from a piece of code that causes an error. Take a look at this example:
 ```js
 /**
  * Immediately retry this asynchronous part of a larger task list
@@ -250,7 +290,7 @@ This way we can ensure data is removed, ofcourse you could also override propert
 So far we've talked about the data object namespace quite a lot. Let's take a closer look at how it works. We used the `d` namespace in our examples. This is just a plain JS object. With `f_` we can set our data object like this: `self.setDataObject('d')` or like this: `self.d = {};`. If you want more namespaces, simply do the following:
 `self.d.newNameSpace = {}`. 
 Please note that when you use the `self.resetAllData();` all namespaces in the top level namespace will be cleared. In case this is unwanted there is a way to let `f_` know we want to keep certain properties in our main namespace: 
-`self.keepOnReset(['newNameSpace'])`. There might even be cases where you don't want to reset anything at all, use: `self.resetOnRetry = false;`
+`self.keepOnReset = ['newNameSpace'];`. There might even be cases where you don't want to reset anything at all, use: `self.resetOnRetry = false;`
 
 
 
@@ -286,7 +326,7 @@ getAndWriteTasks.start = function (){
   self.d.someOtherNamespace = {}; // this one will be removed
 
   // Which properties to keep when we use a reset
-  self.keepOnReset(['newNameSpace']);
+  self.keepOnReset = ['newNameSpace'];
 
   // Do we actualy want a data reset? In this case; true!
   self.resetOnRetry = true;
