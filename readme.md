@@ -3,7 +3,7 @@
 Asynchronous Node.js made easier.
 
 ### Problem to be solved
-Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't find ourself in (callback) hell!
+Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
 
 
 ### How is `f_` going to solve this problem?
@@ -11,7 +11,7 @@ Allow programmers to use a simple API which will take care of separation of conc
 
 
 ### Introduction
-Every (good) Node program is mainly written asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
+Every (good) Node program is written mainly asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
 * String concatenation
 * Simple equation solving
 * Variable declaration
@@ -55,37 +55,38 @@ TasksClass.prototype.notify = function (){
 
 // Adding data to Class prototype object, will be same in every instance.
 // No need to add in our shared data object namespace, which could be reset.
+// Also using the prototype object, we only assign it once.
 TasksClass.prototype.writeDir = './sourceCodes';
 
 var f_config = {
 
   // Note that we dont use a f_ namespace, methods are just prefixed
-  // with 'f_'. Will save us quite some object lookup time.
-  prefixed_or_namespaced: 'prefixed',
+  // with 'f_'. Will save us quite some object lookup time. 
+  prefixed_or_namespaced: 'prefixed', // Default: 'namespaced'
 
   // Function order f_ uses to call methods
   functionFlow: ['getSource', 'writeSource', 'notify'],
 
   // Do we want a data reset when we use 'retryAll'. Can be changed later on
-  // in our code ofcourse!
-  resetOnRetry: true,
+  // in our code ofcourse! 
+  resetOnRetry: true, // Default: true
+
+  // Object in which we store our shared data.
+  dataNamespace: 'd', // Default: 'd'
 
   // Data namespace properties to keep on reset.
   keepOnReset: ['testNamespace'],
 
-  // Object in which we store our shared data.
-  dataNamespace: 'd',
-
   // How many times f_ will retry the whole tasks list
-  maxTotalRetries: 10,
+  maxTotalRetries: 10, // Default: 10
 
   // How many times f_ will retry a single function
-  maxMethodRetries: 10
+  maxMethodRetries: 10 // Default: 10
 
 };
 
-// Augment method takes two arguments: Object/class to augment
-// and an optional (most of time required) config object.
+// 'augment' method takes two arguments: object/class to augment and
+// a config object.
 TasksClass = f_.augment(TasksClass, f_config);
 
 
