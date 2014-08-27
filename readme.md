@@ -34,8 +34,6 @@ var f_ = require('f_');
 var TasksClass = function TasksClass (o){
   o = o || {};
 
-  if(!)
-
   return this;
 };
 
@@ -51,7 +49,45 @@ TasksClass.prototype.writeSource = function (){
 
 };
 
-TasksClass = f_.augment(TasksClass);
+TasksClass.prototype.notify = function (){
+
+};
+
+// Adding data to Class prototype object, will be same in every instance.
+// No need to add in our shared data object namespace, which could be reset.
+TasksClass.prototype.writeDir = './sourceCodes';
+
+var f_config = {
+
+  // Note that we dont use a f_ namespace, methods are just prefixed
+  // with 'f_'. Will save us quite some object lookup time.
+  prefixed_or_namespaced: 'prefixed',
+
+  // Function order f_ uses to call methods
+  functionFlow: ['getSource', 'writeSource', 'notify'],
+
+  // Do we want a data reset when we use 'retryAll'. Can be changed later on
+  // in our code ofcourse!
+  resetOnRetry: true,
+
+  // Data namespace properties to keep on reset.
+  keepOnReset: ['testNamespace'],
+
+  // Object in which we store our shared data.
+  dataNamespace: 'd',
+
+  // How many times f_ will retry the whole tasks list
+  maxTotalRetries: 10,
+
+  // How many times f_ will retry a single function
+  maxMethodRetries: 10
+
+};
+
+// Augment method takes two arguments: Object/class to augment
+// and an optional (most of time required) config object.
+TasksClass = f_.augment(TasksClass, f_config);
+
 
 for(var i = 0; i < 100; i+=1){
   var tasksInstance = new TasksClass();
