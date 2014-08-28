@@ -1,6 +1,6 @@
 `f_` (f.low, flow)
-==
-Asynchronous Node.js made easier.
+==================
+Asynchronous Node.js made easy and fun!
 
 ### Problem to be solved
 Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
