@@ -7,7 +7,7 @@ Write asynchronous Node.js programs without ending up with hard to maintain, rea
 
 
 ### How is `f_` going to solve this problem?
-Allow programmers to use a simple API which will take care of separation of concerns in a modularized way.
+Allow programmers to use a simple API which will take care of separation of concerns in a modularized way. Which by itself will result in loosely coupled programs.
 
 
 ### Introduction
@@ -377,7 +377,7 @@ Please note that when you use the `self.resetAllData();` all namespaces in the t
 
 
 DISCUSS: `retryAll(optErrMsgString, optErrObj);`
-DISCUSS: `retry('methodToRetry', optErrMsgString, optErrObj);`
+DISCUSS: `retryMethod('methodToRetry', optErrMsgString, optErrObj);`
 DISCUSS: `retryFrom('methodToRetryFrom', optErrMsgString, optErrObj);`
 DISCUSS: `retryThis(optErrMsgString, optErrObj);`
 
