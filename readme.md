@@ -24,7 +24,7 @@ And then there are the asynchronous tasks, such as:
 When we look at the two lists above, we can categorize computational tasks into two separate groups:
 
 1. Synchronous (small and quick)
-2. Asynchronous (both small and quick or large and long lasting)
+2. Asynchronous (either simple and quick or complex and long lasting)
 
 ### API
 Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended), since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
@@ -81,13 +81,8 @@ TaskList.prototype.writeDir = './sourceCodes';
 
 var f_config = {
 
-  // Note that we dont use a f_ namespace, methods are just prefixed
-  // with 'f_'. Will save us quite some object lookup overhead.
-  // Also allows simpler f_ method calling
-  usePrefix: true // Default: false
-
   // Function order f_ uses to call methods
-  // REQUIRED
+  // REQUIRED to atleast have one element!
   functionFlow: ['getSource', 'writeSource', 'notify'],
 
   // Name given to the errors array

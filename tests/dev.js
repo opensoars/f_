@@ -9,7 +9,21 @@ var f_config = {
 
 TaskList = f_.augment(TaskList, f_config);
 
-var taskListInstance = new TaskList();
-taskListInstance = f_.setup(taskListInstance);
+runMultiple = function (){
+	for(var i=0; i<100; i+=1){
+		var taskListInstance = new TaskList();
+		taskListInstance = f_.setup(taskListInstance);
 
-taskListInstance.start();
+		taskListInstance.start();
+	}
+}
+
+runSingle = function (){
+	var taskListInstance = new TaskList();
+	taskListInstance = f_.setup(taskListInstance);
+
+	taskListInstance.start();
+}();
+
+
+
