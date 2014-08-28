@@ -82,10 +82,12 @@ TaskList.prototype.writeDir = './sourceCodes';
 var f_config = {
 
   // Note that we dont use a f_ namespace, methods are just prefixed
-  // with 'f_'. Will save us quite some object lookup overhead. 
-  prefixed_or_namespaced: 'prefixed', // Default: 'namespaced'
+  // with 'f_'. Will save us quite some object lookup overhead.
+  // Also allows simpler f_ method calling
+  usePrefix: true // Default: false
 
   // Function order f_ uses to call methods
+  // REQUIRED
   functionFlow: ['getSource', 'writeSource', 'notify'],
 
   // Name given to the errors array
@@ -152,8 +154,7 @@ for(var i = 0; i < 100; i+=1){
 
 ### In depth look at the way `f_` works.
 
-When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand, yet powerful practice of callbacks. Whilst this practice may be simple, code management and separation of concerns can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An example below:
-
+When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand, yet powerful practice of callbacks. Whilst this practice may be simple, code management, separation of concerns and loose coupling can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An (ugly) example below:
 ```js
 /**
  * Simple task which will first GET google.com source code, write it to a HTML
@@ -206,7 +207,7 @@ Now let's take a look at the way I want to write this simple task!
  * the same logic as the ugly example is used.
  */
 
-getAndWriteTasks.prototype.getGoogle = function (){
+GetAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -228,7 +229,7 @@ getAndWriteTasks.prototype.getGoogle = function (){
 };
 
 
-getAndWriteTasks.prototype.writeGoogle = function (){
+GetAndWriteTasks.prototype.writeGoogle = function (){
   var self = this,
       googleSource = self.d.googleSource;
 
@@ -239,7 +240,7 @@ getAndWriteTasks.prototype.writeGoogle = function (){
 
 };
 
-getAndWriteTasks.prototype.getYt = function (){
+GetAndWriteTasks.prototype.getYt = function (){
   var self = this;
 
   http.get('http://www.youtube.com', function (res){
@@ -255,7 +256,7 @@ getAndWriteTasks.prototype.getYt = function (){
   });
 };
 
-getAndWriteTasks.prototype.writeYt = function (){
+GetAndWriteTasks.prototype.writeYt = function (){
   var self = this,
       ytSource = self.d.ytSource;
 
@@ -281,7 +282,7 @@ Now let's take a look at the way we will be handling errors (using a piece of th
  * the complete error stack when the task is aborted, or when we look up
  * the f_ 'errs' array filled with error objects.
  */
-getAndWriteTasks.prototype.getGoogle = function (){
+GetAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -301,7 +302,7 @@ getAndWriteTasks.prototype.getGoogle = function (){
 };
 
 
-getAndWriteTasks.prototype.writeGoogle = function (){
+GetAndWriteTasks.prototype.writeGoogle = function (){
   var self = this,
       googleSource = self.d.googleSource;
 
@@ -319,7 +320,7 @@ So we've got a way to create an error stack, now we need a way to do something w
 `on('error')` event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing `on('error')` listeners everytime is tedious. Something we try to remove from programming Node programs (don't forget you CAN still use them!). So with `f_` we can do it directly from a piece of code that causes an error. Take a look at this example:
 ```js
 // Immediately retry this asynchronous part of a larger task list
-getAndWriteTasks.prototype.getGoogle = function (){
+GetAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -335,7 +336,7 @@ getAndWriteTasks.prototype.getGoogle = function (){
 Let's say we use the source code received from Google.com in a later function but the `GET` request fails the first time, we want to make sure every piece of data we stored is removed from our RAM. We need a way to make `f_` know what data to remove from the data namespace object. We can do this by manualy providing `f_` with objects.
 
 ```js
-getAndWriteTasks.prototype.getGoogle = function (){
+GetAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   http.get('http://www.google.com', function (res){
@@ -392,7 +393,7 @@ Let's put everything in a part of a 'real world' code example:
  * When using f_, I tend to use 'start' as a function which will check
  * for dependencies and as a setup.
  */
-getAndWriteTasks.prototype.start = function (){
+GetAndWriteTasks.prototype.start = function (){
   // ... dependency verification could/should be here ...
 
   self.setDataObject('d');
@@ -411,7 +412,7 @@ getAndWriteTasks.prototype.start = function (){
 
 };
 
-getAndWriteTasks.prototype.getGoogle = function (){
+GetAndWriteTasks.prototype.getGoogle = function (){
   var self = this;
 
   self.d.googleSource = '';
@@ -429,7 +430,7 @@ getAndWriteTasks.prototype.getGoogle = function (){
 
 };
 
-getAndWriteTasks.prototype.writeGoogle = function (){
+GetAndWriteTasks.prototype.writeGoogle = function (){
   // Check if the required data is present. In case it isn't,
   // we retry our whole task list
 };
