@@ -23,6 +23,9 @@ runSingle = function (){
 	taskListInstance = f_.setup(taskListInstance);
 
 	taskListInstance.start();
+
+	console.log(taskListInstance);
+
 }();
 
 

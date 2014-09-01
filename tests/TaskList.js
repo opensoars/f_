@@ -1,14 +1,11 @@
-var Ezlog = require('ezlog');
-
-var log = new Ezlog({
-	pref: { t: '[TasksList]', c: 'green' }
-});
+var Ezlog = require('ezlog'),
+		log = new Ezlog({pref:{t:'[TasksList]',c:'green'}});
 
 
 var TaskList = function TaskList (o){
   o = o || {};
 
-  log('TaskList init');
+  log('TaskList initialized');
 
   return this;
 };
@@ -18,11 +15,9 @@ var TaskList = function TaskList (o){
  * @req    url {string}  Url to grab source code from
  */
 TaskList.prototype.start = function (){
+	log('TaskList start called');
 
-	log('TaskList start');
-
-	this.f_next();
-
+	return this.f_next();
 };
 
 /**
@@ -34,7 +29,7 @@ TaskList.prototype.getSource = function (){
 
 	var self = this;
 
-	self.f_next();
+	return self.f_next();
 };
 
 /**
@@ -46,7 +41,7 @@ TaskList.prototype.writeSource = function (){
 
 	var self = this;
 
-	self.f_next();
+	return self.f_next();
 };
 
 /**
@@ -57,7 +52,7 @@ TaskList.prototype.notify = function (){
 
 	var self = this;
 
-	self.f_next();
+	return self.f_next();
 };
 
 // Adding data to Class prototype object, will be same in every instance.
