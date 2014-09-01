@@ -117,14 +117,16 @@ var f_config = {
   },
 
   // What to log
+  // start:   If first method in functionFlow is called
   // next:    A method is called, we log the method name.
   // retry:   A retry occurs, log everything known about it.
   // error:   An error gets pushed to errs array, log err description and
   //          origional error object.
   // abort:   f_ aborts a task list, log error stack and method
   //          which caused error.
-  // all:     log 'everything' f_ does, all above triggers will be true.
-  // silent:  log nothing at all.
+  // finish:  Log when tasks is complete and time taken
+  // all:     Log 'everything' f_ does, all above triggers will be true.
+  // silent:  Log nothing at all.
   // Default: ['all']
   toLog: ['next', 'retry']
 
