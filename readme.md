@@ -27,11 +27,12 @@ When we look at the two lists above, we can categorize computational tasks into 
 2. Asynchronous (either simple and quick or complex and long lasting)
 
 
-### Time schedule (from September 5 2014)
+### Time schedule (from the 5th of September 2014)
 * 1.5/2 weeks (will result in pre-alpha release)
   - Further brainstorming
   - Expand documentation all features
   - Complete features
+  - Release of a working prototype
 
 * 2.5/3 weeks (will result in alpha release)
   - Complete product development
