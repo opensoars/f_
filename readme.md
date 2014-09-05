@@ -43,9 +43,6 @@ When we look at the two lists above, we can categorize computational tasks into 
   - Fixing unexpected behaviour
   - Complete documentation
 
-Now we can finaly launch the product.
-
-
 ### API
 Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended), since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
 ```js
