@@ -42,7 +42,7 @@ When we look at the two lists above, we can categorize computational tasks into 
   - Fixing unexpected behaviour
   - Complete documentation
 
-Till we can finaly launch the product.
+Now we can finaly launch the product.
 
 
 ### API
