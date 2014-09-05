@@ -26,6 +26,25 @@ When we look at the two lists above, we can categorize computational tasks into 
 1. Synchronous (small and quick)
 2. Asynchronous (either simple and quick or complex and long lasting)
 
+
+### Time schedule (from September 5 2014)
+* 1.5/2 weeks (will result in pre-alpha release)
+  - Further brainstorming
+  - Expand documentation all features
+  - Complete features
+
+* 2.5/3 weeks (will result in alpha release)
+  - Complete product development
+  - Documentation of development process
+
+* 2.5/3 weeks (will result in beta release)
+  - Testing
+  - Fixing unexpected behaviour
+  - Complete documentation
+
+Till we can finaly launch the product.
+
+
 ### API
 Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended), since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
 ```js
