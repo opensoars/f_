@@ -2,7 +2,7 @@ var Ezlog = require('ezlog'),
 		log = new Ezlog({pref:{t:'[TaskList]',c:'green'}});
 
 
-var TaskList = function TaskList (o){
+function TaskList (o){
   o = o || {};
 
   //log('TaskList initialized');
@@ -10,13 +10,13 @@ var TaskList = function TaskList (o){
   return this;
 };
 
-
+var proto = Object.create(null);
 
 /**
  * @method start         Check if requirements are met
  * @req    url {string}  Url to grab source code from
  */
-TaskList.prototype.start = function (){
+proto.start = function (){
 	//log("startin' task");
 
 	this.d.hello = 'world';
@@ -28,7 +28,7 @@ TaskList.prototype.start = function (){
  * @method getSource          Gets a website source code
  * @data   d.source {string}  Website it's source code
  */
-TaskList.prototype.getSource = function (){
+proto.getSource = function (){
 	//log("gettin' source");
 
 	var self = this;
@@ -44,7 +44,7 @@ TaskList.prototype.getSource = function (){
  * @method writeSource        Writes a source code on HD
  * @req    d.source {string}  Website it's source page
  */
-TaskList.prototype.writeSource = function (){
+proto.writeSource = function (){
 	//log("writin' souce");
 
 	var self = this;
@@ -55,7 +55,7 @@ TaskList.prototype.writeSource = function (){
 /**
  * @method notify  Log what happened in the previous methods
  */
-TaskList.prototype.notify = function (){
+proto.notify = function (){
 	//log('HELLO notify');
 
 	var self = this;
@@ -64,19 +64,19 @@ TaskList.prototype.notify = function (){
 };
 
 
-TaskList.prototype.onRetryAll = function (){
+proto.onRetryAll = function (){
 
 };
 
-TaskList.prototype.onNext = function (nextData){
+proto.onNext = function (nextData){
 	//log('!onNext!' + JSON.stringify(nextData));
 };
 
-TaskList.prototype.onFinish = function (){
+proto.onFinish = function (){
 	log('!onFinish!');
 };
 
-TaskList.prototype.onAbort = function (){
+proto.onAbort = function (){
 	//log('!onAbort!');
 };
 
@@ -85,7 +85,9 @@ TaskList.prototype.onAbort = function (){
 // Adding data to Class prototype object, will be same in every instance.
 // No need to add in our shared data object namespace, which could be reset.
 // Also using the prototype object, we only assign it once.
-TaskList.prototype.writeDir = './sourceCodes';
+proto.writeDir = './sourceCodes';
+
+TaskList.prototype = Object.create(proto);
 
 
 module.exports = TaskList;
