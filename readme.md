@@ -211,7 +211,7 @@ http.get('http://www.google.com', function (googleRes){
 
 
 
-As you can see, this code hard to read, write and maintain. We're not even taking error handling and dependecy management in account here... Making it even harder to read, write and maintain.
+As you can see, this code hard to read, write and maintain. We're not even taking error handling and dependecy management in account here... Which will make it even harder to read, write and maintain.
 
 Now let's take a look at the way I want to write this simple task!
 
