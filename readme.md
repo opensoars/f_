@@ -108,8 +108,8 @@ var f_config = {
 
   // Do we want a data reset when we use 'retryAll'. Can be changed later on
   // in our code ofcourse!
-  // Default: true
-  resetOnRetry: true,
+  // Default: false
+  resetOnRetryAll: true,
 
   // Object in which we store our shared data.
   // Default: 'd'
@@ -120,7 +120,7 @@ var f_config = {
 
   // How many times f_ will retry the whole task list
   // Default: 10
-  maxTotalRetries: 15,
+  maxRetriesAll: 15,
 
   // How many times f_ will retry a single method
   // Default: 10
