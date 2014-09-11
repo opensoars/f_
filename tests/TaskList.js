@@ -1,21 +1,25 @@
 var Ezlog = require('ezlog'),
-		log = new Ezlog({pref:{t:'[TasksList]',c:'green'}});
+		log = new Ezlog({pref:{t:'[TaskList]',c:'green'}});
 
 
 var TaskList = function TaskList (o){
   o = o || {};
 
-  log('TaskList initialized');
+  //log('TaskList initialized');
 
   return this;
 };
+
+
 
 /**
  * @method start         Check if requirements are met
  * @req    url {string}  Url to grab source code from
  */
 TaskList.prototype.start = function (){
-	log('TaskList start called');
+	//log("startin' task");
+
+	this.d.hello = 'world';
 
 	return this.f_next();
 };
@@ -25,9 +29,13 @@ TaskList.prototype.start = function (){
  * @data   d.source {string}  Website it's source code
  */
 TaskList.prototype.getSource = function (){
-	log("gettin' source");
+	//log("gettin' source");
 
 	var self = this;
+
+	if(Math.random() > 0.3)
+		return self.f_retryAll('Debugger retry!', new Error('Debugger error'));
+
 
 	return self.f_next();
 };
@@ -37,7 +45,7 @@ TaskList.prototype.getSource = function (){
  * @req    d.source {string}  Website it's source page
  */
 TaskList.prototype.writeSource = function (){
-	log("writin' souce");
+	//log("writin' souce");
 
 	var self = this;
 
@@ -48,16 +56,38 @@ TaskList.prototype.writeSource = function (){
  * @method notify  Log what happened in the previous methods
  */
 TaskList.prototype.notify = function (){
-	log('HELLO notify');
+	//log('HELLO notify');
 
 	var self = this;
 
+	//console.log(this);
+
 	return self.f_next();
 };
+
+
+TaskList.prototype.onRetryAll = function (){
+
+};
+
+TaskList.prototype.onNext = function (nextData){
+	//log('!onNext!' + JSON.stringify(nextData));
+};
+
+TaskList.prototype.onFinish = function (){
+	log('!onFinish!');
+};
+
+TaskList.prototype.onAbort = function (){
+	//log('!onAbort!');
+};
+
+
 
 // Adding data to Class prototype object, will be same in every instance.
 // No need to add in our shared data object namespace, which could be reset.
 // Also using the prototype object, we only assign it once.
 TaskList.prototype.writeDir = './sourceCodes';
+
 
 module.exports = TaskList;

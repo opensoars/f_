@@ -5,7 +5,13 @@ var TaskList = require('TaskList');
 
 var f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify'],
-	toLog: ['all']
+	toLog: ['all'],
+	resetOnRetryAll: true,
+	desc: 'Task description',
+
+	maxRetries: {
+		all: 2
+	}
 };
 
 TaskList = f_.augment(TaskList, f_config);
@@ -18,13 +24,13 @@ runSingle = function (){
 
 }();
 
-
-
 runMultiple = function (){
 	for(var i=0; i<100; i+=1){
 		var taskListInstance = new TaskList();
 		taskListInstance = f_.setup(taskListInstance);
 
+		taskListInstance.desc = taskListInstance.desc + i;
+
 		taskListInstance.start();
 	}
-}
+};
