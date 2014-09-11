@@ -2,13 +2,14 @@ var Ezlog = require('ezlog'),
 		log = new Ezlog({pref:{t:'[TaskList]',c:'green'}});
 
 
-function TaskList (o){
+var TaskList = function TaskList (o){
   o = o || {};
 
   //log('TaskList initialized');
 
   return this;
 };
+
 
 var proto = Object.create(null);
 
@@ -32,6 +33,7 @@ proto.getSource = function (){
 	//log("gettin' source");
 
 	var self = this;
+
 
 	if(Math.random() > 0.3)
 		return self.f_retryAll('Debugger retry', new Error('Node err here'));
@@ -60,6 +62,7 @@ proto.notify = function (){
 
 	var self = this;
 
+
 	return self.f_next();
 };
 
@@ -73,7 +76,7 @@ proto.onNext = function (nextData){
 };
 
 proto.onFinish = function (){
-	log('!onFinish!');
+	//log('!onFinish!');
 };
 
 proto.onAbort = function (){
@@ -82,12 +85,12 @@ proto.onAbort = function (){
 
 
 
-// Adding data to Class prototype object, will be same in every instance.
+// Adding data to Class proto object, will be same in every instance.
 // No need to add in our shared data object namespace, which could be reset.
-// Also using the prototype object, we only assign it once.
+// Also using the proto object, we will only assign it once.
 proto.writeDir = './sourceCodes';
 
-TaskList.prototype = Object.create(proto);
+TaskList.prototype = proto;
 
 
 module.exports = TaskList;

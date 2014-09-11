@@ -61,41 +61,68 @@ var TaskList = function TaskList (o){
 };
 
 /**
- * @method start         Check if requirements are met
- * @req    url {string}  Url to grab source code from
+ * Create an empty namespace object to hold our proto(type) methods
+ * Which will be assigned to the TaskList its prototype object
  */
-TaskList.prototype.start = function (){
+var proto = Object.create(null);
+
+/**
+ * @method start  Check if requirements are met
+ */
+proto.start = function (){
 
 };
+
 
 /**
  * @method getSource          Gets a website source code
+ * @req    url {string}  Url to grab source code from
  * @data   d.source {string}  Website it's source code
  */
-TaskList.prototype.getSource = function (){
+proto.getSource = function (){
 
 };
+
 
 /**
  * @method writeSource        Writes a source code on HD
  * @req    d.source {string}  Website it's source page
  */
-TaskList.prototype.writeSource = function (){
+proto.writeSource = function (){
 
 };
+
 
 /**
  * @method notify  Log what happened in the previous methods
  */
-TaskList.prototype.notify = function (){
+proto.notify = function (){
 
 };
 
-// Adding data to Class prototype object, will be same in every instance.
-// No need to add in our shared data object namespace, which could be reset.
-// Also using the prototype object, we only assign it once.
-TaskList.prototype.writeDir = './sourceCodes';
 
+/**
+ * Adding data to Class proto object, it will be same with every instance.
+ * No need to add it to our shared data object namespace, which could be reset.
+ * Also using the prototype object, we only assign it once.
+ */
+proto.writeDir = './sourceCodes';
+
+
+/**
+ * Assign methods from proto object to our TaskList its actual
+ * prototype object.
+ * Ofcourse, make sure our proto object has all properties we want it
+ * to have before we assign it!
+ */
+TaskList.prototype = proto;
+
+
+/** f_config object
+ * In this object we can tell f_ what to do.
+ * It can be quite detailed. But only a few properties are actualy
+ * required for f_ to work
+ */
 var f_config = {
 
   // Function order f_ uses to call methods
