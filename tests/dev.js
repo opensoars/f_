@@ -7,7 +7,7 @@ var f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify'],  // REQUIRED
 	resetOnRetryAll: true,
 
-	toLog: ['all'],
+	toLog: ['finish', 'abort'],
 
 	desc: 'Test taskList',
 
@@ -28,7 +28,7 @@ var runSingle = function (){
 var runMultiple = function (){
 	var startTime = Date.now(); 
 
-	for(var i=0; i<100; i+=1){
+	for(var i=0; i<10000; i+=1){
 		var taskListInstance = new TaskList();
 		taskListInstance = f_.setup(taskListInstance);
 
