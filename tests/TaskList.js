@@ -34,7 +34,7 @@ TaskList.prototype.getSource = function (){
 	var self = this;
 
 	if(Math.random() > 0.3)
-		return self.f_retryAll('Debugger retry!', new Error('Debugger error'));
+		return self.f_retryAll('Debugger retry', new Error('Node err here'));
 
 
 	return self.f_next();
@@ -60,7 +60,7 @@ TaskList.prototype.notify = function (){
 
 	var self = this;
 
-	//console.log(this);
+	console.log(this.f_desc);
 
 	return self.f_next();
 };

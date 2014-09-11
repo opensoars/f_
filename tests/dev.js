@@ -4,8 +4,8 @@ var TaskList = require('TaskList');
 
 
 var f_config = {
-	functionFlow: ['getSource', 'writeSource', 'notify'],
-	toLog: ['all'],
+	functionFlow: ['getSource', 'writeSource', 'notify'],  // REQUIRED
+	toLog: ['silent'],
 	resetOnRetryAll: true,
 	desc: 'Task description',
 
