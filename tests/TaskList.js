@@ -60,8 +60,6 @@ TaskList.prototype.notify = function (){
 
 	var self = this;
 
-	console.log(this.f_desc);
-
 	return self.f_next();
 };
 

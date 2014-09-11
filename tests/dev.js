@@ -5,9 +5,10 @@ var TaskList = require('TaskList');
 
 var f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify'],  // REQUIRED
-	toLog: ['silent'],
+	toLog: ['all'],
 	resetOnRetryAll: true,
-	desc: 'Task description',
+
+	desc: 'Test taskList',
 
 	maxRetries: {
 		all: 2
