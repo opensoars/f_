@@ -7,7 +7,7 @@ var f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify'],  // REQUIRED
 	resetOnRetryAll: true,
 
-	toLog: ['finish', 'abort'],
+	toLog: ['all'],
 
 	desc: 'Test taskList',
 
