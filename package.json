@@ -4,5 +4,8 @@
   "dependencies": {
   	"ezlog": "*",
   	"opensoars_cls": "*"
+  },
+  "scripts": {
+  	"test": "node /tests/dev.js"
   }
 }
