@@ -1,6 +1,6 @@
 var f_ = require('../index.js');
 
-var TaskList = require('TaskList');
+var TaskList = require('./TaskList');
 
 
 var f_config = {

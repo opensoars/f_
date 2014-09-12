@@ -6,6 +6,6 @@
   	"opensoars_cls": "*"
   },
   "scripts": {
-  	"test": "node /tests/dev.js"
+  	"test": "node ./tests/dev.js"
   }
 }
