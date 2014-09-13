@@ -3,6 +3,11 @@ var f_ = require('../index.js');
 var TaskList = require('./TaskList');
 
 var f_config = {
+
+	/**
+	 * `start` method is not given here, since we call it manualy
+	 * This is just a matter of personal taste, I do not like auto starts!
+	 */
 	functionFlow: ['getSource', 'writeSource', 'notify'],  // REQUIRED
 	resetOnRetryAll: true,
 
