@@ -2,6 +2,8 @@
   "name": "f_",
   "version": "0.0.2",
 
+  "description": "Asynchronous Node.js made easy.",
+
   "scripts": {
     "test": "mocha ./test/mocha.js && npm run coverage && npm run coveralls",
     "coverage": "istanbul cover ./test/coverage.js",
