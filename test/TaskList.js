@@ -5,7 +5,11 @@ var Ezlog = require('ezlog'),
 var TaskList = function TaskList (o){
   o = o || {};
 
-  //log('TaskList initialized');
+  this.abort         = o.abort         || false;
+  this.exceedRetries = o.exceedRetries || false;
+  this.retryOnce     = o.retryOnce     || false;
+  this.emptyRetryErr = o.emptyRetryErr || false;
+  this.emptyAbortErr = o.emptyAbortErr || false;
 
   return this;
 };
@@ -35,8 +39,24 @@ proto.getSource = function (){
 	var self = this;
 
 
-	if(Math.random() > 0.3)
+	if(this.abort)
+		return self.f_abort('Debugger abort', new Error('Node err here'))
+
+
+	if(self.retryOnce)
 		return self.f_retryAll('Debugger retry', new Error('Node err here'));
+
+
+	if(this.exceedRetries)
+		return self.f_retryAll('Debugger retry, exceed max', new Error('Node err here'));
+
+	
+	if(this.emptyRetryErr)
+		return self.f_retryAll();
+
+
+	if(this.emptyAbortErr)
+		return self.f_abort();
 
 
 	return self.f_next();
