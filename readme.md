@@ -1,6 +1,14 @@
 `f_` (f.low, flow)
 ==================
+
+[![Build Status](http://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
+[![Coverage Status](http://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
+[![Dependency Status](http://img.shields.io/gemnasium/opensoars/f_.svg?style=flat)](https://gemnasium.com/opensoars/f_)
+
+
 Asynchronous Node.js made easy and fun!
+
+---
 
 ### Problem to be solved
 Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
