@@ -19,6 +19,14 @@ Asynchronous Node.js made easy and fun!
 ### Install
 `npm install f_`
 
+### Todo
+* More comments at `f_next` 
+* Make `retryThis` work
+* Split `f_.js` into modules
+* Write more and better `Mocha` tests
+* Make up my mind about `retryMethod` and `retryFrom`
+* Fix documentation
+
 ---
 
 ## Documentation
