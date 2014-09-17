@@ -1,4 +1,4 @@
-var f_ = require(__dirname + '/../index.js');
+var f_ = require(__dirname + './../index.js');
 
 var TaskList = require('./TaskList');
 

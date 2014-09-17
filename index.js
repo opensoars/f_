@@ -1,1 +1,1 @@
-module.exports = require('./lib/f_dev.js');
+module.exports = require('./lib/f_.js');
