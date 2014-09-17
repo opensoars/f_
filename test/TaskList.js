@@ -43,8 +43,10 @@ proto.getSource = function (){
 		return self.f_abort('Debugger abort', new Error('Node err here'))
 
 
-	if(self.retryOnce)
+	if(self.retryOnce){
+		self.retryOnce = false;
 		return self.f_retryAll('Debugger retry', new Error('Node err here'));
+	}
 
 
 	if(this.exceedRetries)

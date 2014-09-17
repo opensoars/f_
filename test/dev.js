@@ -22,12 +22,25 @@ var f_config = {
 
 TaskList = f_.augment(TaskList, f_config);
 
+
+
 var runSingle = function (){
-	var taskListInstance = new TaskList();
+
+	var taskListInstance = new TaskList({
+		//abort:         true,
+		//exceedRetries: true,
+		//retryOnce:     true,
+		//emptyRetryErr: true,
+		//emptyAbortErr: true,
+	});
+
+
 	taskListInstance = f_.setup(taskListInstance);
 
 	taskListInstance.start();
 }();
+
+
 
 var runMultiple = function (){
 	var startTime = Date.now(); 
