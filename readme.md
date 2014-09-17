@@ -9,7 +9,6 @@
 Asynchronous Node.js made easy and fun!
 
 
-
 ---
 
 ### Dependencies
@@ -19,6 +18,8 @@ Asynchronous Node.js made easy and fun!
 
 ### Install
 `npm install f_`
+
+---
 
 
 ### Problem to be solved
