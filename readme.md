@@ -8,6 +8,10 @@
 
 Asynchronous Node.js made easy and fun!
 
+### Dependencies
+* [cls](https://github.com/opensoars/cls)
+* [ezlog](https://github.com/opensoars/ezlog)
+
 ---
 
 ### Problem to be solved
@@ -17,9 +21,6 @@ Write asynchronous Node.js programs without ending up with hard to maintain, rea
 ### How is `f_` going to solve this problem?
 Allow programmers to use a simple API which will take care of separation of concerns in a modularized way. Which by itself will result in loosely coupled programs.
 
-### Dependencies
-* [cls](https://github.com/opensoars/cls)
-* [ezlog](https://github.com/opensoars/ezlog)
 
 ### Introduction
 Every (good) Node program is written mainly asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
