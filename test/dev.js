@@ -17,7 +17,14 @@ var f_config = {
 
 	maxRetries: {
 		all: 2
+	},
+
+	maxTries: {
+		getSource: 1,
+		writeSource: 1,
+		notify: 1
 	}
+
 };
 
 TaskList = f_.augment(TaskList, f_config);
@@ -29,9 +36,13 @@ var runSingle = function (){
 	var taskListInstance = new TaskList({
 		//abort:         true,
 		//exceedRetries: true,
-		//retryOnce:     true,
+		retryAllOnce:  true
 		//emptyRetryErr: true,
 		//emptyAbortErr: true,
+		//retryMethod:   true,
+
+		//retryThis:     true
+
 	});
 
 

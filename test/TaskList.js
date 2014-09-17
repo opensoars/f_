@@ -5,12 +5,8 @@ var Ezlog = require('ezlog'),
 var TaskList = function TaskList (o){
   o = o || {};
 
-  this.abort         = o.abort         || false;
-  this.exceedRetries = o.exceedRetries || false;
-  this.retryOnce     = o.retryOnce     || false;
-  this.emptyRetryErr = o.emptyRetryErr || false;
-  this.emptyAbortErr = o.emptyAbortErr || false;
-
+  for(var key in o) this[key] = o[key]
+  
   return this;
 };
 
@@ -29,61 +25,57 @@ proto.start = function (){
 	return this.f_next();
 };
 
+
 /**
  * @method getSource          Gets a website source code
  * @data   d.source {string}  Website it's source code
  */
 proto.getSource = function (){
-	//log("gettin' source");
-
 	var self = this;
 
+	self.d = { hello: 'world' };
 
-	if(this.abort)
-		return self.f_abort('Debugger abort', new Error('Node err here'))
+	if(self.abort) return self.f_abort('Debugger abort', new Error('Node err here'))
 
-
-	if(self.retryOnce){
-		self.retryOnce = false;
-		return self.f_retryAll('Debugger retry', new Error('Node err here'));
-	}
-
-
-	if(this.exceedRetries)
+	if(self.exceedRetries)
 		return self.f_retryAll('Debugger retry, exceed max', new Error('Node err here'));
 
-	
-	if(this.emptyRetryErr)
-		return self.f_retryAll();
+	if(self.emptyRetryErr) return self.f_retryAll();
 
-
-	if(this.emptyAbortErr)
-		return self.f_abort();
-
+	if(self.emptyAbortErr) return self.f_abort();
 
 	return self.f_next();
 };
+
 
 /**
  * @method writeSource        Writes a source code on HD
  * @req    d.source {string}  Website it's source page
  */
 proto.writeSource = function (){
-	//log("writin' souce");
 
 	var self = this;
 
+	if(self.retryAllOnce){
+		self.retryAllOnce = false;
+		return self.f_retryAll('Debugger retry', new Error('Node err here'));
+	}
+
+
+	if(self.retryThis){
+		self.retryThis = false;
+		return self.f_retryThis();
+	}
+
 	return self.f_next();
 };
+
 
 /**
  * @method notify  Log what happened in the previous methods
  */
 proto.notify = function (){
-	//log('HELLO notify');
-
 	var self = this;
-
 
 	return self.f_next();
 };

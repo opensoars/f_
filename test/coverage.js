@@ -478,8 +478,48 @@ taskList.start();
 
 
 
-/** Get 100% coverage
- * Future features
+/** Test case # 20 #
+ * Check if next will stop f_ if we retry a specific method
+ * to many times
+ * 
+ * onRetryAll = undefined
+ */
+
+var f_config = {
+	functionFlow: ['getSource', 'writeSource', 'notify'],
+
+	toLog: ['silent'],
+
+	resetOnRetryAll: true,
+
+	maxRetries: {
+		all: 2
+	},
+
+	maxTries: {
+		getSource: 1,
+		writeSource: 1,
+		notify: 1
+	}
+
+};
+
+var TaskList = f_.augment(TaskList, f_config);
+
+var taskList = new TaskList({
+	retryAllOnce:  true
+});
+
+taskList = f_.setup(taskList);
+
+taskList.onRetryAll = undefined;
+
+taskList.start();
+
+
+// 100% coverage for now
+/** Test case # 21 #
+ * Make sure retryThis works as planned
  */
 
 var f_config = {
@@ -488,14 +528,13 @@ var f_config = {
 
 var TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList();
+var taskList = new TaskList({
+	abort: true
+});
 
 taskList = f_.setup(taskList);
 
-taskList.onAbort = undefined;
 
 taskList.start();
 
-taskList.f_retryMethod();
-taskList.f_retryFrom();
 taskList.f_retryThis();
