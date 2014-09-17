@@ -21,6 +21,7 @@ Asynchronous Node.js made easy and fun!
 
 ---
 
+## Documentation
 
 ### Problem to be solved
 Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
