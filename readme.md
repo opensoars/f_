@@ -1,9 +1,9 @@
 `f_` (f.low, flow)
 ==================
 
-[![Build Status](http://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
-[![Coverage Status](http://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
-[![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
+[![Build Status](http://img.shields.io/travis/opensoars/f_.svg)](https://travis-ci.org/opensoars/f_)
+[![Coverage Status](http://img.shields.io/coveralls/opensoars/f_.svg)](https://coveralls.io/r/opensoars/f_)
+[![Dependency Status](https://david-dm.org/opensoars/f_.svg)](https://david-dm.org/opensoars/f_)
 [![Dependency Status](https://badge.fury.io/js/f_.svg)](https://www.npmjs.org/package/f_)
 
 Asynchronous Node.js made easy and fun!
