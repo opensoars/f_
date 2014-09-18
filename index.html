@@ -37,9 +37,11 @@
 
 <p><a href="https://travis-ci.org/opensoars/f_"><img src="http://img.shields.io/travis/opensoars/f_.svg?style=flat" alt="Build Status"></a>
 <a href="https://coveralls.io/r/opensoars/f_"><img src="http://img.shields.io/coveralls/opensoars/f_.svg?style=flat" alt="Coverage Status"></a>
-<a href="https://gemnasium.com/opensoars/f_"><img src="http://img.shields.io/gemnasium/opensoars/f_.svg?style=flat" alt="Dependency Status"></a></p>
+<a href="https://david-dm.org/opensoars/f_"><img src="https://david-dm.org/opensoars/f_.svg?style=flat" alt="Dependency Status"></a>
+<a href="https://david-dm.org/opensoars/f_#info=devDependencies&amp;view=table"><img src="http://img.shields.io/david/dev/opensoars/f_.svg?style=flat" alt="Development Dependency Status"></a>
+<a href="https://github.com/opensoars/f_/blob/master/package.json"><img src="http://img.shields.io/badge/node-%3E=0.6.*-brightgreen.svg?style=flat" alt="Node Version"></a></p>
 
-<p>Asynchronous Node.js made easy and fun!</p>
+
 
 <hr><h3>
 <a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h3>
@@ -56,13 +58,9 @@
 <a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>Todo</h3>
 
 <ul>
-<li>More comments at <code>f_next</code> </li>
-<li>Make <code>retryThis</code> work</li>
-<li>Split <code>f_.js</code> into smaller modules</li>
-<li>Write more and better <code>Mocha</code> tests</li>
-<li>Make up my mind about <code>retryMethod</code> and <code>retryFrom</code>
-</li>
-<li>Fix documentation</li>
+<li>Write more <code>Mocha</code> test(s)</li>
+<li>Write a true 'real world' example (will be used in documentation)</li>
+<li>Complete documentation</li>
 </ul><hr><h2>
 <a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
 
@@ -280,7 +278,7 @@
 </pre></div>
 
 <h3>
-<a name="in-depth-look-at-the-way-f_-works" class="anchor" href="#in-depth-look-at-the-way-f_-works"><span class="octicon octicon-link"></span></a>In depth look at the way <code>f_</code> works.</h3>
+<a name="in-depth-look-at-the-way-f_-doesnt-work" class="anchor" href="#in-depth-look-at-the-way-f_-doesnt-work"><span class="octicon octicon-link"></span></a>In depth look at the way <code>f_</code> DOESN'T work.</h3>
 
 <p>When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand, yet powerful practice of callbacks. Whilst this practice may be simple, code management, separation of concerns and loose coupling can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An (ugly) example below:</p>
 
@@ -325,7 +323,10 @@
 
 <p>As you can see, this code hard to read, write and maintain. We're not even taking error handling and dependecy management in account here... Which will make it even harder to read, write and maintain.</p>
 
-<p>Now let's take a look at the way I want to write this simple task!</p>
+<h3>
+<a name="in-depth-look-at-the-way-f_-does-work" class="anchor" href="#in-depth-look-at-the-way-f_-does-work"><span class="octicon octicon-link"></span></a>In depth look at the way <code>f_</code> DOES work.</h3>
+
+<p>Let's take a look at the way I want to write this simple task!</p>
 
 <div class="highlight highlight-js"><pre><span class="cm">/**</span>
 <span class="cm"> * Please note we're still not using a good error handling mehtod,</span>
@@ -494,12 +495,12 @@
 Please note that when you use the <code>self.resetAllData();</code> all namespaces in the top level namespace will be cleared. In case this is unwanted there is a way to let <code>f_</code> know we want to keep certain properties in our main namespace: 
 <code>self.keepOnReset = ['newNameSpace'];</code>. There might even be cases where you don't want to reset anything at all, use: <code>self.resetOnRetry = false;</code></p>
 
-<p>DISCUSS: <code>retryAll(optErrMsgString, optErrObj);</code>
-DISCUSS: <code>retryMethod('methodToRetry', optErrMsgString, optErrObj);</code>
-DISCUSS: <code>retryFrom('methodToRetryFrom', optErrMsgString, optErrObj);</code>
-DISCUSS: <code>retryThis(optErrMsgString, optErrObj);</code></p>
-
-<p>Let's put everything in a part of a 'real world' code example:</p>
+<ul>
+<li>DISCUSS: <code>retryAll(optErrMsgString, optErrObj);</code>
+</li>
+<li>DISCUSS: <code>retryThis(optErrMsgString, optErrObj);</code>
+</li>
+</ul><p>Let's put everything in a part of a 'real world' code example:</p>
 
 <div class="highlight highlight-js"><pre><span class="cm">/**</span>
 <span class="cm"> * When using f_, I tend to use 'start' as a function which will check</span>
