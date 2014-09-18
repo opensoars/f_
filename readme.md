@@ -1,10 +1,10 @@
 f_ (f.low, flow)
 ==================
 
-[![Build Status](http://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
-[![Coverage Status](http://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
+[![Build Status](https://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
+[![Coverage Status](https://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
 [![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
-[![Development Dependency Status](http://img.shields.io/david/dev/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_#info=devDependencies&view=table)
+[![Development Dependency Status](https://david-dm.org/opensoars/f_/dev-status.svg?style=flat)](https://david-dm.org/opensoars/f_#info=devDependencies&view=table)
 
 <!---
 [![Dependency Status](https://badge.fury.io/js/f_.svg)](https://www.npmjs.org/package/f_)
