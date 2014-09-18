@@ -101,7 +101,7 @@ proto.onRetryAll = function (){
 };
 					
 proto.onNext = function (nextData){
-	//log('!onNext!' + JSON.stringify(nextData));
+	//log('!onNext!' + JSON.stringify(nextData)); 
 };
 
 proto.onFinish = function (){
