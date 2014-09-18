@@ -10,6 +10,10 @@
     "coveralls": "node node_modules/coveralls/bin/coveralls.js < coverage/lcov.info"
   },
 
+  "engines": {
+    "node": ">=0.8"
+  },
+
   "dependencies": {
     "ezlog": "*",
     "opensoars_cls": "0.0.2"
