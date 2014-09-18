@@ -1,28 +1,16 @@
-/** f_ testing TaskList
- * Used in tests:
- *  dev.js
- *  mocha.js
- *  coverage.js
- */
-
 var Ezlog = require('ezlog'),
 		log = new Ezlog({pref:{t:'[TaskList]',c:'green'}});
 
-/** Class initialization
- * @arg    o    {object}  Options
- * @return this {Class}   make chainable calls possible
- */
+
 var TaskList = function TaskList (o){
   o = o || {};
 
-  // Loop through option properties, used to test all possible cases
   for(var key in o) this[key] = o[key]
   
   return this;
 };
 
-// Write methods to an empty object, we do not write to prototype
-// object since that results in overhead 
+
 var proto = Object.create(null);
 
 /**
@@ -73,6 +61,7 @@ proto.writeSource = function (){
 		return self.f_retryAll('Debugger retry', new Error('Node err here'));
 	}
 
+
 	if(self.retryThis){
 		self.retryThis = false;
 		return self.f_retryThis();
@@ -93,13 +82,13 @@ proto.notify = function (){
 
 
 proto.onRetryThis = function (){
-	//log('!onRetryThis!');
+	log('!onRetryThis');
 }
 
 proto.onRetryAll = function (){
-	//log('!onRetryAll!');
+
 };
-					
+
 proto.onNext = function (nextData){
 	//log('!onNext!' + JSON.stringify(nextData));
 };

@@ -1,6 +1,6 @@
-var f_ = require('../index.js');
+var f_ = require('./../index.js');
 
-var TaskList = require('./TaskList');
+var TaskList = require('./lib/TaskList.js');
 
 var f_config = {
 
@@ -21,7 +21,7 @@ var f_config = {
 
 	maxTries: {
 		getSource: 1,
-		writeSource: 1,
+		writeSource: 2,
 		notify: 1
 	}
 
@@ -30,19 +30,16 @@ var f_config = {
 TaskList = f_.augment(TaskList, f_config);
 
 
-
 var runSingle = function (){
 
 	var taskListInstance = new TaskList({
 		//abort:         true,
 		//exceedRetries: true,
-		retryAllOnce:  true
-		//emptyRetryErr: true,
+		//retryAllOnce:  true
+		//emptyRetryErr: true,	
 		//emptyAbortErr: true,
 		//retryMethod:   true,
-
-		//retryThis:     true
-
+		retryThis:     true
 	});
 
 

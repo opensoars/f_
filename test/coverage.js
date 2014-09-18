@@ -1,7 +1,6 @@
 var f_ = require(__dirname + './../index.js');
 
-var TaskList = require('./TaskList');
-
+var TaskList = require('./lib/TaskList.js');
 
 
 /* Test case # 1 #
@@ -41,7 +40,7 @@ taskList.start();
  * abort
  */
 
-var f_config = {
+f_config = {
 
 	functionFlow: ['getSource', 'writeSource', 'notify'],
 	resetOnRetryAll: false,
@@ -55,9 +54,9 @@ var f_config = {
 	}
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	abort: true
 });
 
@@ -72,7 +71,7 @@ taskList.start();
  * Run normaly
  */
 
-var f_config = {
+f_config = {
 
 	functionFlow: ['getSource', 'writeSource', 'notify'],
 	resetOnRetryAll: false,
@@ -86,9 +85,9 @@ var f_config = {
 	}
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList();
+taskList = new TaskList();
 
 taskList = f_.setup(taskList);
 
@@ -101,7 +100,7 @@ taskList.start();
  * Log nothing
  */
 
-var f_config = {
+f_config = {
 
 	functionFlow: ['getSource', 'writeSource', 'notify'],
 	resetOnRetryAll: false,
@@ -111,9 +110,9 @@ var f_config = {
 	desc: 'Test taskList, log nothing'
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList();
+taskList = new TaskList();
 
 taskList = f_.setup(taskList);
 
@@ -126,7 +125,7 @@ taskList.start();
  * No description
  */
 
-var f_config = {
+f_config = {
 
 	functionFlow: ['getSource', 'writeSource', 'notify'],
 	resetOnRetryAll: false,
@@ -134,9 +133,9 @@ var f_config = {
 	toLog: ['silent']
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList();
+taskList = new TaskList();
 
 taskList = f_.setup(taskList);
 
@@ -149,16 +148,16 @@ taskList.start();
  * No next function for functionFlow (functionFlow: ['asd'])
  */
 
-var f_config = {
+f_config = {
 
 	functionFlow: ['asd'],
 
 	toLog: ['silent']
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList();
+taskList = new TaskList();
 taskList = f_.setup(taskList);
 
 taskList.start();
@@ -172,16 +171,16 @@ taskList.start();
  * do not log about retry
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify'],
 
 	toLog: ['silent']
 
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	retryOnce: true
 });
 
@@ -199,13 +198,13 @@ taskList.start();
  * exceedRetries
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify']
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	exceedRetries: true
 });
 
@@ -220,14 +219,14 @@ taskList.start();
  * give emptyRetryErr
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify']
 };
 
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	emptyRetryErr: true
 });
 
@@ -242,13 +241,13 @@ taskList.start();
  * give emptyAbortErr
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify']
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	emptyAbortErr: true
 });
 
@@ -265,13 +264,13 @@ taskList.start();
 
 try {
 
-	var f_config = {
+	f_config = {
 		functionFlow: ['getSource', 'writeSource', 'notify']
 	};
 
-	var TaskList = f_.augment(undefined);
+	TaskList = f_.augment(undefined);
 
-	var taskList = new TaskList({
+	taskList = new TaskList({
 		emptyAbortErr: true
 	});
 
@@ -290,13 +289,13 @@ try {
 
 try {
 
-	var f_config = {
+	f_config = {
 		functionFlow: ['getSource', 'writeSource', 'notify']
 	};
 
-	var TaskList = f_.augment('wrong type');
+	TaskList = f_.augment('wrong type');
 
-	var taskList = new TaskList({
+	taskList = new TaskList({
 		emptyAbortErr: true
 	});
 
@@ -315,13 +314,13 @@ try {
 
 try {
 
-	var f_config = {
+	f_config = {
 		functionFlow: ['getSource', 'writeSource', 'notify']
 	};
 
-	var TaskList = f_.augment(TaskList);
+	TaskList = f_.augment(TaskList);
 
-	var taskList = new TaskList({
+	taskList = new TaskList({
 		emptyAbortErr: true
 	});
 
@@ -341,13 +340,13 @@ try {
 
 try {
 
-	var f_config = {
+	f_config = {
 		functionFlow: ['getSource', 'writeSource', 'notify']
 	};
 
-	var TaskList = f_.augment(TaskList, 'wrong type');
+	TaskList = f_.augment(TaskList, 'wrong type');
 
-	var taskList = new TaskList({
+	taskList = new TaskList({
 		emptyAbortErr: true
 	});
 
@@ -368,11 +367,11 @@ try {
 
 try {
 
-	var f_config = {};
+	f_config = {};
 
-	var TaskList = f_.augment(TaskList, f_config);
+	TaskList = f_.augment(TaskList, f_config);
 
-	var taskList = new TaskList({
+	taskList = new TaskList({
 		emptyAbortErr: true
 	});
 
@@ -391,13 +390,13 @@ try {
 
 try {
 
-	var f_config = {
+	f_config = {
 		functionFlow: []
 	};
 
-	var TaskList = f_.augment(TaskList, f_config);
+	TaskList = f_.augment(TaskList, f_config);
 
-	var taskList = new TaskList({
+	taskList = new TaskList({
 		emptyAbortErr: true
 	});
 
@@ -414,7 +413,7 @@ try {
  * give maxRetries. but NO all property
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify'],
 
 	maxRetries: {
@@ -422,9 +421,9 @@ var f_config = {
 	}
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	emptyAbortErr: true
 });
 
@@ -439,13 +438,13 @@ taskList.start();
  * Don't give onFinish
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify']
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList();
+taskList = new TaskList();
 
 taskList = f_.setup(taskList);
 
@@ -460,13 +459,13 @@ taskList.start();
  * Don't give onFinish
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify']
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	abort: true
 });
 
@@ -485,7 +484,7 @@ taskList.start();
  * onRetryAll = undefined
  */
 
-var f_config = {
+f_config = {
 	functionFlow: ['getSource', 'writeSource', 'notify'],
 
 	toLog: ['silent'],
@@ -504,9 +503,9 @@ var f_config = {
 
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
+taskList = new TaskList({
 	retryAllOnce:  true
 });
 
@@ -517,24 +516,56 @@ taskList.onRetryAll = undefined;
 taskList.start();
 
 
-// 100% coverage for now
+
 /** Test case # 21 #
- * Make sure retryThis works as planned
+ * retryThis
  */
 
-var f_config = {
-	functionFlow: ['getSource', 'writeSource', 'notify']
+f_config = {
+	functionFlow: ['getSource', 'writeSource', 'notify'],
+
+	maxTries: {
+		getSource: 1,
+		writeSource: 1,
+		notify: 1
+	}
+
 };
 
-var TaskList = f_.augment(TaskList, f_config);
+TaskList = f_.augment(TaskList, f_config);
 
-var taskList = new TaskList({
-	abort: true
+taskList = new TaskList({
+	retryThis: true
 });
 
 taskList = f_.setup(taskList);
 
-
 taskList.start();
 
-taskList.f_retryThis();
+
+
+/** Test case # 22 #
+ * do not give retryThis
+ */
+f_config = {
+	functionFlow: ['getSource', 'writeSource', 'notify'],
+
+	maxTries: {
+		getSource: 1,
+		writeSource: 1,
+		notify: 1
+	}
+
+};
+
+TaskList = f_.augment(TaskList, f_config);
+
+taskList = new TaskList({
+	retryThis: true
+});
+
+taskList = f_.setup(taskList);
+
+taskList.onRetryThis = undefined;
+
+taskList.start();

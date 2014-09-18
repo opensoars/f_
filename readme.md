@@ -5,9 +5,7 @@
 [![Coverage Status](http://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
 [![Dependency Status](http://img.shields.io/gemnasium/opensoars/f_.svg?style=flat)](https://gemnasium.com/opensoars/f_)
 
-
 Asynchronous Node.js made easy and fun!
-
 
 ---
 
@@ -15,17 +13,14 @@ Asynchronous Node.js made easy and fun!
 * [cls](https://github.com/opensoars/cls)
 * [ezlog](https://github.com/opensoars/ezlog)
 
-
 ### Install
 `npm install f_`
 
 ### Todo
-* More comments at `f_next` 
-* Make `retryThis` work
-* Split `f_.js` into smaller modules
-* Write more and better `Mocha` tests
-* Make up my mind about `retryMethod` and `retryFrom`
-* Fix documentation
+* Fix local dependencies
+* Write more and better `Mocha` test(s)
+* Write a true 'real world' example (will be used in documentation)
+* Complete documentation
 
 ---
 
@@ -71,6 +66,7 @@ When we look at the two lists above, we can categorize computational tasks into 
   - Testing
   - Fixing unexpected behaviour
   - Complete documentation
+
 
 ### API
 Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended), since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
@@ -222,7 +218,7 @@ for(var i = 0; i < 100; i+=1){
 }
 ```
 
-### In depth look at the way `f_` works.
+### In depth look at the way `f_` DOESN'T work.
 
 When we are looking at the way Node handles asynchronous computation, we are looking at the simple to grasp and understand, yet powerful practice of callbacks. Whilst this practice may be simple, code management, separation of concerns and loose coupling can be diffucult to achieve. This is due to something called 'callback hell'. Which will result in 'christmas tree code'. An (ugly) example below:
 ```js
@@ -269,7 +265,9 @@ http.get('http://www.google.com', function (googleRes){
 
 As you can see, this code hard to read, write and maintain. We're not even taking error handling and dependecy management in account here... Which will make it even harder to read, write and maintain.
 
-Now let's take a look at the way I want to write this simple task!
+### In depth look at the way `f_` DOES work.
+
+Let's take a look at the way I want to write this simple task!
 
 ```js
 /**
@@ -441,19 +439,8 @@ Please note that when you use the `self.resetAllData();` all namespaces in the t
 `self.keepOnReset = ['newNameSpace'];`. There might even be cases where you don't want to reset anything at all, use: `self.resetOnRetry = false;`
 
 
-
-
-
-
-
-DISCUSS: `retryAll(optErrMsgString, optErrObj);`
-DISCUSS: `retryMethod('methodToRetry', optErrMsgString, optErrObj);`
-DISCUSS: `retryFrom('methodToRetryFrom', optErrMsgString, optErrObj);`
-DISCUSS: `retryThis(optErrMsgString, optErrObj);`
-
-
-
-
+* DISCUSS: `retryAll(optErrMsgString, optErrObj);`
+* DISCUSS: `retryThis(optErrMsgString, optErrObj);`
 
 
 
@@ -506,4 +493,3 @@ GetAndWriteTasks.prototype.writeGoogle = function (){
 };
 
 ```
-
