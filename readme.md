@@ -22,9 +22,8 @@ Asynchronous Node.js made easy and fun!
 `npm install f_`
 
 ### Todo
-* Fix local dependencies
-* Write more and better `Mocha` test(s)
-* Write a true 'real world' example (will be used in documentation)
+* Write better `Mocha` test(s)
+* Write a 'real world' example (will be used in documentation)
 * Complete documentation
 
 ---
