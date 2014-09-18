@@ -5,10 +5,6 @@
 [![Coverage Status](http://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
 [![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
 [![Development Dependency Status](http://img.shields.io/david/dev/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_#info=devDependencies&view=table)
-
-
-
-
 [![Node Version](http://img.shields.io/badge/node-%3E=0.6.*-brightgreen.svg?style=flat)](https://github.com/opensoars/f_/blob/master/package.json)
 
 
