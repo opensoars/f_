@@ -1,6 +1,6 @@
 {
   "name": "f_",
-  "version": "0.0.2",
+  "version": "0.0.5",
 
   "description": "Asynchronous Node.js made easy.",
 
@@ -15,8 +15,8 @@
   },
 
   "dependencies": {
-    "ezlog": "*",
-    "opensoars_cls": "0.0.2"
+    "ezlog": "0.0.10",
+    "opensoars_cls": "0.0.5"
   },
 
   "devDependencies": {
