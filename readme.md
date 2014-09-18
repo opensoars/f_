@@ -3,7 +3,7 @@
 
 [![Build Status](http://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
 [![Coverage Status](http://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
-[![Dependency Status](http://img.shields.io/gemnasium/opensoars/f_.svg?style=flat)](https://gemnasium.com/opensoars/f_)
+[![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
 
 Asynchronous Node.js made easy and fun!
 
