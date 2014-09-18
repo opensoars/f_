@@ -6,6 +6,8 @@
 [![Dependency Status](https://david-dm.org/opensoars/f_.svg)](https://david-dm.org/opensoars/f_)
 [![Dependency Status](https://badge.fury.io/js/f_.svg)](https://www.npmjs.org/package/f_)
 
+[![Dependency Status](http://img.shields.io/badge/platform-Linux%20%7C%20Win-brightgreen.svg)]()
+
 Asynchronous Node.js made easy and fun!
 
 ---
