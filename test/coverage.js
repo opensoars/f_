@@ -569,3 +569,53 @@ taskList = f_.setup(taskList);
 taskList.onRetryThis = undefined;
 
 taskList.start();
+
+
+
+/** Test case # 23 #
+ * do not give taskList instance to f_.setup
+ * give wrong type to f_.setup
+ */
+
+try {
+	f_config = {
+		functionFlow: ['getSource', 'writeSource', 'notify']
+	};
+
+	TaskList = f_.augment(TaskList, f_config);
+
+	taskList = new TaskList({
+		retryThis: true
+	});
+
+	taskList = f_.setup();
+
+	taskList.start();
+}
+catch(e){}
+
+
+
+/** Test case # 24 #
+ * do not give taskList instance to f_.setup
+ * give wrong type to f_.setup
+ */
+
+try {
+	f_config = {
+		functionFlow: ['getSource', 'writeSource', 'notify']
+	};
+
+	TaskList = f_.augment(TaskList, f_config);
+
+	taskList = new TaskList({
+		retryThis: true
+	});
+
+	taskList = f_.setup('wrong type');
+
+	taskList.start();
+}
+catch(e){}
+
+

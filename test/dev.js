@@ -33,13 +33,14 @@ TaskList = f_.augment(TaskList, f_config);
 var runSingle = function (){
 
 	var taskListInstance = new TaskList({
+		// Comment all triggers, and we run normaly
 		//abort:         true,
 		//exceedRetries: true,
 		//retryAllOnce:  true
 		//emptyRetryErr: true,	
 		//emptyAbortErr: true,
 		//retryMethod:   true,
-		retryThis:     true
+		//retryThis:     true
 	});
 
 
