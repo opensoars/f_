@@ -596,6 +596,7 @@ catch(e){}
 
 
 
+
 /** Test case # 24 #
  * do not give taskList instance to f_.setup
  * give wrong type to f_.setup
@@ -608,14 +609,10 @@ try {
 
 	TaskList = f_.augment(TaskList, f_config);
 
-	taskList = new TaskList({
-		retryThis: true
-	});
+	taskList = new TaskList();
 
 	taskList = f_.setup('wrong type');
 
 	taskList.start();
 }
 catch(e){}
-
-
