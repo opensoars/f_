@@ -23,10 +23,10 @@ Asynchronous Node.js made easy and fun!
 
 ### Todo
 * Write some memory tests
-  - Use special DUMP feature
+  - Use raminfo
   - Compare heaps when more instances are run
   - Etc.
-* Write better `Mocha` test(s)
+* Write better `Mocha` test(s) which will be used for code coverage
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
 

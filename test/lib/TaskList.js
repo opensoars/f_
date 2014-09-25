@@ -95,12 +95,17 @@ proto.onNext = function (nextData){
 
 proto.onFinish = function (){
 	//log('!onFinish!');
+	clear()
 };
 
 proto.onAbort = function (){
 	//log('!onAbort!');
 };
 
+
+function clear(){
+	TaskList = null;
+}
 
 
 // Adding data to Class proto object, will be same in every instance.
