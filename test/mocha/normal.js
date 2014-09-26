@@ -3,7 +3,7 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-describe('#normal', function (){
+describe('normal', function (){
 
   it('f_ should have set f_status to `finished`', function (done){
 

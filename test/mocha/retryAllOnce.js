@@ -3,7 +3,7 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-describe('#retryAllOnce', function (){
+describe('retryAllOnce', function (){
 
   it('f_ should have set f_retries.all to `1`', function (done){
 

@@ -3,7 +3,7 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-describe('#emptyRetryErr', function (){
+describe('emptyRetryErr', function (){
 
   it('f_ should be able to retry when no errors are given', function (done){
 

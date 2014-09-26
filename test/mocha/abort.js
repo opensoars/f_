@@ -3,7 +3,7 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-describe('#abort', function (){
+describe('abort', function (){
 
   it('f_ should call `onAbort`', function (done){
 

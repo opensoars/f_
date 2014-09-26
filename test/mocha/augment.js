@@ -84,7 +84,6 @@ describe('f_.augment', function (){
     });
   });
 
-
   describe('#default log', function (){
 
     it('should have set all log triggers when `toLog` is undefined', function (){
@@ -96,7 +95,6 @@ describe('f_.augment', function (){
     });
 
   });
-
 
   describe('#default maxRetries.all', function (){
     it('should set `maxRetries.all` to 10 when it\'s given', function (){
@@ -110,9 +108,4 @@ describe('f_.augment', function (){
     });
   });
 
-
 });
-
-
-// 
-// 

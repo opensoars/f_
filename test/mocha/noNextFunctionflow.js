@@ -3,7 +3,7 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-describe('#noNextFunctionflow', function (){
+describe('noNextFunctionflow', function (){
 
   it('f_ should not fail when there is no next function for `functionFlow`', function (){
 
