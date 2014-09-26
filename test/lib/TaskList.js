@@ -22,7 +22,10 @@ proto.start = function (){
 
 	this.d.hello = 'world';
 
-	return this.f_next();
+	this.f_next();
+
+	// Make chains possible
+	return this;
 };
 
 
