@@ -6,8 +6,7 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('#f_.augment', function (){
 
-  describe('#undefined toAugment', function (){
-
+  describe('undefined toAugment', function (){
     it('f_ should throw when no or undefined `toAugment` are given to `f_.augment`', function (done){
 
       try {
@@ -40,9 +39,7 @@ describe('#f_.augment', function (){
       }
 
     });
-
-
-  });
+  }); // / undefined toAugment
 
 });
 
