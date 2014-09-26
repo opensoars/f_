@@ -66,11 +66,9 @@ function runMultiple(){
 			timeTaken = endTime - startTime;
 
 	console.log(timeTaken);
-
-	debugger;
-
 };
 
 
 //runSingle();
 runMultiple();
+

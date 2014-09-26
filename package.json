@@ -5,13 +5,13 @@
   "description": "Asynchronous Node.js made easy.",
 
   "scripts": {
-    "test": "mocha ./test/mocha.js && npm run coverage && npm run coveralls",
-    "coverage": "istanbul cover ./test/coverage.js",
+    "test": "node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha \"./test/mocha/*.js\" && npm run coveralls",
+    "testLocal": "node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha \"./test/mocha/*.js\"",
     "coveralls": "node node_modules/coveralls/bin/coveralls.js < coverage/lcov.info"
   },
 
   "engines": {
-    "node": ">=0.6.*"
+    "node": ">=0.8"
   },
 
   "dependencies": {
