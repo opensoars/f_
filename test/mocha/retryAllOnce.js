@@ -5,18 +5,6 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('#retryAllOnce', function (){
 
-  it('f_ should call `onFinish`', function (done){
-
-    TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
-    });
-
-    var taskList = f_.setup( new TaskList({ retryAllOnce: true }) );
-    taskList.onFinish = done;
-    taskList.start();
-  });
-
   it('f_ should have set f_retries.all to `1`', function (done){
 
     TaskList = f_.augment(TaskList, {
@@ -48,6 +36,18 @@ describe('#retryAllOnce', function (){
       done();
     };
 
+    taskList.start();
+  });
+
+  it('f_ should call `onFinish`', function (done){
+
+    TaskList = f_.augment(TaskList, {
+      functionFlow: ['getSource', 'writeSource', 'notify'],
+      toLog: ['none']
+    });
+
+    var taskList = f_.setup( new TaskList({ retryAllOnce: true }) );
+    taskList.onFinish = done;
     taskList.start();
   });
 

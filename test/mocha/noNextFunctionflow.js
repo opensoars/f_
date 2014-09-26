@@ -5,7 +5,7 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('#noNextFunctionflow', function (){
 
-  it('f_ should not fail when there is no next function for functionFlow', function (){
+  it('f_ should not fail when there is no next function for `functionFlow`', function (){
 
     f_.setup( new (f_.augment(TaskList, {
       functionFlow: ['asd'],
@@ -33,7 +33,7 @@ describe('#noNextFunctionflow', function (){
   });
 
 
-  it('f_ should call onAbort', function (done){
+  it('f_ should call `onAbort`', function (done){
 
     TaskList = f_.augment(TaskList, {
       functionFlow: ['asd'],

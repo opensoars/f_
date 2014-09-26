@@ -3,35 +3,33 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-describe('#exceedRetries', function (){
+describe('#emptyAbortErr', function (){
 
-  it('f_ should call `onAbort`', function (done){
+  it('f_ should be able to abort when no errors are given', function (done){
+
     TaskList = f_.augment(TaskList, {
       functionFlow: ['getSource', 'writeSource', 'notify'],
       toLog: ['none']
     });
 
-    taskList = new TaskList({ exceedRetries: true });
+    taskList = new TaskList({ emptyAbortErr: true });
     taskList = f_.setup(taskList);
     taskList.onAbort = done;
     taskList.start();
   });
 
-  it('`(f_.retries.all - 1)` should be equal to `maxRetries`', function (done){
+  it('f_ should call `onAbort`', function (done){
+
     TaskList = f_.augment(TaskList, {
       functionFlow: ['getSource', 'writeSource', 'notify'],
       toLog: ['none']
     });
 
-    taskList = new TaskList({ exceedRetries: true });
+    taskList = new TaskList({ emptyAbortErr: true });
     taskList = f_.setup(taskList);
-
-    taskList.onAbort = function (){
-      assert.equal( (this.f_retries.all - 1) , TaskList.prototype.f_maxRetries.all);
-      done();
-    };
+    taskList.onAbort = done;
     taskList.start();
-
   });
+
 
 });

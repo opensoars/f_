@@ -32,7 +32,7 @@ describe('#normal', function (){
     f_.setup( new TaskList() ).start();
   });
 
-  it('f_ should call onFinish', function (done){
+  it('f_ should call `onFinish`', function (done){
 
     TaskList = f_.augment(TaskList, {
       functionFlow: ['getSource', 'writeSource', 'notify'],

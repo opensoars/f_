@@ -43,7 +43,10 @@ proto.getSource = function (){
 	if(self.exceedRetries)
 		return self.f_retryAll('Debugger retry, exceed max', new Error('Node err here'));
 
-	if(self.emptyRetryErr) return self.f_retryAll();
+	if(self.emptyRetryErr){
+		self.emptyRetryErr = false;
+		return self.f_retryAll();
+	}
 
 	if(self.emptyAbortErr) return self.f_abort();
 
