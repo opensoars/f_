@@ -53,7 +53,6 @@ describe('f_.augment', function (){
     });
   });
 
-
   describe('#no functionFlow', function (){
     it('should throw when no functionFlow is given in options', function (done){
       try { TaskList = f_.augment(TaskList, {}); }
