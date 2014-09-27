@@ -39,6 +39,7 @@ describe('abort', function (){
 
 
   describe('#logging', function (){
+
     it('should log abort information and the error stack ^ ^ ^', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
@@ -49,6 +50,20 @@ describe('abort', function (){
       taskList.onAbort = done
       taskList.start();
     });
+
+
+    it('should log abort information even when no description is given ^ ^ ^', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        toLog: ['abort']
+      });
+
+      var taskList = f_.setup( new TaskList({ emptyAbortErr: true }) );
+      taskList.onAbort = done
+      taskList.start();
+    });
+
+
   });
 
 

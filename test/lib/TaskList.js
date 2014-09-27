@@ -67,7 +67,6 @@ proto.writeSource = function (){
 		return self.f_retryAll('Debugger retry', new Error('Node err here'));
 	}
 
-
 	if(self.retryThis){
 		self.retryThis = false;
 		return self.f_retryThis();
