@@ -38,6 +38,21 @@ describe('abort', function (){
   });
 
 
+  describe('#logging', function (){
+    it('should log abort information and the error stack ^ ^ ^', function (){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        toLog: ['abort']
+      });
+
+      var taskList = f_.setup( new TaskList({ abort: true }) );
+      taskList.onAbort = done
+      taskList.start();
+    });
+  });
+
+
+
 
 });
 

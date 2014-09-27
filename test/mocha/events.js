@@ -90,8 +90,7 @@ describe('events', function (){
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = new TaskList({ retryAllOnce: true });
-      taskList = f_.setup(taskList);
+      var taskList = f_.setup(new TaskList({ retryAllOnce: true }));
       taskList.onRetryAll = done;
       taskList.start();
     });
