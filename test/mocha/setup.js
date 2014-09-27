@@ -29,4 +29,27 @@ describe('f_.setup', function (){
     });
   });
 
+
+
+  describe('#method tries set to 0 if method maxTries is given', function (){
+    it('should have set f_.tries.getSource to 1', function (){
+      
+
+      var taskList = f_.setup( new (f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        toLog: ['start'],
+        maxTries: {
+          getSource: 1
+        }
+      })) );
+
+      console.log(taskList);
+
+      assert.equal(taskList.f_tries['getSource'], 1);
+
+
+    });
+  });
+
+
 });
