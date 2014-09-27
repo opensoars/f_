@@ -12,7 +12,7 @@ f_ (f.low, flow)
 
 Asynchronous Node.js made easy and fun!
 
-(Working on 100% coverage! First thing to happen.)
+Working on 100% coverage, it's the priority at the moment.
 
 ---
 
