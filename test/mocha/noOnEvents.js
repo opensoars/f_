@@ -67,4 +67,30 @@ describe('noOnEvents', function (){
   });
 
 
+  describe('#onRetryAll', function (){
+    it('should be able to call retryAll with no onRetryAll', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        retryAllOnce: true
+      });
+
+      var taskList = new TaskList();
+
+      taskList.onRetryAll = function (){
+        console.log('OMG OMGOMOMGG RETRY ALL');
+      };
+
+      taskList = f_.setup(taskList);
+
+
+      taskList.onFinish = done;
+
+      taskList.start();
+
+
+    });
+  });
+
+
 });

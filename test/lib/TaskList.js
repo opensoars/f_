@@ -86,7 +86,7 @@ proto.notify = function (){
 	return self.f_next();
 };
 
-
+/*
 proto.onRetryThis = function (){
 	log('!onRetryThis');
 }
@@ -107,11 +107,7 @@ proto.onFinish = function (){
 proto.onAbort = function (){
 	//log('!onAbort!');
 };
-
-
-function clear(){
-	TaskList = null;
-}
+*/
 
 
 // Adding data to Class proto object, will be same in every instance.
