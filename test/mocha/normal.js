@@ -5,43 +5,61 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('normal', function (){
 
-  it('f_ should have set f_status to `finished`', function (done){
+  describe('#f_status', function (){
 
-    TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify']
+    it('should be `finished`', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = f_.setup( new TaskList() );
+
+      taskList.onFinish = function (){
+        assert.equal(this.f_status, 'finished');
+        done();
+      };
+
+      taskList.start();
     });
 
-    var taskList = f_.setup( new TaskList() );
-
-    taskList.onFinish = function (){
-      assert.equal(this.f_status, 'finished');
-      done();
-    };
-
-    taskList.start();
   });
 
-  it('f_ should not throw', function (){
+  describe('#onFinish', function (){
 
-    TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify']
+    it('f_ should call `onFinish`', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = f_.setup( new TaskList() );
+
+      taskList.onFinish = done
+
+      taskList.start();
     });
 
-    f_.setup( new TaskList() ).start();
   });
 
-  it('f_ should call `onFinish`', function (done){
 
-    TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify']
+  describe('#logging', function (){
+    
+    it('should log progress ^ ^ ^\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        toLog: ['all'],
+        desc: 'logAll task list'
+      });
+
+      var taskList = new TaskList();
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
     });
 
-    var taskList = f_.setup( new TaskList() );
+  })
 
-    taskList.onFinish = done
-
-    taskList.start();
-  });
 
 
 });

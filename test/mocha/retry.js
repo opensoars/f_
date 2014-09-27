@@ -42,6 +42,23 @@ describe('#reset', function (){
     });
 
 
+    it('`(f_.retries.all - 1)` should be equal to `maxRetries`', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ exceedRetries: true });
+      taskList = f_.setup(taskList);
+
+      taskList.onAbort = function (){
+        assert.equal( (this.f_retries.all - 1) , TaskList.prototype.f_maxRetries.all);
+        done();
+      };
+      taskList.start();
+
+    });
+
+
     it('should abort when maxRetries.all = 1 and we try twice', function (done){
       
       TaskList = f_.augment(TaskList, {

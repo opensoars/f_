@@ -3,6 +3,7 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
+/*
 describe('exceedRetries', function (){
 
   it('f_ should call `onAbort`', function (done){
@@ -33,3 +34,5 @@ describe('exceedRetries', function (){
   });
 
 });
+
+*/

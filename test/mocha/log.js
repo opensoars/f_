@@ -3,7 +3,9 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-
+/**
+ * FIX THIS ONE
+ */
 describe('f_ logging', function (){
 
   describe('#logNoDesc', function (){
@@ -16,22 +18,6 @@ describe('f_ logging', function (){
     });
 
   });
-
-
-  describe('#logAll', function (){
-
-    it('should log progress ^ ^ ^\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -', function (){
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['all'],
-        desc: 'logAll task list'
-      });
-
-      f_.setup( new TaskList() ).start();
-    });
-
-  });
-
 
 });
 
