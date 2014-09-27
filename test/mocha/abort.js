@@ -39,7 +39,7 @@ describe('abort', function (){
 
 
   describe('#logging', function (){
-    it('should log abort information and the error stack ^ ^ ^', function (){
+    it('should log abort information and the error stack ^ ^ ^', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['abort']
