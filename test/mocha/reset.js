@@ -11,10 +11,11 @@ describe('#reset', function (){
     it('should call onFinish', function (done){
       
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        maxRetries: { all: 1 }
       });
 
-      var taskList = new TaskList({ emptyRetryErr: true });
+      var taskList = new TaskList({ retryOnce: true });
       taskList = f_.setup(taskList);
       taskList.onFinish = done;
       taskList.start();
