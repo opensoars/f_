@@ -28,7 +28,7 @@ describe('noOnEvents', function (){
   describe('#onAbort', function (){
     it('should be able to abort the task with no onAbort (using timeout to check)', function (done){
 
-      var TaskList = f_.augment(TaskList, {
+      TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
@@ -49,7 +49,7 @@ describe('noOnEvents', function (){
   describe('#onNext', function (){
     it('should be able to call f_next with no onNext (using timeout to check)', function (done){
 
-      var TaskList = f_.augment(TaskList, {
+      TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
