@@ -149,8 +149,6 @@ describe('#reset', function (){
 
 
     it('should run normaly when 1 method retry is done with no maxTries set', function (){
-
-    })
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         maxRetries: {},
@@ -161,6 +159,21 @@ describe('#reset', function (){
       taskList = f_.setup(taskList);
       taskList.onFinish = done;
       taskList.start();
+    });
+
+    it('should call onRetryThis', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        maxRetries: {},
+        toLog: ['none']
+      });
+
+      var taskList = new TaskList({ retryThis: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetryThis = done;
+      taskList.start();
+    });
 
 
     /**
