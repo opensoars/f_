@@ -574,7 +574,6 @@ taskList.start();
 
 /** Test case # 23 #
  * do not give taskList instance to f_.setup
- * give wrong type to f_.setup
  */
 
 try {
@@ -599,7 +598,6 @@ catch(e){}
 
 /** Test case # 24 #
  * do not give taskList instance to f_.setup
- * give wrong type to f_.setup
  */
 
 try {

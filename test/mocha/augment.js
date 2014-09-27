@@ -7,7 +7,7 @@ var f_ = require(__dirname + './../../index.js'),
 describe('f_.augment', function (){
 
   describe('#undefined toAugment', function (){
-    it('should throw when no or undefined `toAugment` are given to `f_.augment`', function (done){
+    it('should throw when no or undefined `toAugment` is given', function (done){
       try { TaskList = f_.augment(undefined); }
       catch(e){ done(); }
     });
