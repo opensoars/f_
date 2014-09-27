@@ -119,7 +119,7 @@ describe('#reset', function (){
      *   run onRetryThis
      *   DONT run onRetryThis
      *
-     *
+     * Exceed specific retries, can be done with setting maxTries: 
      */
   });
 
