@@ -85,12 +85,12 @@ describe('f_.augment', function (){
 
   describe('#default log', function (){
 
-    it('should have set all log triggers when `toLog` is undefined', function (){
+    it('should have set f_.toLog to [] when `toLog` is undefined', function (){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
       });
 
-      assert.equal(TaskList.prototype.f_toLog.length, 6);
+      assert.equal(TaskList.prototype.f_toLog.length, 0);
     });
 
   });
