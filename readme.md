@@ -10,7 +10,7 @@ f_ (f.low, flow)
 [![Dependency Status](https://badge.fury.io/js/f_.svg)](https://www.npmjs.org/package/f_)
 -->
 
-Asynchronous Node.js made easy and fun!
+Asynchronous Node.js made easy and fun! (Working on 100% coverage! First thing to happen.)
 
 ---
 
