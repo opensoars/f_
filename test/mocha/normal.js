@@ -8,8 +8,7 @@ describe('normal', function (){
   it('f_ should have set f_status to `finished`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
     var taskList = f_.setup( new TaskList() );
@@ -25,8 +24,7 @@ describe('normal', function (){
   it('f_ should not throw', function (){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
     f_.setup( new TaskList() ).start();
@@ -35,8 +33,7 @@ describe('normal', function (){
   it('f_ should call `onFinish`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
     var taskList = f_.setup( new TaskList() );

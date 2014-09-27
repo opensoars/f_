@@ -8,8 +8,7 @@ describe('noNextFunctionflow', function (){
   it('f_ should not fail when there is no next function for `functionFlow`', function (){
 
     f_.setup( new (f_.augment(TaskList, {
-      functionFlow: ['asd'],
-      toLog: ['none']
+      functionFlow: ['asd']
     })) ).start();
 
   });
@@ -17,8 +16,7 @@ describe('noNextFunctionflow', function (){
   it('f_ should set f_status to `aborted`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['asd'],
-      toLog: ['none']
+      functionFlow: ['asd']
     });
 
     var taskList = f_.setup( new TaskList() );
@@ -36,8 +34,7 @@ describe('noNextFunctionflow', function (){
   it('f_ should call `onAbort`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['asd'],
-      toLog: ['none']
+      functionFlow: ['asd']
     });
 
     var taskList = f_.setup( new TaskList() );

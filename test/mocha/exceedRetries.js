@@ -7,11 +7,10 @@ describe('exceedRetries', function (){
 
   it('f_ should call `onAbort`', function (done){
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
-    taskList = new TaskList({ exceedRetries: true });
+    var taskList = new TaskList({ exceedRetries: true });
     taskList = f_.setup(taskList);
     taskList.onAbort = done;
     taskList.start();
@@ -19,11 +18,10 @@ describe('exceedRetries', function (){
 
   it('`(f_.retries.all - 1)` should be equal to `maxRetries`', function (done){
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
-    taskList = new TaskList({ exceedRetries: true });
+    var taskList = new TaskList({ exceedRetries: true });
     taskList = f_.setup(taskList);
 
     taskList.onAbort = function (){

@@ -10,8 +10,7 @@ describe('abort', function (){
     it('f_ should call `onAbort`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['none']
+        functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup( new TaskList({ abort: true }) );
@@ -23,8 +22,7 @@ describe('abort', function (){
     it('f_ should have set f_status to `aborted`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['none']
+        functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup( new TaskList({ abort: true }) );

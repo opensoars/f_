@@ -8,11 +8,10 @@ describe('emptyRetryErr', function (){
   it('f_ should be able to retry when no errors are given', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
-    taskList = new TaskList({ emptyRetryErr: true });
+    var taskList = new TaskList({ emptyRetryErr: true });
     taskList = f_.setup(taskList);
     taskList.onFinish = done;
     taskList.start();
@@ -21,11 +20,10 @@ describe('emptyRetryErr', function (){
   it('f_ should call `onFinish`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
-    taskList = new TaskList({ emptyRetryErr: true });
+    var taskList = new TaskList({ emptyRetryErr: true });
     taskList = f_.setup(taskList);
     taskList.onFinish = done;
     taskList.start();

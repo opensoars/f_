@@ -8,11 +8,10 @@ describe('emptyAbortErr', function (){
   it('f_ should be able to abort when no errors are given', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
-    taskList = new TaskList({ emptyAbortErr: true });
+    var taskList = new TaskList({ emptyAbortErr: true });
     taskList = f_.setup(taskList);
     taskList.onAbort = done;
     taskList.start();
@@ -21,11 +20,10 @@ describe('emptyAbortErr', function (){
   it('f_ should call `onAbort`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
-    taskList = new TaskList({ emptyAbortErr: true });
+    var taskList = new TaskList({ emptyAbortErr: true });
     taskList = f_.setup(taskList);
     taskList.onAbort = done;
     taskList.start();

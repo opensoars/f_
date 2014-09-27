@@ -8,8 +8,7 @@ describe('retryAllOnce', function (){
   it('f_ should have set f_retries.all to `1`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
     var taskList = f_.setup( new TaskList({ retryAllOnce: true }) );
@@ -42,8 +41,7 @@ describe('retryAllOnce', function (){
   it('f_ should call `onFinish`', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify'],
-      toLog: ['none']
+      functionFlow: ['getSource', 'writeSource', 'notify']
     });
 
     var taskList = f_.setup( new TaskList({ retryAllOnce: true }) );
