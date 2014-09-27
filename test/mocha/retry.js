@@ -113,7 +113,15 @@ describe('#reset', function (){
 
   });
 
-
+  describe('#method retries', function (){
+    /**
+     * use f_retryThis  Test for method tries count
+     *   run onRetryThis
+     *   DONT run onRetryThis
+     *
+     *
+     */
+  });
 
 
 

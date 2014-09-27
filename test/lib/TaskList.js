@@ -50,7 +50,10 @@ proto.getSource = function (){
 
 	if(self.emptyAbortErr) return self.f_abort();
 
-	return self.f_next();
+	// Make it async
+	setTimeout(function (){
+		self.f_next();
+	}, 1);
 };
 
 
