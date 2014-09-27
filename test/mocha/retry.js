@@ -97,7 +97,7 @@ describe('#reset', function (){
 
     });
 
-    it('should even log when no details are given to log', function (done){
+    it('should even log ^ ^ ^ when no details are given to log', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
