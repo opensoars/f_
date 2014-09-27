@@ -24,6 +24,7 @@ Working on 100% coverage, lack of time ATM (unfortunately).
 `npm install f_`
 
 ### Todo
+* maxTries.methodName should be put in maxRetries(.all) object!
 * Write some memory tests using [raminfo](https://github.com/opensoars/raminfo)
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
