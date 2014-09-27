@@ -4,7 +4,7 @@ var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
 
-describe('noOnEvents', function (){
+describe('events', function (){
 
   describe('#onFinish', function (){
     it('should be able to finish the task with no onFinish (using timeout to check)', function (done){
@@ -43,10 +43,28 @@ describe('noOnEvents', function (){
       }, 125);
 
     });
+
+
+
   });
 
 
   describe('#onNext', function (){
+
+    it('should call onNext and give it functionFlow info', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList();
+      taskList = f_.setup(taskList);
+      taskList.onNext = function (info){
+        if(info.f_i === 3) done();
+      }
+      taskList.start();
+    });
+
     it('should be able to call f_next with no onNext (using timeout to check)', function (done){
 
       TaskList = f_.augment(TaskList, {
@@ -56,39 +74,39 @@ describe('noOnEvents', function (){
       var taskList = new TaskList();
       taskList = f_.setup(taskList);
       taskList.onNext = undefined;
+      taskList.onFinish = done;
       taskList.start();
-
-      setTimeout(function (){
-        assert.equal(taskList.f_status, 'finished');
-        done();
-      }, 125);
-
     });
+
   });
 
 
+
   describe('#onRetryAll', function (){
-    it('should be able to call retryAll with no onRetryAll', function (done){
+
+    it('should call onRetryAll ', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        retryAllOnce: true
+        functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = new TaskList();
-
-      taskList.onRetryAll = function (){
-        console.log('OMG OMGOMOMGG RETRY ALL');
-      };
-
+      var taskList = new TaskList({ retryAllOnce: true });
       taskList = f_.setup(taskList);
-
-
-      taskList.onFinish = done;
-
+      taskList.onRetryAll = done;
       taskList.start();
+    });
 
+    it('should be able to retryAll with no onRetryAll', function (done){
 
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryAllOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetryAll = undefined;
+      taskList.onFinish = done;
+      taskList.start();
     });
   });
 

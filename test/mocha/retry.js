@@ -65,11 +65,14 @@ describe('#reset', function (){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         maxRetries: { all: 1 },
-        toLog: ['retry']
+        resetOnRetryAll: true
       });
 
-      var taskList = new TaskList({ emptyRetryErr: true });
+      var taskList = new TaskList({ retryAllOnce: true });
       taskList = f_.setup(taskList);
+      taskList.onRetryAll = function (){
+        assert.equal(this.d.constructor, {}.constructor);
+      };
       taskList.onFinish = done;
       taskList.start();
 
