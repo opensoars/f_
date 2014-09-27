@@ -145,8 +145,27 @@ describe('#reset', function (){
 
   });
 
-  describe('#method retries', function (){
+  describe('#retryThis', function (done){
+
+
+    it('should run normaly when 1 method retry is done with no maxTries set', function (){
+
+    })
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        maxRetries: {},
+        toLog: ['none']
+      });
+
+      var taskList = new TaskList({ retryThis: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+
+
     /**
+     * MAYBE WE SHOULD FIX maxRetries.methodName   instead of maxTries.methodName being
+     * something separate
      * use f_retryThis  Test for method tries count
      *   run onRetryThis
      *   DONT run onRetryThis
