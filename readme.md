@@ -12,7 +12,7 @@ f_ (f.low, flow)
 
 Asynchronous Node.js made easy and fun!
 
-Working on 100% coverage, it's the priority at the moment.
+Working on 100% coverage, lack of time ATM (unfortunately).
 
 ---
 
@@ -24,11 +24,7 @@ Working on 100% coverage, it's the priority at the moment.
 `npm install f_`
 
 ### Todo
-* Write some memory tests
-  - Use raminfo
-  - Compare heaps when more instances are run
-  - Etc.
-* Write better `Mocha` test(s) which will be used for code coverage
+* Write some memory tests using [raminfo](https://github.com/opensoars/raminfo)
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
 
