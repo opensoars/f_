@@ -76,7 +76,6 @@ describe('#reset', function (){
       taskList.onFinish = done;
       taskList.start();
 
-
     });
   });
 
