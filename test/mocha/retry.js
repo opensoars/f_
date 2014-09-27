@@ -59,6 +59,21 @@ describe('#reset', function (){
   });
 
 
+  describe('#emptyErr', function (){
+    it('f_ should be able to retry when no errors are given', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ emptyRetryErr: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+    });
+  });
+
+
   describe('#data namespace reset', function (){
     it('should have set instance.d to {}', function (done){
 

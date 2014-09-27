@@ -38,6 +38,21 @@ describe('abort', function (){
   });
 
 
+  describe('#emptyErr', function (){
+    it('f_ should be able to abort when no errors are given', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ emptyAbortErr: true });
+      taskList = f_.setup(taskList);
+      taskList.onAbort = done;
+      taskList.start();
+    });
+  });
+
+
   describe('#logging', function (){
 
     it('should log abort information and the error stack ^ ^ ^', function (done){
