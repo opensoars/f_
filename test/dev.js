@@ -16,9 +16,12 @@ var taskList = new TaskList({ retryThis: true });
 taskList = f_.setup(taskList);
 
 taskList.onFinish = function (){
-
-//  console.log(this);
-
+  console.log('onFinish');
 };
+
+taskList.onAbort = function (){
+  console.log('onAbort');
+};
+
 
 taskList.start();

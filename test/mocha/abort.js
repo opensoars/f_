@@ -52,52 +52,5 @@ describe('abort', function (){
     });
   });
 
-
-  describe('#logging', function (){
-
-    it('should log abort information ^ ^ ^', function (done){
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['abort']
-      });
-
-      var taskList = f_.setup( new TaskList({ abort: true }) );
-      taskList.onAbort = done
-      taskList.start();
-    });
-
-
-    it('should log the error stack  ^ ^ ^', function (done){
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['errStack']
-      });
-
-      var taskList = f_.setup( new TaskList({ abort: true }) );
-      taskList.onAbort = done
-      taskList.start();
-    });
-
-
-
-
-    it('should log abort information even when no description is given ^ ^ ^'
-      + '\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -', function (done){
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['abort']
-      });
-
-      var taskList = f_.setup( new TaskList({ emptyAbortErr: true }) );
-      taskList.onAbort = done
-      taskList.start();
-    });
-
-
-  });
-
-
-
-
 });
 

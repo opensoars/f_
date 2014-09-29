@@ -95,7 +95,7 @@ describe('events', function (){
       taskList.start();
     });
 
-    it('should be able to retryAll with no onRetryAll', function (done){
+    it('should be able to `retryAll` with no onRetryAll', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
@@ -107,6 +107,32 @@ describe('events', function (){
       taskList.onFinish = done;
       taskList.start();
     });
+  });
+
+  describe('#onRetryThis', function (){
+
+    it('should call onRetryThis', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = f_.setup(new TaskList({ retryThis: true }));
+      taskList.onRetryThis = done;
+      taskList.start();
+    });
+
+    it('should be able to `retryThis` with no onRetryAll', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryThis: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetryThis = undefined;
+      taskList.onFinish = done;
+      taskList.start();
+    });
+
   });
 
 

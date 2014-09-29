@@ -3,7 +3,7 @@ var assert = require('assert');
 var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
-describe('Normal run', function (){
+describe('normal run', function (){
 
   describe('#f_status', function (){
 
@@ -41,25 +41,5 @@ describe('Normal run', function (){
     });
 
   });
-
-
-  describe('#logging', function (){
-    
-    it('should log progress ^ ^ ^\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -', function (done){
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['all'],
-        desc: 'logAll task list'
-      });
-
-      var taskList = new TaskList();
-      taskList = f_.setup(taskList);
-      taskList.onFinish = done;
-      taskList.start();
-    });
-
-  })
-
-
 
 });

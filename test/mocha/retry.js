@@ -4,11 +4,10 @@ var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
 
-describe('#reset', function (){
-
+describe('retry', function (){
 
   describe('#retryAllOnce', function (){
-    it('should call onFinish', function (done){
+    it('should call `onFinish` because we do not exceed maxRetries', function (done){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
@@ -22,7 +21,7 @@ describe('#reset', function (){
 
     });
 
-    it('should have set f_retries.all to 1', function (done){
+    it('should have set `f_retries.all` to `1`', function (done){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
@@ -59,7 +58,7 @@ describe('#reset', function (){
     });
 
 
-    it('should abort when maxRetries.all = 1 and we try twice', function (done){
+    it('should abort when `maxRetries.all` is `1` and we try twice', function (done){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
@@ -77,7 +76,7 @@ describe('#reset', function (){
 
 
   describe('#emptyErr', function (){
-    it('f_ should be able to retry when no errors are given', function (done){
+    it('should be able to retry when no errors are given', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
@@ -111,49 +110,12 @@ describe('#reset', function (){
     });
   });
 
-
-  describe('#logging', function (){
-    it('should log retry information ^ ^ ^ when toLog[\'retry\'] is set', function (done){
-
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 },
-        toLog: ['retry']
-      });
-
-      var taskList = new TaskList({ retryAllOnce: true });
-      taskList = f_.setup(taskList);
-      taskList.onFinish = done;
-      taskList.start();
-
-    });
-
-    it('should even log ^ ^ ^ when no details are given to log', function (done){
-
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 },
-        toLog: ['retry']
-      });
-
-      var taskList = new TaskList({ emptyRetryErr: true });
-      taskList = f_.setup(taskList);
-      taskList.onFinish = done;
-      taskList.start();
-
-    });
-
-  });
-
   describe('#retryThis', function (done){
 
-
-/*
-    it('should run normaly when 1 method retry is done with no maxTries set', function (){
+    it('should run normaly when 1 method retry is done with no maxRetries set', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: {},
-        toLog: ['none']
+        maxRetries: {}
       });
 
       var taskList = new TaskList({ retryThis: true });
@@ -166,8 +128,7 @@ describe('#reset', function (){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: {},
-        toLog: ['none']
+        maxRetries: {}
       });
 
       var taskList = new TaskList({ retryThis: true });
@@ -175,20 +136,24 @@ describe('#reset', function (){
       taskList.onRetryThis = done;
       taskList.start();
     });
-*/
 
 
-    /**
-     * MAYBE WE SHOULD FIX maxRetries.methodName   instead of maxTries.methodName being
-     * something separate
-     * use f_retryThis  Test for method tries count
-     *   run onRetryThis
-     *   DONT run onRetryThis
-     *
-     * Exceed specific retries, can be done with setting maxTries.method: 0
-     *
-     * Fix functionFlowTest.js
-     */
+    it('should abort when we retry a specific method to many times', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        desc: 'dev.js task list',
+        maxRetries: {
+          writeSource: 0
+        }
+      });
+
+      var taskList = new TaskList({ retryThis: true });
+      taskList = f_.setup(taskList);
+      taskList.onAbort = done;
+      taskList.start();
+    });
+
   });
 
 
