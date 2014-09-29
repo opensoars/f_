@@ -22,7 +22,6 @@ Asynchronous Node.js made easy and fun!
 `npm install f_`
 
 ### Todo
-* maxTries.methodName should be put in maxRetries(.all) object!
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
 * Write a 'real world' example (will be used in documentation)/
 * Complete documentation/
