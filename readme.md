@@ -39,7 +39,7 @@ Write asynchronous Node.js programs without ending up with hard to maintain, rea
 -->
 
 ### How is `f_` going to solve this problem?
-Allow programmers to use a simple API which will take care of separation of concerns in a modularized way. Which by itself will result in loosely coupled programs.
+Allow programmers to use a simple API which will take care of separation of concerns in a modularized way. Which by itself will result in loosely coupled programs. And all this without neglecting Node.js it's asynchronous nature.
 
 
 ### Introduction
