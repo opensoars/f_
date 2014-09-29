@@ -72,7 +72,7 @@ Ofcourse small tasks in larger asynchronous tasks will be synchronous. Some exam
 When we look at the two lists above, we can categorize computational tasks into two separate groups:
 
 1. Asynchronous (either simple and quick or complex and long lasting)
-2. Synchronous (only small and quick)
+2. Synchronous (only simple and quick)
 
 
 ### API
