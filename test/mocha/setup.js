@@ -31,18 +31,18 @@ describe('f_.setup', function (){
 
 
 
-  describe('#method tries set to 0 if method maxTries is given', function (){
-    it('should have set f_.tries.getSource to 0', function (){
+  describe('#method tries set to 0 if method maxRetries is given', function (){
+    it('should have set f_.maxRetries.getSource to 0', function (){
       
       var taskList = f_.setup( new (f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['start'],
-        maxTries: {
+        maxRetries: {
           getSource: 1
         }
       })) );
 
-      assert.equal(taskList.f_tries['getSource'], 0);
+      assert.equal(taskList.f_retries['getSource'], 0);
     });
   });
 
