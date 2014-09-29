@@ -12,8 +12,6 @@ f_ (f.low, flow)
 
 Asynchronous Node.js made easy and fun!
 
-Working on 100% coverage, lack of time ATM (unfortunately).
-
 ---
 
 ### Dependencies
