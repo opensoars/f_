@@ -23,8 +23,8 @@ Asynchronous Node.js made easy and fun!
 
 ### Todo
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
-* Write a 'real world' example (will be used in documentation)/
-* Complete documentation/
+* Write a 'real world' example (will be used in documentation)
+* Complete documentation
 
 ---
 
