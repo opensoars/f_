@@ -38,10 +38,10 @@ proto.getSource = function (){
 
 	self.d = { hello: 'world' };
 
-	if(self.abort) return self.f_abort('Debugger abort', new Error('Node err here'))
+	if(self.abort) return self.f_abort('abort @getSource', new Error('Node err here'));
 
 	if(self.exceedRetries)
-		return self.f_retryAll('Debugger retry, exceed max', new Error('Node err here'));
+		return self.f_retryAll('exceedRetries @getSource', new Error('Node err here'));
 
 	if(self.emptyRetryErr){
 		self.emptyRetryErr = false;
@@ -51,9 +51,7 @@ proto.getSource = function (){
 	if(self.emptyAbortErr) return self.f_abort();
 
 	// Make it async
-	setTimeout(function (){
-		self.f_next();
-	}, 1);
+	setTimeout(function (){ self.f_next(); }, 1);
 };
 
 
@@ -67,12 +65,12 @@ proto.writeSource = function (){
 
 	if(self.retryAllOnce){
 		self.retryAllOnce = false;
-		return self.f_retryAll('Debugger retry', new Error('Node err here'));
+		return self.f_retryAll('retryAllOnce @writeSource');
 	}
 
 	if(self.retryThis){
 		self.retryThis = false;
-		return self.f_retryThis();
+		return self.f_retryThis('retryThis @writeSource');
 	}
 
 	return self.f_next();

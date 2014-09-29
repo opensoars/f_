@@ -2,30 +2,23 @@ var f_ = require(__dirname + './../index.js'),
     TaskList = require('./lib/TaskList.js');
 
 
-        TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify']
-        });
+TaskList = f_.augment(TaskList, {
+  functionFlow: ['getSource', 'writeSource', 'notify'],
+  toLog: ['all'],
+  desc: 'dev.js task list',
+  maxRetries: {
+    all: 5,
+    writeSource: 0
+  }
+});
 
-        var called = function (){
-          var toReturn = {};
+var taskList = new TaskList({ retryThis: true });
+taskList = f_.setup(taskList);
 
-          TaskList.prototype.f_functionFlow.forEach(function (method){
-            toReturn[method] = false;
-          });
+taskList.onFinish = function (){
 
-          return toReturn;
-        }();
+//  console.log(this);
 
+};
 
-        var taskList = new TaskList();
-        taskList = f_.setup(taskList);
-
-        taskList.onNext = function (info){
-          var nextMethod = info.method;
-          called[nextMethod] = true;
-        };
-
-        taskList.onFinish = function (){
-          console.log(called);
-        };
-        taskList.start();
+taskList.start();

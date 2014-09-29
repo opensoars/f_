@@ -60,7 +60,7 @@ describe('events', function (){
       var taskList = new TaskList();
       taskList = f_.setup(taskList);
       taskList.onNext = function (info){
-        if(info.f_i === 3) done();
+        if(info.f_i === TaskList.prototype.f_functionFlow.length) done();
       }
       taskList.start();
     });
