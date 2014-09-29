@@ -1,16 +1,15 @@
 f_ (f.low, flow)
 ==================
 
+
 [![Build Status](https://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
 [![Coverage Status](https://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
 [![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
 [![Development Dependency Status](https://david-dm.org/opensoars/f_/dev-status.svg?style=flat)](https://david-dm.org/opensoars/f_#info=devDependencies&view=table)
 
-<!---
-[![Dependency Status](https://badge.fury.io/js/f_.svg)](https://www.npmjs.org/package/f_)
--->
 
 Asynchronous Node.js made easy and fun!
+
 
 ---
 
@@ -18,46 +17,15 @@ Asynchronous Node.js made easy and fun!
 * [cls](https://github.com/opensoars/cls)
 * [ezlog](https://github.com/opensoars/ezlog)
 
+
 ### Install
 `npm install f_`
+
 
 ### Todo
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
-
----
-
-## Documentation
-
-### Problem to be solved
-Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you down in callback hell).
-
-
-<!---
-Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
--->
-
-### How is `f_` going to solve this problem?
-Allow programmers to use a Node.js module with a simple API which will make separation of concerns (which results in loosely coupled programs), modular and asynchronous programming a breeze.
-
-
-### Introduction
-Every (good) Node program is written mainly asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:
-* String concatenation
-* Simple equation solving
-* Variable declaration
-
-And then there are the asynchronous tasks, such as:
-* HTTP requests
-* Complex equation solving
-* Audio/video compressing
-
-When we look at the two lists above, we can categorize computational tasks into two separate groups:
-
-1. Synchronous (small and quick)
-2. Asynchronous (either simple and quick or complex and long lasting)
-
 
 ### Time schedule (from the 10th of September 2014)
 * 1.5/2 weeks (will result in pre-alpha release)
@@ -74,6 +42,37 @@ When we look at the two lists above, we can categorize computational tasks into 
   - Testing
   - Fixing unexpected behaviour
   - Complete documentation
+
+
+---
+
+
+## Documentation
+
+
+### Problem to be solved
+Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you down in callback hell).
+
+
+### How is `f_` going to solve this problem?
+Allow programmers to use a Node.js module with a simple API which will make separation of concerns (which results in loosely coupled programs), modular and asynchronous programming a breeze.
+
+
+### Introduction
+Every (large) Node.js program has lots of asynchronous tasks such as:
+* HTTP requests
+* Complex equation solving
+* Audio/video compressing
+
+Ofcourse small tasks in larger asynchronous tasks will be synchronous. Some examples are:
+* Concatenating a string
+* solving simple equations
+* Declaring variables
+
+When we look at the two lists above, we can categorize computational tasks into two separate groups:
+
+1. Asynchronous (either simple and quick or complex and long lasting)
+2. Synchronous (only small and quick)
 
 
 ### API
