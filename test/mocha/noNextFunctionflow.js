@@ -1,3 +1,4 @@
+/*
 var assert = require('assert');
 
 var f_ = require(__dirname + './../../index.js'),
@@ -45,3 +46,4 @@ describe('noNextFunctionflow', function (){
 
 
 });
+*/
