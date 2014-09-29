@@ -78,7 +78,7 @@ proto.writeSource = function (){
 
 
 /**
- * @method notify  Log what happened in the previous methods
+ * @method notify  Log about what happened in the previous methods
  */
 proto.notify = function (){
 	var self = this;

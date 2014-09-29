@@ -24,7 +24,6 @@ function runSingle(){
 	taskListInstance.start();
 };
 
-
 function runMultiple(){
 	var startTime = Date.now();
 

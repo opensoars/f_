@@ -31,8 +31,12 @@ Asynchronous Node.js made easy and fun!
 ## Documentation
 
 ### Problem to be solved
-Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
+Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you down in callback hell).
 
+
+<!---
+Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!
+-->
 
 ### How is `f_` going to solve this problem?
 Allow programmers to use a simple API which will take care of separation of concerns in a modularized way. Which by itself will result in loosely coupled programs.
