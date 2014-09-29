@@ -67,7 +67,8 @@ describe('abort', function (){
     });
 
 
-    it('should log abort information even when no description is given ^ ^ ^', function (done){
+    it('should log abort information even when no description is given ^ ^ ^'
+      + '\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['abort']

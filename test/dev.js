@@ -1,74 +1,31 @@
-var f_ = require('./../index.js');
-
-var TaskList = require('./lib/TaskList.js');
-
-var f_config = {
-
-	/**
-	 * `start` method is not given here, since we call it manualy
-	 * This is just a matter of personal taste, I do not like auto starts!
-	 */
-	functionFlow: ['getSource', 'writeSource', 'notify'],  // REQUIRED
-	resetOnRetryAll: true,
-
-	toLog: ['none'],
-
-	desc: 'Test taskList',
-
-	maxRetries: {
-		all: 2
-	},
-
-	maxTries: {
-		getSource: 1,
-		writeSource: 2,
-		notify: 1
-	}
-
-};
-
-TaskList = f_.augment(TaskList, f_config);
+var f_ = require(__dirname + './../index.js'),
+    TaskList = require('./lib/TaskList.js');
 
 
-function runSingle(){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify']
+        });
 
-	var taskListInstance = new TaskList({
-		// Comment all triggers, and we run normaly
-		//abort:         true,
-		//exceedRetries: true,
-		//retryAllOnce:  true
-		//emptyRetryErr: true,	
-		//emptyAbortErr: true,
-		//retryMethod:   true,
-		//retryThis:     true
-	});
+        var called = function (){
+          var toReturn = {};
 
+          TaskList.prototype.f_functionFlow.forEach(function (method){
+            toReturn[method] = false;
+          });
 
-	taskListInstance = f_.setup(taskListInstance);
-
-	taskListInstance.start();
-};
+          return toReturn;
+        }();
 
 
-function runMultiple(){
-	var startTime = Date.now(); 
+        var taskList = new TaskList();
+        taskList = f_.setup(taskList);
 
-	for(var i=0; i<100000; i+=1){
-		var taskListInstance = new TaskList();
-		taskListInstance = f_.setup(taskListInstance);
+        taskList.onNext = function (info){
+          var nextMethod = info.method;
+          called[nextMethod] = true;
+        };
 
-		taskListInstance.f_desc = taskListInstance.f_desc + ' #' + i;
-
-		taskListInstance.start();
-	}
-
-	var endTime = Date.now(),
-			timeTaken = endTime - startTime;
-
-	console.log(timeTaken);
-};
-
-
-//runSingle();
-runMultiple();
-
+        taskList.onFinish = function (){
+          console.log(called);
+        };
+        taskList.start();
