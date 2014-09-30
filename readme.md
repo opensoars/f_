@@ -1,3 +1,25 @@
+<!---
+FROM PHONE
+
+Title
+Badges
+One liner
+Dependencies
+Install
+Documentation
+  Problem
+  Solution
+  Introduction
+    Async and sync
+    Small examples
+      Not wanted
+      Wanted
+  Full example covering complete usage (API)
+  Individual components
+Example usage
+
+-->
+
 f_ (f.low, flow)
 ==================
 
@@ -46,6 +68,24 @@ Asynchronous Node.js made easy and fun!
 
 ---
 
+## Future documentation content
+1. Title
+2. Badges
+3. One liner
+4. Dependencies
+5. Install
+6. Documentation
+  1. Problem
+  2. Solution
+  3. Introduction
+    * Async and sync
+    * Small examples
+      * Not wanted
+      * Wanted
+  4. Full example covering complete usage (API)
+  5. Individual components
+7. Example usage
+
 
 ## Documentation
 
@@ -74,6 +114,12 @@ When we look at the two lists above, we can categorize computational tasks into 
 1. Asynchronous (either simple and quick or complex and long lasting)
 2. Synchronous (only simple and quick)
 
+
+<!---
+LET'S FIX THIS SHIT BELOW!
+LET'S FIX THIS SHIT BELOW!
+LET'S FIX THIS SHIT BELOW!
+-->
 
 ### API
 Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended). Since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
