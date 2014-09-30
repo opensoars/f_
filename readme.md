@@ -1,25 +1,3 @@
-<!---
-FROM PHONE
-
-Title
-Badges
-One liner
-Dependencies
-Install
-Documentation
-  Problem
-  Solution
-  Introduction
-    Async and sync
-    Small examples
-      Not wanted
-      Wanted
-  Full example covering complete usage (API)
-  Individual components
-Example usage
-
--->
-
 f_ (f.low, flow)
 ==================
 
