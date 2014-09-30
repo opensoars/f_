@@ -46,6 +46,7 @@ Asynchronous Node.js made easy and fun!
 
 ---
 
+
 ## Future documentation content
 1. Title
 2. Badges
@@ -63,6 +64,9 @@ Asynchronous Node.js made easy and fun!
   4. Full example covering complete usage (API)
   5. Individual components
 7. Example usage
+
+
+---
 
 
 ## Documentation

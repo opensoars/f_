@@ -1,7 +1,11 @@
 /**
  * File is called 0_log.js because we don't want to have weird logging
  * inbetween the mocha logging
+ * For readability, last `it` in this test should contain \n - - - - `hr`
  */
+
+var hr = '\n\n - - - - - - - - - - - - - - - - - END `f_ logging`'
+    + '- - - - - - - - - - - - - - - - - ';
 
 var assert = require('assert');
 
@@ -118,7 +122,7 @@ describe('f_ logging', function (){
 
 
   describe('#method attempts', function (){
-    it('should log about method attempts', function (done){
+    it('should log about method attempts' + hr, function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['next'],
@@ -136,7 +140,3 @@ describe('f_ logging', function (){
 
 
 });
-
-
-
-// \n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
