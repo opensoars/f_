@@ -69,7 +69,7 @@ Asynchronous Node.js made easy and fun!
 ---
 
 
-## Documentation
+## Documentation (outdated)
 
 
 ### Problem to be solved
