@@ -81,21 +81,24 @@ describe('events', function (){
   });
 
 
-/*
+
   describe('#onRetryAll', function (){
 
-    it('should call onRetryAll ', function (done){
+    it('should call onRetry and give us an info object', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup(new TaskList({ retryAllOnce: true }));
-      taskList.onRetryAll = done;
+      taskList.onRetry = function (info){
+        assert.equal(typeof info, 'object');
+        done();
+      };
       taskList.start();
     });
 
-    it('should be able to `retryAll` with no onRetryAll', function (done){
+    it('should be able to `retryAll` with no onRetry', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
@@ -103,7 +106,7 @@ describe('events', function (){
 
       var taskList = new TaskList({ retryAllOnce: true });
       taskList = f_.setup(taskList);
-      taskList.onRetryAll = undefined;
+      taskList.onRetry = undefined;
       taskList.onFinish = done;
       taskList.start();
     });
@@ -111,24 +114,27 @@ describe('events', function (){
 
   describe('#onRetryThis', function (){
 
-    it('should call onRetryThis', function (done){
+    it('should call onRetry and give an info object', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup(new TaskList({ retryThis: true }));
-      taskList.onRetryThis = done;
+      taskList.onRetry = function (info){
+        assert.equal(typeof info, 'object');
+        done();
+      };
       taskList.start();
     });
 
-    it('should be able to `retryThis` with no onRetryAll', function (done){
+    it('should be able to `retryThis` with no onRetry', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryThis: true });
       taskList = f_.setup(taskList);
-      taskList.onRetryThis = undefined;
+      taskList.onRetry = undefined;
       taskList.onFinish = done;
       taskList.start();
     });
