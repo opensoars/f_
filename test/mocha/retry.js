@@ -6,12 +6,32 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('retry', function (){
 
+  describe('#unlimited method tries', function (){
+    it('should be able to finish, since there is no maxTries limit', function (){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        maxTries: {
+          all: 2,
+          getSource: '~',
+          writeSource: '~',
+          notify: '~'
+        }
+      });
+
+      var taskList = new TaskList({ retryAllOnce: true });
+      taskList = f_.setup(taskList);
+
+      taskList.start();
+    });
+  });
+
+
   describe('#retryAllOnce', function (){
-    it('should call `onFinish` because we do not exceed maxRetries', function (done){
+    it('should call `onFinish` because we do not exceed maxTries', function (done){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 }
+        maxTries: { all: 2 }
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
@@ -21,18 +41,18 @@ describe('retry', function (){
 
     });
 
-    it('should have set `f_retries.all` to `1`', function (done){
+    it('should have set `f_tries.all` to `2`', function (done){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 }
+        maxTries: { all: 2 }
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
       taskList = f_.setup(taskList);
 
       taskList.onFinish = function (){
-        assert.equal(taskList.f_retries.all, 1);
+        assert.equal(this.f_tries.all, 2);
         done();
       };
 
@@ -41,17 +61,17 @@ describe('retry', function (){
     });
 
 
-    it('`(f_.retries.all - 1)` should be equal to `maxRetries`', function (done){
+    it('`(f_.tries.all - 1)` should be equal to `maxTries` (+1 cuz of abort when to much tries )', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 5 }
+        maxTries: { all: 1 }
       });
 
       var taskList = new TaskList({ exceedRetries: true });
       taskList = f_.setup(taskList);
 
       taskList.onAbort = function (){
-        assert.equal( (this.f_retries.all - 1) , TaskList.prototype.f_maxRetries.all);
+        assert.equal( (this.f_tries.all - 1) , TaskList.prototype.f_maxTries.all);
         done();
       };
       taskList.start();
@@ -59,11 +79,11 @@ describe('retry', function (){
     });
 
 
-    it('should abort when `maxRetries.all` is `1` and we try twice', function (done){
+    it('should abort when `maxTries.all` is `1` and we try twice', function (done){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 }
+        maxTries: { all: 1 }
       });
 
       var taskList = new TaskList({ exceedRetries: true });
@@ -101,7 +121,7 @@ describe('retry', function (){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 },
+        maxTries: { all: 2 },
         resetOnRetryAll: true
       });
 
@@ -118,10 +138,10 @@ describe('retry', function (){
 
   describe('#retryThis', function (done){
 
-    it('should run normaly when 1 method retry is done with no maxRetries set', function (done){
+    it('should run normaly when 1 method retry is done with no maxTries set', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: {}
+        maxTries: {}
       });
 
       var taskList = new TaskList({ retryThisOnce: true });
@@ -134,7 +154,7 @@ describe('retry', function (){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { writeSource: 2 }
+        maxTries: { writeSource: 2 }
       });
 
       var taskList = new TaskList({ retryThisOnce: true });
@@ -154,8 +174,8 @@ describe('retry', function (){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         desc: 'dev.js task list',
-        maxRetries: {
-          writeSource: 0
+        maxTries: {
+          writeSource: 1
         }
       });
 

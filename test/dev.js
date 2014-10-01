@@ -7,8 +7,10 @@ TaskList = f_.augment(TaskList, {
   toLog: ['all'],
   desc: 'dev.js task list',
   maxTries: {
-    //all: 2
-    //writeSource: 2
+    all: 2,
+    getSource: '~',
+    writeSource: '~',
+    notify: '~'
   }
 });
 

@@ -48,6 +48,7 @@ describe('f_ logging', function (){
       taskList.onFinish = done;
       taskList.start();
     });
+    
   });
 
 
@@ -57,7 +58,7 @@ describe('f_ logging', function (){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 },
+        maxTries: { all: 2 },
         toLog: ['retry']
       });
 
@@ -71,7 +72,7 @@ describe('f_ logging', function (){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { all: 1 },
+        maxTries: { all: 2 },
         toLog: ['retry']
       });
 
@@ -126,9 +127,7 @@ describe('f_ logging', function (){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['next'],
-        maxRetries: {
-          writeSource: 1
-        }
+        maxTries: { writeSource: 2 }
       });
 
       var taskList = new TaskList();
