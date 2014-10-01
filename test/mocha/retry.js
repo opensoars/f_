@@ -197,9 +197,21 @@ describe('retry', function (){
       taskList.start();
     });
 
-    /**
-     * ! Write onRetry test !
-     */
+    it('should call onRetry and give us an info object', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryThisOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetry = function (info){
+        assert.equal(typeof info, 'object');
+        done();
+      }
+      taskList.start();
+
+    });
 
   });
 
