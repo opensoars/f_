@@ -8,9 +8,9 @@ TaskList = f_.augment(TaskList, {
   desc: 'dev.js task list',
   maxTries: {
     all: 2,
-    getSource: '~',
-    writeSource: '~',
-    notify: '~'
+    getSource: '?',
+    writeSource: '?',
+    notify: '?'
   }
 });
 

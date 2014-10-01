@@ -52,6 +52,30 @@ describe('f_ logging', function (){
   });
 
 
+  describe('#infinite retries', function (){
+    it('should not log /maxTries information just current try ^ ^ ^', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        toLog: ['all'],
+        desc: 'logAll task list',
+        maxTries: {
+          all: '?',
+          getSource: '?',
+          writeSource: '?',
+          notify: '?'
+        }
+      });
+
+      var taskList = new TaskList();
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+    });
+
+  });
+
+
   describe('#retry', function (){
 
     it('should log retry information ^ ^ ^ when toLog[\'retry\'] is set', function (done){

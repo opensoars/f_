@@ -12,9 +12,9 @@ describe('retry', function (){
         functionFlow: ['getSource', 'writeSource', 'notify'],
         maxTries: {
           all: 2,
-          getSource: '~',
-          writeSource: '~',
-          notify: '~'
+          getSource: -1,
+          writeSource: -1,
+          notify: -1
         }
       });
 
