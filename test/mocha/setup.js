@@ -31,16 +31,26 @@ describe('f_.setup', function (){
 
 
 
-  describe('#method tries set to `0` if method `maxTries` is given', function (){
-    it('should have set f_.maxTries.getSource to 0', function (){
+  describe('#method tries default', function (){
+    it('should have set `f_.maxTries.getSource` to `0`', function (){
       
       var taskList = f_.setup( new (f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['start'],
         maxTries: { getSource: 2 }
       })) );
 
       assert.equal(taskList.f_tries['getSource'], 0);
+    });
+  });
+
+
+  describe('method maxTries defaults', function (){
+    it('should be set to `10`', function (){
+      var taskList = f_.setup( new (f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      })) );
+
+      assert.equal(taskList.f_maxTries['getSource'], 10);
     });
   });
 

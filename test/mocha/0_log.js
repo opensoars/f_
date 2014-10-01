@@ -2,6 +2,10 @@
  * File is called 0_log.js because we don't want to have weird logging
  * inbetween the mocha logging
  * For readability, last `it` in this test should contain \n - - - - `hr`
+ *
+ * Logging can result in weird results because the f_ / cls / ezlog code is
+ * not run in a synchronous way. This ofcourse is not wanted. But it CAN
+ * produce logging in wrong order in this test suite. Just ignore it
  */
 
 var hr = '\n\n - - - - - - - - - - - - - - - - - END `f_ logging`'
@@ -17,7 +21,7 @@ describe('f_ logging', function (){
 
   describe('#start', function (){
 
-    it('should log about start ^ ^ ^ (with blue desc)', function (){
+    it('should log ^ about start (with blue desc)', function (){
       f_.setup( new (f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['start'],
@@ -25,7 +29,7 @@ describe('f_ logging', function (){
       })) ).start();
     });
 
-    it('should log about start ^ ^ ^  (but no blue desc)', function (){
+    it('should log ^ about start (but no blue desc)', function (){
       f_.setup( new (f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['start']
@@ -36,7 +40,7 @@ describe('f_ logging', function (){
 
   describe('#normal run', function (){
 
-    it('should log start next and finish ^ ^ ^', function (done){
+    it('should log ^ start next and finish', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['all'],
@@ -53,14 +57,14 @@ describe('f_ logging', function (){
 
 
   describe('#infinite retries', function (){
-    it('should not log /maxTries information just current try ^ ^ ^', function (done){
+    it('^ should not log /maxTries information just current try', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['all'],
         desc: 'logAll task list',
         maxTries: {
-          all: '?',
+          wholeList: '?',
           getSource: '?',
           writeSource: '?',
           notify: '?'
@@ -76,13 +80,29 @@ describe('f_ logging', function (){
   });
 
 
+  describe('#finite retries', function (){
+    it('should log ^ about method attempts', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        toLog: ['next'],
+        maxTries: { writeSource: 2 }
+      });
+
+      var taskList = new TaskList();
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+    });
+  });
+
+
   describe('#retry', function (){
 
-    it('should log retry information ^ ^ ^ when toLog[\'retry\'] is set', function (done){
+    it('should log ^ retry information when toLog[\'retry\'] is set', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { all: 2 },
+        maxTries: { wholeList: 2 },
         toLog: ['retry']
       });
 
@@ -92,11 +112,11 @@ describe('f_ logging', function (){
       taskList.start();
     });
 
-    it('should even log ^ ^ ^ when no details are given to log', function (done){
+    it('should log ^ even when no details are given to log', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { all: 2 },
+        maxTries: { wholeList: 2 },
         toLog: ['retry']
       });
 
@@ -110,7 +130,7 @@ describe('f_ logging', function (){
 
   describe('#abort', function (){
 
-    it('should log abort information ^ ^ ^', function (done){
+    it('should log ^ abort information', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['abort']
@@ -121,7 +141,7 @@ describe('f_ logging', function (){
       taskList.start();
     });
 
-    it('should log the error stack  ^ ^ ^', function (done){
+    it('should log ^ the error stack', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['errStack']
@@ -133,7 +153,7 @@ describe('f_ logging', function (){
     });
 
 
-    it('should log abort information even when no description is given ^ ^ ^', function (done){
+    it('should log ^ abort information even when no description is given' + hr, function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['abort']
@@ -141,22 +161,6 @@ describe('f_ logging', function (){
 
       var taskList = f_.setup( new TaskList({ emptyAbortErr: true }) );
       taskList.onAbort = done
-      taskList.start();
-    });
-  });
-
-
-  describe('#method attempts', function (){
-    it('should log about method attempts' + hr, function (done){
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['next'],
-        maxTries: { writeSource: 2 }
-      });
-
-      var taskList = new TaskList();
-      taskList = f_.setup(taskList);
-      taskList.onFinish = done;
       taskList.start();
     });
   });
