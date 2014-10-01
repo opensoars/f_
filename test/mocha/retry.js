@@ -43,7 +43,8 @@ describe('retry', function (){
 
     it('`(f_.retries.all - 1)` should be equal to `maxRetries`', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        maxRetries: { all: 5 }
       });
 
       var taskList = new TaskList({ exceedRetries: true });
@@ -71,6 +72,11 @@ describe('retry', function (){
       taskList.start();
 
     });
+
+    /**
+     * Write onRetry test
+     */
+
 
   });
 
@@ -118,22 +124,27 @@ describe('retry', function (){
         maxRetries: {}
       });
 
-      var taskList = new TaskList({ retryThis: true });
+      var taskList = new TaskList({ retryThisOnce: true });
       taskList = f_.setup(taskList);
       taskList.onFinish = done;
       taskList.start();
     });
 
-    it('should call onRetryThis', function (done){
+    it('should call onRetry and give us an info object', function (done){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: {}
+        maxRetries: { notify: 2 }
       });
 
-      var taskList = new TaskList({ retryThis: true });
+      var taskList = new TaskList({ retryThisOnce: true });
       taskList = f_.setup(taskList);
-      taskList.onRetryThis = done;
+
+      taskList.onRetry = function (info){
+        assert.equal(typeof info, 'object');
+        done();
+      };
+
       taskList.start();
     });
 
@@ -143,18 +154,24 @@ describe('retry', function (){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         desc: 'dev.js task list',
+        toLog: ['all'],
         maxRetries: {
-          writeSource: 0
+          writeSource: 1
         }
       });
 
-      var taskList = new TaskList({ retryThis: true });
+      var taskList = new TaskList({ retryThisOnce: true });
       taskList = f_.setup(taskList);
       taskList.onAbort = done;
       taskList.start();
     });
 
+    /**
+     * Write onRetry test
+     */
+
   });
+
 
 
 

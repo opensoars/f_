@@ -81,7 +81,7 @@ describe('events', function (){
   });
 
 
-
+/*
   describe('#onRetryAll', function (){
 
     it('should call onRetryAll ', function (done){
@@ -134,6 +134,6 @@ describe('events', function (){
     });
 
   });
-
+*/
 
 });
