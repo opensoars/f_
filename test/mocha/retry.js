@@ -93,10 +93,22 @@ describe('retry', function (){
 
     });
 
-    /**
-     * ! Write onRetry test !
-     */
+    it('should call onRetry and give us an info object', function (done){
 
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        maxTries: { wholeList: 1 }
+      });
+
+      var taskList = new TaskList({ retryAllOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetry = function (info){
+        assert.equal(typeof info, 'object');
+        done();
+      }
+      taskList.start();
+
+    });
 
   });
 
@@ -127,7 +139,7 @@ describe('retry', function (){
 
       var taskList = new TaskList({ retryAllOnce: true });
       taskList = f_.setup(taskList);
-      taskList.onRetryAll = function (){
+      taskList.onRetry = function (){
         assert.equal(this.d.constructor, {}.constructor);
       };
       taskList.onFinish = done;
