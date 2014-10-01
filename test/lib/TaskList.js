@@ -63,6 +63,11 @@ proto.writeSource = function (){
 
 	var self = this;
 
+	if(self.retryThisOnce){
+		self.retryThisOnce = false;
+		return self.f_retryThis('retryThisOnce @writeSource');
+	}
+
 	if(self.retryAllOnce){
 		self.retryAllOnce = false;
 		return self.f_retryAll('retryAllOnce @writeSource', 'if(self.retryAllOnce)');
@@ -77,11 +82,6 @@ proto.writeSource = function (){
  */
 proto.notify = function (){
 	var self = this;
-
-	if(self.retryThisOnce){
-		self.retryThisOnce = false;
-		return self.f_retryThis('retryThisOnce @writeSource');
-	}
 
 	return self.f_next();
 };

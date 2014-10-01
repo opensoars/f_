@@ -134,7 +134,7 @@ describe('retry', function (){
 
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxRetries: { notify: 2 }
+        maxRetries: { writeSource: 2 }
       });
 
       var taskList = new TaskList({ retryThisOnce: true });
@@ -156,7 +156,7 @@ describe('retry', function (){
         desc: 'dev.js task list',
         toLog: ['all'],
         maxRetries: {
-          writeSource: 1
+          writeSource: 0
         }
       });
 

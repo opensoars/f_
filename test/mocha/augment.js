@@ -96,14 +96,14 @@ describe('f_.augment', function (){
   });
 
   describe('#default maxRetries.all', function (){
-    it('should set `maxRetries.all` to `undefined` when it\'s given a wrong maxRetries.all', function (){
+    it('should set `maxRetries.all` to `10` when it\'s given a wrong maxRetries.all', function (){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         maxRetries: { noAll: 10 }
       });
 
-      assert.equal(TaskList.prototype.f_maxRetries.all, undefined);
+      assert.equal(TaskList.prototype.f_maxRetries.all, 10);
     });
   });
 
