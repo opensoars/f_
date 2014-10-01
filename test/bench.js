@@ -27,7 +27,7 @@ function runSingle(){
 function runMultiple(){
 	var startTime = Date.now();
 
-	for(var i=0; i<100000; i+=1)
+	for(var i=0; i<1000000; i+=1)
 		f_.setup(new TaskList()).start();
 
 	console.log(Date.now() - startTime);
