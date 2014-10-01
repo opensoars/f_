@@ -82,7 +82,7 @@ describe('events', function (){
 
 
 
-  describe('#onRetryAll', function (){
+  describe('#retryAll', function (){
 
     it('should call onRetry and give us an info object', function (done){
 
@@ -112,14 +112,14 @@ describe('events', function (){
     });
   });
 
-  describe('#onRetryThis', function (){
+  describe('#retryThis', function (){
 
     it('should call onRetry and give an info object', function (done){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup(new TaskList({ retryThis: true }));
+      var taskList = f_.setup(new TaskList({ retryThisOnce: true }));
       taskList.onRetry = function (info){
         assert.equal(typeof info, 'object');
         done();
@@ -132,7 +132,7 @@ describe('events', function (){
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = new TaskList({ retryThis: true });
+      var taskList = new TaskList({ retryThisOnce: true });
       taskList = f_.setup(taskList);
       taskList.onRetry = undefined;
       taskList.onFinish = done;
@@ -140,6 +140,5 @@ describe('events', function (){
     });
 
   });
-*/
 
 });

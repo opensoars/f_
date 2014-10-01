@@ -154,7 +154,6 @@ describe('retry', function (){
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         desc: 'dev.js task list',
-        toLog: ['all'],
         maxRetries: {
           writeSource: 0
         }
