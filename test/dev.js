@@ -6,9 +6,9 @@ TaskList = f_.augment(TaskList, {
   functionFlow: ['getSource', 'writeSource', 'notify'],
   toLog: ['all'],
   desc: 'dev.js task list',
-  maxRetries: {
+  maxTries: {
     all: 5,
-    notify: 2
+    writeSource: 2
   }
 });
 
@@ -21,12 +21,13 @@ taskList = f_.setup(taskList);
 
 taskList.onRetry = function (info){
 
-  console.log(info);
+  //console.log(info);
 
 };
 
 taskList.onFinish = function (){
   console.log('onFinish');
+  console.log(this);
 };
 
 taskList.onAbort = function (){
