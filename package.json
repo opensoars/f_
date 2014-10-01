@@ -15,8 +15,8 @@
   },
 
   "dependencies": {
-    "ezlog": "0.0.10",
-    "opensoars_cls": "0.0.6"
+    "ezlog": "0.0.11",
+    "opensoars_cls": "0.0.7"
   },
 
   "devDependencies": {

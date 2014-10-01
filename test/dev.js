@@ -7,27 +7,27 @@ TaskList = f_.augment(TaskList, {
   toLog: ['all'],
   desc: 'dev.js task list',
   maxTries: {
-    all: 5,
-    writeSource: 2
+    //all: 2
+    //writeSource: 2
   }
 });
 
 var taskList = new TaskList({
-  //retryAllOnce: true,
-  retryThisOnce: true
+  retryAllOnce: true  
+  //retryThisOnce: true
 });
 
 taskList = f_.setup(taskList);
 
 taskList.onRetry = function (info){
 
-  //console.log(info);
+  console.log(info);
 
 };
 
 taskList.onFinish = function (){
   console.log('onFinish');
-  console.log(this);
+  //console.log(this);
 };
 
 taskList.onAbort = function (){
