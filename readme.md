@@ -24,8 +24,8 @@ Asynchronous Node.js made easy and fun!
 
 
 ### Todo
-* add and test `retryMethod`
-* (maybe) add "default maxTries from maxTries object? `maxTries: { methods: '?' }`"
+* Add and test `retryMethod`
+* (maybe) Add "default maxTries from maxTries object? `maxTries: { methods: '?' }`"
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
