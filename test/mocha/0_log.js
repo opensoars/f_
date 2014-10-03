@@ -4,8 +4,8 @@
  * For readability, last `it` in this test should contain \n - - - - `hr`
  *
  * Logging can result in weird results because the f_ / cls / ezlog code is
- * not run in a synchronous way. This ofcourse is not wanted. But it CAN
- * produce logging in wrong order in this test suite. Just ignore it
+ * not run in a synchronous way which ofcourse is not wanted. But it CAN
+ * produce logging in wrong order in this test suite. Just ignore it!
  */
 
 var hr = '\n\n - - - - - - - - - - - - - - - - - END `f_ logging`'
@@ -160,6 +160,35 @@ describe('log', function (){
         }
         taskList.start();
       });
+
+      it('should log ^ retry information', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryFromOnce: true });
+        taskList = f_.setup(taskList);
+        taskList.onRetry = function (){
+          done();
+        }
+        taskList.start();
+      });
+
+      it('should log ^ retry information even when no info is given', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryFromOnceWithoutInfo: true });
+        taskList = f_.setup(taskList);
+        taskList.onRetry = function (){
+          done();
+        }
+        taskList.start();
+      });
+
     });
 
 
