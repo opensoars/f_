@@ -26,7 +26,7 @@ describe('retry', function (){
   });
 
 
-  describe('#retryAllOnce', function (){
+  describe('#retryAll', function (){
     it('should call `onFinish` because we do not exceed maxTries', function (done){
       
       TaskList = f_.augment(TaskList, {
@@ -211,6 +211,20 @@ describe('retry', function (){
       }
       taskList.start();
 
+    });
+
+    it('should not call addErr if `desc` and `err` are undefined', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryThisOnceWithoutInfo: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = function (){
+        assert.equal(this.f_errs.length, 0);
+        done();
+      }
+      taskList.start();
     });
 
   });
