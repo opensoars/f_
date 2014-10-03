@@ -125,6 +125,23 @@ describe('f_ logging', function (){
       taskList.onFinish = done;
       taskList.start();
     });
+
+    it('should log ^ about not being able to find method when we call retryFrom with wrong method name', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify'],
+        toLog: ['retry']
+      });
+
+      var taskList = new TaskList({ retryFromOnceWithWrongMethod: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetry = function (){
+        done();
+      }
+      taskList.start();
+
+    });
+
   });
 
 

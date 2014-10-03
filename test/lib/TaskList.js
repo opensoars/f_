@@ -102,6 +102,18 @@ proto.notify = function (){
 		);
 	}
 
+	if(self.retryFromOnceWithoutInfo){
+		self.retryFromOnceWithoutInfo = false;
+		
+		return self.f_retryFrom('writeSource');
+	}
+
+	if(self.retryFromOnceWithWrongMethod){
+		self.retryFromOnceWithWrongMethod = false;
+
+		return self.f_retryFrom('methodNotFound');
+	}
+
 	return self.f_next();
 };
 

@@ -230,7 +230,8 @@ describe('retry', function (){
   });
 
   describe('#retryFrom', function (){
-    it('should run `writeSource` twice', function (done){
+
+    it('should run `writeSource` and `notify` twice', function (done){
       
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
@@ -239,12 +240,60 @@ describe('retry', function (){
       var taskList = new TaskList({ retryFromOnce: true });
       taskList = f_.setup(taskList);
       taskList.onFinish = function (){
-        console.log(this);
+        assert.equal(this.f_tries.writeSource, 2);
+        assert.equal(this.f_tries.notify, 2);
         done();
       }
       taskList.start();
 
     });
+
+    it('should call `onRetry` and give us an `info` object containing the method to retry from', function (done){
+      
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryFromOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetry = function (info){
+        assert.equal(info.method, 'writeSource')
+        done();
+      }
+      taskList.start();
+    });
+
+    it('should not add an error object when do not give any arguments but the method to retryFrom', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryFromOnceWithoutInfo: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetry = function (info){
+        assert.equal(this.f_errs.length, 0);
+        done();
+      }
+      taskList.start();
+    });
+
+    it('should not retry anything when the method given is not found in functionflow', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryFromOnceWithWrongMethod: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetry = function (info){
+        assert.equal(this.f_tries.writeSource, 1);
+        assert.equal(this.f_tries.notify, 1);
+        done();
+      }
+      taskList.start();
+
+    });
+
   });
 
 
