@@ -110,8 +110,12 @@ proto.notify = function (){
 
 	if(self.retryFromOnceWithWrongMethod){
 		self.retryFromOnceWithWrongMethod = false;
+		return self.f_retryFrom('wrongMethod', 'retryFromOnce @notify');
+	}
 
-		return self.f_retryFrom('methodNotFound');
+	if(self.retryFromOnceWithWrongMethodWithoutInfo){
+		self.retryFromOnceWithWrongMethodWithoutInfo = false;
+		return self.f_retryFrom('wrongMethod');
 	}
 
 	return self.f_next();

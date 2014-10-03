@@ -32,7 +32,7 @@ Asynchronous Node.js made easy and fun!
 * Complete documentation
 
 ###### Optional
-* (maybe) Add "default maxTries from maxTries object? `maxTries: { methods: '?' }`"
+* Add functionality for "default maxTries from maxTries object? `maxTries: { methods: '?' }`"
 
 ### Time schedule (from the 10th of September 2014)
 * 1.5/2 weeks (will result in pre-alpha release)

@@ -98,49 +98,105 @@ describe('f_ logging', function (){
 
   describe('#retry', function (){
 
-    it('should log ^ retry information when toLog[\'retry\'] is set', function (done){
+    describe('*retryAll', function (){
 
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 2 },
-        toLog: ['retry']
+      it('should log ^ retry information when toLog[\'retry\'] is set', function (done){
+
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          maxTries: { wholeList: 2 },
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryAllOnce: true });
+        taskList = f_.setup(taskList);
+        taskList.onFinish = done;
+        taskList.start();
       });
 
-      var taskList = new TaskList({ retryAllOnce: true });
-      taskList = f_.setup(taskList);
-      taskList.onFinish = done;
-      taskList.start();
-    });
+      it('should log ^ even when no details are given to log', function (done){
 
-    it('should log ^ even when no details are given to log', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          maxTries: { wholeList: 2 },
+          toLog: ['retry']
+        });
 
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 2 },
-        toLog: ['retry']
+        var taskList = new TaskList({ emptyRetryErr: true });
+        taskList = f_.setup(taskList);
+        taskList.onFinish = done;
+        taskList.start();
       });
 
-      var taskList = new TaskList({ emptyRetryErr: true });
-      taskList = f_.setup(taskList);
-      taskList.onFinish = done;
-      taskList.start();
     });
 
-    it('should log ^ about not being able to find method when we call retryFrom with wrong method name', function (done){
+    describe('*retryFrom', function (){
+      it('should log ^ about not being able to find method when we call retryFrom with wrong method name', function (done){
 
-      TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
-        toLog: ['retry']
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryFromOnceWithWrongMethod: true });
+        taskList = f_.setup(taskList);
+        taskList.onRetry = function (){
+          done();
+        }
+        taskList.start();
+
       });
 
-      var taskList = new TaskList({ retryFromOnceWithWrongMethod: true });
-      taskList = f_.setup(taskList);
-      taskList.onRetry = function (){
-        done();
-      }
-      taskList.start();
+      it('should log ^ NO desc:', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
 
+        var taskList = new TaskList({ retryFromOnceWithWrongMethodWithoutInfo: true });
+        taskList = f_.setup(taskList);
+        taskList.onRetry = function (){
+          done();
+        }
+        taskList.start();
+      });
     });
+
+
+    describe('*retryThis', function (){
+      it('should log ^ retryThis information', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryThisOnce: true });
+        taskList = f_.setup(taskList);
+        taskList.onRetry = function (){
+          done();
+        }
+        taskList.start();
+      });
+
+      it('should log ^ retryThis information even when no info is given', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryThisOnceWithoutInfo: true });
+        taskList = f_.setup(taskList);
+        taskList.onRetry = function (){
+          done();
+        }
+        taskList.start();
+      });
+    });
+
+
+
+
+
 
   });
 
