@@ -17,7 +17,7 @@ var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
 
-describe('f_ logging', function (){
+describe('log', function (){
 
   describe('#start', function (){
 
