@@ -24,11 +24,15 @@ Asynchronous Node.js made easy and fun!
 
 
 ### Todo
+
+#### Mandatory
 * Add and test `retryMethod`
-* (maybe) Add "default maxTries from maxTries object? `maxTries: { methods: '?' }`"
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
+
+#### Optional
+* (maybe) Add "default maxTries from maxTries object? `maxTries: { methods: '?' }`"
 
 ### Time schedule (from the 10th of September 2014)
 * 1.5/2 weeks (will result in pre-alpha release)
