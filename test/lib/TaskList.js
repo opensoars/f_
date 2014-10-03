@@ -96,7 +96,7 @@ proto.notify = function (){
 		self.retryFromOnce = false;
 
 		return self.f_retryFrom(
-			'getSource',
+			'writeSource',
 			'retryFromOnce @notify',
 			'self.retryFromOnce'
 		);

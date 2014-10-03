@@ -229,7 +229,23 @@ describe('retry', function (){
 
   });
 
+  describe('#retryFrom', function (){
+    it('should run `writeSource` twice', function (done){
+      
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
 
+      var taskList = new TaskList({ retryFromOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = function (){
+        console.log(this);
+        done();
+      }
+      taskList.start();
+
+    });
+  });
 
 
 });
