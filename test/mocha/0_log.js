@@ -98,7 +98,7 @@ describe('f_ logging', function (){
 
   describe('#retry', function (){
 
-    describe('*retryAll', function (){
+    describe('##retryAll', function (){
 
       it('should log ^ retry information when toLog[\'retry\'] is set', function (done){
 
@@ -130,7 +130,7 @@ describe('f_ logging', function (){
 
     });
 
-    describe('*retryFrom', function (){
+    describe('##retryFrom', function (){
       it('should log ^ about not being able to find method when we call retryFrom with wrong method name', function (done){
 
         TaskList = f_.augment(TaskList, {
@@ -163,7 +163,7 @@ describe('f_ logging', function (){
     });
 
 
-    describe('*retryThis', function (){
+    describe('##retryThis', function (){
       it('should log ^ retryThis information', function (done){
         TaskList = f_.augment(TaskList, {
           functionFlow: ['getSource', 'writeSource', 'notify'],

@@ -20,7 +20,7 @@ describe('events', function (){
       setTimeout(function (){
         assert.equal(taskList.f_status, 'finished');
         done();
-      }, 125);
+      }, 50);
 
     });
   });
@@ -40,7 +40,7 @@ describe('events', function (){
       setTimeout(function (){
         assert.equal(taskList.f_status, 'aborted');
         done();
-      }, 125);
+      }, 50);
 
     });
 
