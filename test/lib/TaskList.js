@@ -166,6 +166,14 @@ proto.notify = function (){
 		return self.f_retryMethod('writeSource', cb);
 	}
 
+	if(self.retryMethodOnceWithWrongMethod){
+		self.retryMethodOnceWithoutInfo = false;
+		function cb(){
+			self.f_next();
+		}
+		return self.f_retryMethod('wrongMethod', cb);
+	}
+
 	return self.f_next();
 
 

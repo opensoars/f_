@@ -235,6 +235,19 @@ describe('log', function (){
         taskList.onFinish = done;
         taskList.start();
       });
+
+      it('should log ^ retryMethod information even when no info is given', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryMethodOnceWithoutInfo: true });
+        taskList = f_.setup(taskList);
+        taskList.onFinish = done;
+        taskList.start();
+      });
+
     });
 
 

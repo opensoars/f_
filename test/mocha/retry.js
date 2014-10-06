@@ -400,6 +400,30 @@ describe('retry', function (){
       taskList.start();
     });
 
+    it('should not throw when a wrong method name is given, it should continue normaly', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+      var taskList = new TaskList({ retryMethodOnceWithWrongMethod: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+    });
+
+    it('should give us one error, when a wrong method name is given', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+      var taskList = new TaskList({ retryMethodOnceWithWrongMethod: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = function (){
+        assert.equal(this.f_errs.length, 1);
+        assert.equal(this.f_errs[0].desc, '@retryMethod  Could not find method: wrongMethod');
+        done();
+      }
+      taskList.start();
+    });
+
 
   });
 
