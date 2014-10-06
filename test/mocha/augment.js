@@ -1,7 +1,8 @@
 var assert = require('assert');
 
 var f_ = require(__dirname + './../../index.js'),
-    TaskList = require('./../lib/TaskList.js');
+    TaskList = require('./../lib/TaskList.js'),
+    taskListObject = require('./../lib/taskList_object.js');
 
 
 describe('f_.augment', function (){
@@ -23,7 +24,7 @@ describe('f_.augment', function (){
 
 
   describe('#wrong toAugment type', function (){
-    it('should throw when `typeof toAugment` does not equal `function` ', function (done){
+    it('should throw when `typeof toAugment` does not equal `function` OR `object` ', function (done){
       try { TaskList = f_.augment('wrong type'); }
       catch(e){ done(); }
     });
@@ -31,7 +32,7 @@ describe('f_.augment', function (){
     it('should throw `wrong toAugment type, !function`', function (done){
       try { TaskList = f_.augment('wrong type'); }
       catch(e){
-        assert.equal(e, 'wrong toAugment type, !function');
+        assert.equal(e, 'wrong toAugment type, !function && !object');
         done();
       }
     });
@@ -104,6 +105,22 @@ describe('f_.augment', function (){
       });
 
       assert.equal(TaskList.prototype.f_maxTries.wholeList, 10);
+    });
+  });
+
+  describe('#augment object', function (){
+    it('should be able to augment a plain object', function (done){
+      
+      taskList = f_.augment(taskListObject, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      taskList = f_.setup(taskList);
+
+      // Just a random property to check if it worked
+      assert.equal(typeof taskList.f_next, 'function');
+      done();
+
     });
   });
 
