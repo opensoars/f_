@@ -34,12 +34,10 @@
         <h1>
 <a name="f_-flow-flow" class="anchor" href="#f_-flow-flow"><span class="octicon octicon-link"></span></a>f_ (f.low, flow)</h1>
 
-<p><a href="https://travis-ci.org/opensoars/f_"><img src="http://img.shields.io/travis/opensoars/f_.svg?style=flat" alt="Build Status"></a>
-<a href="https://coveralls.io/r/opensoars/f_"><img src="http://img.shields.io/coveralls/opensoars/f_.svg?style=flat" alt="Coverage Status"></a>
+<p><a href="https://travis-ci.org/opensoars/f_"><img src="https://img.shields.io/travis/opensoars/f_.svg?style=flat" alt="Build Status"></a>
+<a href="https://coveralls.io/r/opensoars/f_"><img src="https://img.shields.io/coveralls/opensoars/f_.svg?style=flat" alt="Coverage Status"></a>
 <a href="https://david-dm.org/opensoars/f_"><img src="https://david-dm.org/opensoars/f_.svg?style=flat" alt="Dependency Status"></a>
-<a href="https://david-dm.org/opensoars/f_#info=devDependencies&amp;view=table"><img src="http://img.shields.io/david/dev/opensoars/f_.svg?style=flat" alt="Development Dependency Status"></a></p>
-
-
+<a href="https://david-dm.org/opensoars/f_#info=devDependencies&amp;view=table"><img src="https://david-dm.org/opensoars/f_/dev-status.svg?style=flat" alt="Development Dependency Status"></a></p>
 
 <hr><h3>
 <a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h3>
@@ -53,47 +51,37 @@
 <p><code>npm install f_</code></p>
 
 <h3>
+<a name="use" class="anchor" href="#use"><span class="octicon octicon-link"></span></a>Use</h3>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">f_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'f_'</span><span class="p">);</span>
+
+<span class="c1">// Augment a task list class.</span>
+<span class="nx">TaskList</span> <span class="o">=</span> <span class="nx">f_</span><span class="p">.</span><span class="nx">augment</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">'TaskList.js'</span><span class="p">));</span>
+
+<span class="c1">// Setup a task list instance.</span>
+<span class="kd">var</span> <span class="nx">taskListInstance</span> <span class="o">=</span> <span class="nx">f_</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span> <span class="k">new</span> <span class="nx">TaskList</span><span class="p">()</span> <span class="p">);</span>
+
+<span class="c1">// Call task list it's self written start mmethod.</span>
+<span class="c1">// .start() will call f_next();</span>
+<span class="nx">taskListInstance</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</pre></div>
+
+<h3>
 <a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>Todo</h3>
 
+<h6>
+<a name="mandatory" class="anchor" href="#mandatory"><span class="octicon octicon-link"></span></a>Mandatory</h6>
+
 <ul>
-<li>Fix local dependencies</li>
-<li>Write more and better <code>Mocha</code> test(s)</li>
-<li>Write a true 'real world' example (will be used in documentation)</li>
+<li>Write memory tests using <a href="https://github.com/opensoars/raminfo">raminfo</a>.</li>
+<li>Write a 'real world' example (will be used in documentation)</li>
 <li>Complete documentation</li>
-</ul><hr><h2>
-<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
-
-<h3>
-<a name="problem-to-be-solved" class="anchor" href="#problem-to-be-solved"><span class="octicon octicon-link"></span></a>Problem to be solved</h3>
-
-<p>Write asynchronous Node.js programs without ending up with hard to maintain, read and write 'cristmas tree' code. So we won't end up in (callback) hell!</p>
-
-<h3>
-<a name="how-is-f_-going-to-solve-this-problem" class="anchor" href="#how-is-f_-going-to-solve-this-problem"><span class="octicon octicon-link"></span></a>How is <code>f_</code> going to solve this problem?</h3>
-
-<p>Allow programmers to use a simple API which will take care of separation of concerns in a modularized way. Which by itself will result in loosely coupled programs.</p>
-
-<h3>
-<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h3>
-
-<p>Every (good) Node program is written mainly asynchronously. Ofcourse smaller tasks in larger asynchronous tasks will be synchronous. Some examples are:</p>
+</ul><h6>
+<a name="optional" class="anchor" href="#optional"><span class="octicon octicon-link"></span></a>Optional</h6>
 
 <ul>
-<li>String concatenation</li>
-<li>Simple equation solving</li>
-<li>Variable declaration</li>
-</ul><p>And then there are the asynchronous tasks, such as:</p>
-
-<ul>
-<li>HTTP requests</li>
-<li>Complex equation solving</li>
-<li>Audio/video compressing</li>
-</ul><p>When we look at the two lists above, we can categorize computational tasks into two separate groups:</p>
-
-<ol>
-<li>Synchronous (small and quick)</li>
-<li>Asynchronous (either simple and quick or complex and long lasting)</li>
-</ol><h3>
+<li>Add functionality for "default maxTries from maxTries object? <code>maxTries: { methods: '?' }</code>"</li>
+</ul><h3>
 <a name="time-schedule-from-the-10th-of-september-2014" class="anchor" href="#time-schedule-from-the-10th-of-september-2014"><span class="octicon octicon-link"></span></a>Time schedule (from the 10th of September 2014)</h3>
 
 <ul>
@@ -124,12 +112,81 @@
 <li>Complete documentation</li>
 </ul>
 </li>
-</ul><h3>
+</ul><hr><h2>
+<a name="future-documentation-content" class="anchor" href="#future-documentation-content"><span class="octicon octicon-link"></span></a>Future documentation content</h2>
+
+<ol>
+<li>Title</li>
+<li>Badges</li>
+<li>One liner</li>
+<li>Dependencies</li>
+<li>Install</li>
+<li>Use</li>
+<li>Documentation
+
+<ol>
+<li>Problem</li>
+<li>Solution</li>
+<li>Introduction
+
+<ul>
+<li>Async and sync</li>
+<li>Small examples
+
+<ul>
+<li>Not wanted</li>
+<li>Wanted</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Full example covering complete usage (API)</li>
+<li>Individual components</li>
+</ol>
+</li>
+<li>Example usage</li>
+</ol><hr><h2>
+<a name="documentation-outdated" class="anchor" href="#documentation-outdated"><span class="octicon octicon-link"></span></a>Documentation (outdated)</h2>
+
+<h3>
+<a name="problem-to-be-solved" class="anchor" href="#problem-to-be-solved"><span class="octicon octicon-link"></span></a>Problem to be solved</h3>
+
+<p>Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you down in callback hell).</p>
+
+<h3>
+<a name="how-is-f_-going-to-solve-this-problem" class="anchor" href="#how-is-f_-going-to-solve-this-problem"><span class="octicon octicon-link"></span></a>How is <code>f_</code> going to solve this problem?</h3>
+
+<p>Allow programmers to use a Node.js module with a simple API which will make separation of concerns (which results in loosely coupled programs), modular and asynchronous programming a breeze.</p>
+
+<h3>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h3>
+
+<p>Every (large) Node.js program has lots of asynchronous tasks such as:</p>
+
+<ul>
+<li>HTTP requests</li>
+<li>Complex equation solving</li>
+<li>Audio/video compressing</li>
+</ul><p>Ofcourse small tasks in larger asynchronous tasks will be synchronous. Some examples are:</p>
+
+<ul>
+<li>Concatenating a string</li>
+<li>solving simple equations</li>
+<li>Declaring variables</li>
+</ul><p>When we look at the two lists above, we can categorize computational tasks into two separate groups:</p>
+
+<ol>
+<li>Asynchronous (either simple and quick or complex and long lasting)</li>
+<li>Synchronous (only simple and quick)</li>
+</ol><h3>
 <a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h3>
 
-<p>Everything <code>f_</code> offers will be used in the code example below. We will be using a class based approach (plain object not recommended), since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.</p>
+<p>Everything <code>f_</code> offers will be used in the code example below. We will be using a class based approach (plain object not recommended). Since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.</p>
 
-<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">f_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'f_'</span><span class="p">);</span>
+<div class="highlight highlight-js"><pre>
+<span class="c1">// EDIT THIS WITH NEW API / PROTO ASSIGMENT</span>
+
+<span class="kd">var</span> <span class="nx">f_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'f_'</span><span class="p">);</span>
 
 <span class="cm">/** Class based TaskList.</span>
 <span class="cm"> * All methods are written in this class</span>
