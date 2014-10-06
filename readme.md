@@ -46,11 +46,13 @@ taskListInstance.start();
 
 ###### Mandatory
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
-* Write a 'real world' example (will be used in documentation)
+* Finish the [real world example](https://github.com/opensoars/f_/blob/master/doc/real_example.js) (will be used in documentation)
 * Complete documentation
 
 ###### Optional
 * Add functionality for "default maxTries from maxTries object? `maxTries: { methods: '?' }`"
+
+
 
 ### Time schedule (from the 10th of September 2014)
 * 1.5/2 weeks (will result in pre-alpha release)
