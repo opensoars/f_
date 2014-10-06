@@ -46,8 +46,8 @@ taskListInstance.start();
 
 ###### Mandatory
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo)
-* Finish the [real world example](https://github.com/opensoars/f_/blob/master/doc/real_example.js) (will be used in documentation)
-* Complete documentation
+* Finish the [real world example](https://github.com/opensoars/f_/blob/master/doc/real_example.js)
+* Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
 ###### Optional
 * Add default method maxTries example: `maxTries: { allMethods: 5 }`
