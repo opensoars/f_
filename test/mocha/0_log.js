@@ -223,6 +223,19 @@ describe('log', function (){
     });
 
 
+    describe('##retryMethod', function (){
+      it('should log ^ retryMethod information', function (done){
+        TaskList = f_.augment(TaskList, {
+          functionFlow: ['getSource', 'writeSource', 'notify'],
+          toLog: ['retry']
+        });
+
+        var taskList = new TaskList({ retryMethodOnce: true });
+        taskList = f_.setup(taskList);
+        taskList.onFinish = done;
+        taskList.start();
+      });
+    });
 
 
 

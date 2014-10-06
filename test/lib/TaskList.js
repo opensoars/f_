@@ -20,12 +20,28 @@ var proto = Object.create(null);
 proto.start = function (){
 	//log("startin' task");
 
-	this.d.hello = 'world';
+	var self = this;
 
-	this.f_next();
+	self.d.hello = 'world';
+
+
+	if(self.retryMethodOnceFromFirst){
+		self.retryMethodOnceFromFirst = false;
+
+		function cb(){ self.f_next(); }
+
+		return self.f_retryMethod(
+			'getSource',
+			cb,
+			'@start self.retryMethodOnceFromFirst'
+		);
+	}
+
+
+	self.f_next();
 
 	// Make chains possible
-	return this;
+	return self;
 };
 
 
@@ -43,10 +59,11 @@ proto.getSource = function (retryMethod){
 
 	self.d = { hello: 'world' };
 
-	if(self.abort) return self.f_abort('abort @getSource', new Error('Node err here'));
+	if(self.abort)
+		return self.f_abort('abort @getSource', new Error('Node err'));
 
 	if(self.exceedRetries)
-		return self.f_retryAll('exceedRetries @getSource', new Error('Node err here'));
+		return self.f_retryAll('exceedRetries @getSource', new Error('Node err'));
 
 	if(self.emptyRetryErr){
 		self.emptyRetryErr = false;
@@ -54,6 +71,7 @@ proto.getSource = function (retryMethod){
 	}
 
 	if(self.emptyAbortErr) return self.f_abort();
+
 
 	// Make it async
 	setTimeout(function (){ self.f_next(); }, 1);
@@ -127,14 +145,33 @@ proto.notify = function (){
 		self.retryMethodOnce = false;
 
 		function cb(){
+			log(cb);
 			self.f_next();
 		}
 
 		return self.f_retryMethod('writeSource', cb, 'self.retryMethodOnce');
 	}
 
+	if(self.retryMethodOnceWithoutCb){
+		self.retryMethodOnce = false;
+		return self.f_retryMethod('writeSource', undefined, 'self.retryMethodOnce');
+	}
+
+
+	if(self.retryMethodOnceWithoutInfo){
+		self.retryMethodOnceWithoutInfo = false;
+		function cb(){
+			self.f_next();
+		}
+		return self.f_retryMethod('writeSource', cb);
+	}
+
 	return self.f_next();
+
+
+
 };
+
 
 /*
 proto.onRetryThis = function (){

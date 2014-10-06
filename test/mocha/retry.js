@@ -343,6 +343,64 @@ describe('retry', function (){
       taskList.start();
     });
 
+    it('should work when `old_f_i === 0` (run retryMethod from first method)', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryMethodOnceFromFirst: true });
+      taskList = f_.setup(taskList);
+
+      taskList.onFinish = done;
+
+      taskList.start();
+    });
+
+
+    it('should call onNext', function (done){
+
+      var onNextCalled = true;
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryMethodOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onNext = function (){ onNextCalled = true; }
+      taskList.onFinish = function (){
+        assert.equal(onNextCalled, true);
+        done();
+      }
+      taskList.start();
+    });
+
+
+    it('should call `next` when no `cb` is given to `retryMethod` (results in finish)', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+      var taskList = new TaskList({ retryMethodOnceWithoutCb: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+    });
+
+
+    it('should not add any errors when we just give `method` and `cb`', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+      var taskList = new TaskList({ retryMethodOnceWithoutInfo: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = function (){
+        assert.equal(this.f_errs.length, 0);
+        done();
+      }
+      taskList.start();
+    });
+
+
   });
 
 

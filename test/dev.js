@@ -16,21 +16,22 @@ TaskList = f_.augment(TaskList, {
 
 
 var taskList = new TaskList({
-  //retryAllOnce: true,
+  //retryAllOnce: true
   //retryThisOnce: true
   //retryFromOnce: true
-  retryMethodOnce: true
+  //retryMethodOnceFromFirst: true
+  retryMethodOnceWithoutCb: true
 });
 
 taskList = f_.setup(taskList);
 
 taskList.onRetry = function (info){
-  console.log(info);
+  //console.log(info);
 };
 
 taskList.onFinish = function (){
   console.log('onFinish');
-  console.log(this);
+  //console.log(this);
 };
 
 taskList.onAbort = function (){
