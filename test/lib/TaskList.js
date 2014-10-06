@@ -128,15 +128,10 @@ proto.notify = function (){
 		self.retryMethodOnce = false;
 
 		function cb(){
-
-			//this.f_next = this.temp_f_next
-
-			console.log('cb');
-
 			self.f_next();
 		}
 
-		return self.f_retryMethod('writeSource', cb);
+		return self.f_retryMethod('writeSource', cb, 'self.retryMethodOnce');
 	}
 
 	return self.f_next();

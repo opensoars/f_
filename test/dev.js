@@ -30,7 +30,7 @@ taskList.onRetry = function (info){
 
 taskList.onFinish = function (){
   console.log('onFinish');
-  //console.log(this);
+  console.log(this);
 };
 
 taskList.onAbort = function (){
