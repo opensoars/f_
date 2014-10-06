@@ -131,6 +131,8 @@ describe('retry', function (){
   describe('#data namespace reset', function (){
     it('should have set instance.d to {}', function (done){
 
+      var dHasProperty = false;
+
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         maxTries: { wholeList: 2 },
@@ -140,9 +142,12 @@ describe('retry', function (){
       var taskList = new TaskList({ retryAllOnce: true });
       taskList = f_.setup(taskList);
       taskList.onRetry = function (){
-        assert.equal(this.d.constructor, {}.constructor);
+        for(var key in this.d) dHasProperty;
       };
-      taskList.onFinish = done;
+      taskList.onFinish = function (){
+        assert.equal(dHasProperty, false);
+        done();
+      }
       taskList.start();
 
     });
