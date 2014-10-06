@@ -297,9 +297,10 @@ describe('retry', function (){
   });
 
 
-/*
+
   describe('#retryMethod', function (){
+    
   });
-*/
+
 
 });
