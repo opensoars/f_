@@ -37,7 +37,7 @@ proto.getSource = function (retryMethod){
 
 	//if(retryMethod) console.log('getSource,', retryMethod);
 
-	log('getSource');
+	//log('getSource');
 
 	var self = this;
 
@@ -87,21 +87,6 @@ proto.writeSource = function (){
 		);
 	}
 
-
-	if(self.retryMethodOnce){
-		self.retryMethodOnce = false;
-
-		function cb(){
-
-			this.f_next = this.temp_f_next
-
-			self.f_next();
-		}
-
-		return self.f_retryMethod('getSource', cb);
-	}
-
-
 	return self.f_next();
 };
 
@@ -136,6 +121,22 @@ proto.notify = function (){
 	if(self.retryFromOnceWithWrongMethodWithoutInfo){
 		self.retryFromOnceWithWrongMethodWithoutInfo = false;
 		return self.f_retryFrom('wrongMethod');
+	}
+
+
+	if(self.retryMethodOnce){
+		self.retryMethodOnce = false;
+
+		function cb(){
+
+			//this.f_next = this.temp_f_next
+
+			console.log('cb');
+
+			self.f_next();
+		}
+
+		return self.f_retryMethod('writeSource', cb);
 	}
 
 	return self.f_next();
