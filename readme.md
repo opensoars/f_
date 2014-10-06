@@ -27,14 +27,18 @@ Asynchronous Node.js made easy and fun!
 ```js
 var f_ = require('f_');
 
+// Augment a task list class.
 TaskList = f_.augment(require('TaskList.js'));
 
-
+// Setup a task list instance.
 var taskListInstance = f_.setup( new TaskList() );
-    
 
+// Call task list it's self written start mmethod.
+// .start() will call f_next();
+taskListInstance.start();
 ```
 ### Todo
+
 
 ###### Mandatory
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
