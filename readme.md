@@ -154,7 +154,7 @@ var TaskList = function TaskList (o){
  * Create an empty namespace object to hold our proto(type) methods
  * Which will be assigned to the TaskList its prototype object
  */
-var proto = Object.create(null);
+var proto = {};
 
 /**
  * @method start  Check if requirements are met

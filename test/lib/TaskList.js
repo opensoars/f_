@@ -4,14 +4,13 @@ var Ezlog = require('ezlog'),
 
 var TaskList = function TaskList (o){
   o = o || {};
-
   for(var key in o) this[key] = o[key]
   
   return this;
 };
 
 
-var proto = Object.create(null);
+var proto = {};
 
 /**
  * @method start         Check if requirements are met
