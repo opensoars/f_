@@ -74,7 +74,8 @@ taskListInstance.start();
 3. One liner
 4. Dependencies
 5. Install
-6. Documentation
+6. Use
+7. Documentation
   1. Problem
   2. Solution
   3. Introduction
@@ -84,7 +85,7 @@ taskListInstance.start();
       * Wanted
   4. Full example covering complete usage (API)
   5. Individual components
-7. Example usage
+8. Example usage
 
 
 ---
