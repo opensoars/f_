@@ -37,7 +37,6 @@ var taskListInstance = f_.setup( new TaskList() );
 ### Todo
 
 ###### Mandatory
-* Make `f_.augment` accept an object instead of just function classes.
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
