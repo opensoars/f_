@@ -33,7 +33,12 @@ proto.start = function (){
  * @method getSource          Gets a website source code
  * @data   d.source {string}  Website it's source code
  */
-proto.getSource = function (){
+proto.getSource = function (retryMethod){
+
+	if(retryMethod) console.log(retryMethod);
+
+	log('getSource');
+
 	var self = this;
 
 	self.d = { hello: 'world' };
@@ -81,6 +86,21 @@ proto.writeSource = function (){
 			'if(self.retryAllOnce)'
 		);
 	}
+
+
+	if(self.retryMethodOnce){
+		self.retryMethodOnce = false;
+
+		function cb(){
+			console.log('cb');
+
+			//self.f_next();
+
+		}
+
+		return self.f_retryMethod('getSource', cb);
+	}
+
 
 	return self.f_next();
 };
