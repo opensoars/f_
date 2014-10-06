@@ -22,11 +22,11 @@ describe('log', function (){
   describe('#start', function (){
 
     it('should log ^ about start (with blue desc)', function (){
-      f_.setup( new f_.augment(TaskList, {
+      f_.setup( new (f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify'],
         toLog: ['start'],
         desc: 'f_ logging #start task list'
-      }) ).start();
+      })) ).start();
     });
 
     it('should log ^ about start (but no blue desc)', function (){
