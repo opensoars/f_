@@ -35,7 +35,7 @@ proto.start = function (){
  */
 proto.getSource = function (retryMethod){
 
-	if(retryMethod) console.log(retryMethod);
+	//if(retryMethod) console.log('getSource,', retryMethod);
 
 	log('getSource');
 
@@ -92,10 +92,10 @@ proto.writeSource = function (){
 		self.retryMethodOnce = false;
 
 		function cb(){
-			console.log('cb');
 
-			//self.f_next();
+			this.f_next = this.temp_f_next
 
+			self.f_next();
 		}
 
 		return self.f_retryMethod('getSource', cb);
