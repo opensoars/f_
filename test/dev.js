@@ -9,7 +9,7 @@ TaskList = f_.augment(TaskList, {
   maxTries: {
     wholeList: 2,
     getSource: '?',
-    writeSource: '?',
+    writeSource: '2',
     notify: '?'
   }
 });

@@ -299,7 +299,50 @@ describe('retry', function (){
 
 
   describe('#retryMethod', function (){
-    
+    it('should run `writeSource` twice', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryMethodOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = function (){
+        assert.equal(this.f_tries.writeSource, 2);
+        done();
+      }
+      taskList.start();
+    });
+
+    it('should run `getSource` and `notify` once', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryMethodOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onFinish = function (){
+        assert.equal(this.f_tries.getSource, 1);
+        assert.equal(this.f_tries.notify, 1);
+        done();
+      }
+      taskList.start();
+    });
+
+
+    it('should run give us an info object', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList({ retryMethodOnce: true });
+      taskList = f_.setup(taskList);
+      taskList.onRetry = function (info){
+        assert.equal(typeof info, 'object');
+        done();
+      }
+      taskList.start();
+    });
+
   });
 
 

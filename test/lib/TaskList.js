@@ -123,7 +123,6 @@ proto.notify = function (){
 		return self.f_retryFrom('wrongMethod');
 	}
 
-
 	if(self.retryMethodOnce){
 		self.retryMethodOnce = false;
 
