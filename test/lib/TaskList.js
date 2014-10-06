@@ -176,8 +176,6 @@ proto.notify = function (){
 
 	return self.f_next();
 
-
-
 };
 
 
