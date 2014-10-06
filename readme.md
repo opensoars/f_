@@ -23,6 +23,17 @@ Asynchronous Node.js made easy and fun!
 `npm install f_`
 
 
+### Use
+```js
+var f_ = require('f_');
+
+TaskList = f_.augment(require('TaskList.js'));
+
+
+var taskListInstance = f_.setup( new TaskList() );
+    
+
+```
 ### Todo
 
 ###### Mandatory

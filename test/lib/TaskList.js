@@ -24,20 +24,17 @@ proto.start = function (){
 
 	self.d.hello = 'world';
 
-
 	if(self.retryMethodOnceFromFirst){
 		self.retryMethodOnceFromFirst = false;
 
 		function cb(){ self.f_next(); }
 
 		return self.f_retryMethod(
-			'getSource',
-			cb,
-			'@start self.retryMethodOnceFromFirst'
+			'getSource', cb, '@start self.retryMethodOnceFromFirst'
 		);
 	}
 
-
+	// Let's start the f_ task list
 	self.f_next();
 
 	// Make chains possible

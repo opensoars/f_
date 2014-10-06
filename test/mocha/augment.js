@@ -122,6 +122,16 @@ describe('f_.augment', function (){
       done();
 
     });
+
+    it('should be able to run the same as with a function / class', function (done){
+      taskList = f_.augment(taskListObject, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+      taskList = f_.setup(taskList);
+      taskList.start();
+      taskList.onFinish = done();
+    });
+
   });
 
 });
