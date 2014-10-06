@@ -26,7 +26,7 @@ Asynchronous Node.js made easy and fun!
 ### Todo
 
 ###### Mandatory
-* Add and test `retryMethod`
+* Make `f_.augment` accept an object instead of just function classes.
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo).
 * Write a 'real world' example (will be used in documentation)
 * Complete documentation
