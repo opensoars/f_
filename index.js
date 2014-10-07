@@ -1,6 +1,6 @@
 /** f_ project structure if it would be in one file
- * node_modules
- * colored logging functions
+ * node_modules: cls, ezlog
+ * colored logging helper functions
  * globals
  * methods
  * augment
