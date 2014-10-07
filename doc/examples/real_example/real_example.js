@@ -7,14 +7,14 @@ var log = new Ezlog({ pref: {t: '[sourceWriter]', c: 'green' } });
 
 var f_ = require('./../../../index.js');
 
-var URLS = [
-  'https://github.com/opensoars',
-  'https://www.mozilla.org/en-US/',
-  'https://www.bing.com',
-  'https://www.yahoo.com',
-  'https://www.google.nl',
-  'https://www.youtube.com',
-  'http://spele.nl/'
+var SOURCES = [
+  { url: 'https://github.com/opensoars', title: 'github'},
+  { url: 'https://developer.mozilla.org/en-US/', title: 'developer.mozilla'},
+  { url: 'https://www.bing.com', title: 'bing'},
+  { url: 'https://www.yahoo.com', title: 'yahoo'},
+  { url: 'https://www.google.nl', title: 'google'},
+  { url: 'https://www.youtube.com', title: 'youtube'},
+  { url: 'http://spele.nl/', title: 'spele'}
 ];
 
 
@@ -78,28 +78,6 @@ proto.getSource = function (){
 
 };
 
-/** SourceWriter.findSubject
- * Finds a subject string in our url
- * Example:  https://google.com  =>  google
- * IF there aren't regex matches, f_retryAll
- * @d.subject {string}  Source code subject
- */
-proto.findSubject = function (){
-  var url = this.url;
-
-  var re = /https*\:\/\/w*\.*(.+?)\./,
-      matches = url.match(re);
-
-  if(!matches) return this.f_retryAll(
-    'Could not find a subject in the given url: ' + url,
-    new Error('!matches[1]')
-  );
-
-  this.d.subject = matches[1];
-
-  return this.f_next();
-};
-
 /** SourceWriter.writeSource
  * Writes source code to HD
  * IF it could not write, f_retryThis
@@ -108,10 +86,10 @@ proto.findSubject = function (){
 proto.writeSource = function (){
   var self = this,
       writeDir = self.writeDir,
-      subject = self.d.subject,
+      title = self.title,
       src = self.d.src;
 
-  var fn = writeDir + '/' + subject + '_' + new Date().getTime() + '.html';
+  var fn = writeDir + '/' + title + '_' + new Date().getTime() + '.html';
 
   self.d.fn = fn;
 
@@ -132,7 +110,7 @@ proto.writeSource = function (){
 proto.notify = function (){
 
   log('Succes!');
-  log('Subject: ' + this.d.subject);
+  log('Subject: ' + this.d.title);
   log('Location: ' + this.d.fn);
   log('Content length: ' + this.d.src.length);
 
@@ -151,21 +129,24 @@ SourceWriter.prototype = proto;
 
 // f_.augment our SourceWriter. Will make the Class ready for initialization
 SourceWriter = f_.augment(SourceWriter, {
-  functionFlow: ['getSource', 'findSubject', 'writeSource', 'notify'],
+  functionFlow: ['getSource', 'writeSource', 'notify'],
   toLog: ['all'],
   desc: 'sourceWriter',
   resetOnRetryAll: true,
   maxTries: {
-    getSource: 3, findSubject: '?', writeSource: 3, notify: '?'
+    getSource: 3, writeSource: 3, notify: '?'
   }
 });
 
 
 // for each url, spawn a SourceWriter instance and pass the url
 var c = 0;
-URLS.forEach(function (url){
+SOURCES.forEach(function (source){
 
-  var sourceWriter = f_.setup( new SourceWriter({url: url}) );
+  var sourceWriter = f_.setup(
+    new SourceWriter({ url: source.url, title: source.title })
+  );
+
   sourceWriter.f_desc =  sourceWriter.f_desc + ' ' + c;
   sourceWriter.start();
 
