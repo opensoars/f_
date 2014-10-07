@@ -9,7 +9,15 @@ var f_ = require('./../../index.js');
 
 
 
-var URLS = ['https://www.yahoo.com'];
+var URLS = [
+  'https://github.com/opensoars',
+  'https://developer.mozilla.org/en-US/',
+  'https://www.bing.com',
+  'https://www.yahoo.com',
+  'https://www.google.nl',
+  'https://www.youtube.com',
+  'http://spele.nl/'
+];
 
 
 
@@ -27,26 +35,30 @@ proto.start = function (){
     new Error('!this.url || this.url.length < 3')
   );
 
-  log('url: ' + this.url);
+  log('Starting with url: ' + this.url);
 
-  this.f_next();
+  return this.f_next();
 };
 
 proto.getSource = function (){
   var self = this,
       url = self.url;
 
+
+
   function onRes(res){
     var d = '';
     res.on('data', function (chunk){ d += chunk; });
     res.on('end', function (){
       self.d.src = d;
-      self.f_next();
+
+      return self.f_next();
     });
   }
 
   function onError(err){
-    self.f_retryThis('Could not get url: ' + url, err);
+    self.f_resetNamespace();
+    return self.f_retryThis('Could not get url: ' + url, err);
   }
 
   ((url.indexOf('https') !== -1) ? https : http).get(url, onRes)
@@ -57,38 +69,53 @@ proto.getSource = function (){
 proto.findSubject = function (){
   var url = this.url;
 
-  var re = /https\:\/\/www\.(.+?)\./,
+  var re = /https*\:\/\/w*\.*(.+?)\./,
       matches = url.match(re);
 
-  if(!matches[1]) return this.f_retryAll(
-    'Could not find a subject in the given url',
+  if(!matches) return this.f_retryAll(
+    'Could not find a subject in the given url: ' + url,
     new Error('!matches[1]')
   );
 
   this.d.subject = matches[1];
 
-  this.f_next();
+  return this.f_next();
 };
 
 proto.writeSource = function (){
-  var self = this;
+  var self = this,
+      writeDir = self.writeDir,
+      subject = self.d.subject,
+      src = self.d.src;
 
-  fs.writeFile(self.writeDir + '')
+  var fn = writeDir + '/' + subject + '_' + new Date().getTime() + '.html';
 
-  self.f_next();
+  self.d.fn = fn;
+
+  function cb(err){
+    if(err){
+      self.f_resetNamespace();
+      return self.f_retryThis('Could not write file to: ' + writeDir, err);
+    }
+
+    return self.f_next();
+  }
+
+  fs.writeFile(fn, src, cb);
 };
 
 proto.notify = function (){
-  var self = this;
 
-  self.f_next();
+  log('Succes!');
+  log('Subject: ' + this.d.subject);
+  log('Location: ' + this.d.fn);
+  log('Content length: ' + this.d.src.length);
+
+  this.f_next();
 };
 
 
-proto.onFinish = function (){};
-
-
-proto.writeDir = './sources';
+proto.writeDir = __dirname + '/sources';
 
 
 SourceWriter.prototype = proto;
@@ -98,27 +125,21 @@ SourceWriter = f_.augment(SourceWriter, {
   functionFlow: ['getSource', 'findSubject', 'writeSource', 'notify'],
   toLog: ['all'],
   desc: 'sourceWriter',
-
   resetOnRetryAll: true,
-
   maxTries: {
-    wholeList: '?',
-    start: '?',
-    getSource: '3',
-    findSubject: '?',
-    writeSource: '3',
-    notify: '?'
+    getSource: 3, findSubject: '?', writeSource: 3, notify: '?'
   }
 });
 
 
+var c = 0;
 URLS.forEach(function (url){
 
   var sourceWriter = f_.setup( new SourceWriter({url: url}) );
-
+  sourceWriter.f_desc =  sourceWriter.f_desc + ' ' + c;
   sourceWriter.start();
 
-
+  c += 1;
 });
 
 
