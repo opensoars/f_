@@ -8,7 +8,6 @@ f_ (f.low, flow)
 [![Development Dependency Status](https://david-dm.org/opensoars/f_/dev-status.svg?style=flat)](https://david-dm.org/opensoars/f_#info=devDependencies&view=table)
 
 
-
 Asynchronous Node.js made easy and fun!
 
 
