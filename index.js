@@ -1,3 +1,4 @@
-process.DIRNAME = __dirname;
-
-module.exports = require('./lib/f_.js');
+module.exports = {
+  augment: require('./lib/augment.js'),
+  setup: require('./lib/setup.js')
+};
