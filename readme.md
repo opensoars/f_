@@ -46,7 +46,7 @@ taskListInstance.start();
 
 ###### Mandatory
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo)
-* Add [real world example](https://github.com/opensoars/f_/blob/master/doc/real_example/real_example.js) to documentation
+* Add [real world example](https://github.com/opensoars/f_/blob/master/doc/examples/real_example/real_example.js) to documentation
 * Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
 ###### Optional
