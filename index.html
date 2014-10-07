@@ -61,26 +61,30 @@
 <span class="c1">// Setup a task list instance.</span>
 <span class="kd">var</span> <span class="nx">taskListInstance</span> <span class="o">=</span> <span class="nx">f_</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span> <span class="k">new</span> <span class="nx">TaskList</span><span class="p">()</span> <span class="p">);</span>
 
-<span class="c1">// Call task list it's self written start mmethod.</span>
-<span class="c1">// .start() will call f_next();</span>
+<span class="c1">// Call task list it's self written start method.</span>
+<span class="c1">// taskListInstance.start(); will call f_next();</span>
 <span class="nx">taskListInstance</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 </pre></div>
 
-<h3>
+<hr><h3>
 <a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>Todo</h3>
 
 <h6>
 <a name="mandatory" class="anchor" href="#mandatory"><span class="octicon octicon-link"></span></a>Mandatory</h6>
 
 <ul>
-<li>Write memory tests using <a href="https://github.com/opensoars/raminfo">raminfo</a>.</li>
-<li>Write a 'real world' example (will be used in documentation)</li>
-<li>Complete documentation</li>
+<li>Write memory tests using <a href="https://github.com/opensoars/raminfo">raminfo</a>
+</li>
+<li>Finish the <a href="https://github.com/opensoars/f_/blob/master/doc/real_example.js">real world example</a>
+</li>
+<li>Complete <a href="https://github.com/opensoars/f_#documentation-outdated">documentation</a>
+</li>
 </ul><h6>
 <a name="optional" class="anchor" href="#optional"><span class="octicon octicon-link"></span></a>Optional</h6>
 
 <ul>
-<li>Add functionality for "default maxTries from maxTries object? <code>maxTries: { methods: '?' }</code>"</li>
+<li>Add default method maxTries. Example: <code>maxTries: { allMethods: 5 }</code>
+</li>
 </ul><h3>
 <a name="time-schedule-from-the-10th-of-september-2014" class="anchor" href="#time-schedule-from-the-10th-of-september-2014"><span class="octicon octicon-link"></span></a>Time schedule (from the 10th of September 2014)</h3>
 
@@ -204,7 +208,7 @@
 <span class="cm"> * Create an empty namespace object to hold our proto(type) methods</span>
 <span class="cm"> * Which will be assigned to the TaskList its prototype object</span>
 <span class="cm"> */</span>
-<span class="kd">var</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">proto</span> <span class="o">=</span> <span class="p">{};</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * @method start  Check if requirements are met</span>
@@ -389,7 +393,7 @@
 <span class="cm"> * the same logic as the ugly example is used.</span>
 <span class="cm"> */</span>
 
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 
   <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">){</span>
@@ -411,7 +415,7 @@
 <span class="p">};</span>
 
 
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">writeGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">writeGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
       <span class="nx">googleSource</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">d</span><span class="p">.</span><span class="nx">googleSource</span><span class="p">;</span>
 
@@ -422,7 +426,7 @@
 
 <span class="p">};</span>
 
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getYt</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">getYt</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 
   <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'http://www.youtube.com'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">){</span>
@@ -438,7 +442,7 @@
   <span class="p">});</span>
 <span class="p">};</span>
 
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">writeYt</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">writeYt</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
       <span class="nx">ytSource</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">d</span><span class="p">.</span><span class="nx">ytSource</span><span class="p">;</span>
 
@@ -464,7 +468,7 @@
 <span class="cm"> * the complete error stack when the task is aborted, or when we look up</span>
 <span class="cm"> * the f_ 'errs' array filled with error objects.</span>
 <span class="cm"> */</span>
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 
   <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">){</span>
@@ -484,7 +488,7 @@
 <span class="p">};</span>
 
 
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">writeGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">writeGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
       <span class="nx">googleSource</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">d</span><span class="p">.</span><span class="nx">googleSource</span><span class="p">;</span>
 
@@ -502,7 +506,7 @@
 <code>on('error')</code> event listeners. The problem with that is, we cannot directly 'throw' in a retry when something fails. Writing <code>on('error')</code> listeners everytime is tedious. Something we try to remove from programming Node programs (don't forget you CAN still use them!). So with <code>f_</code> we can do it directly from a piece of code that causes an error. Take a look at this example:</p>
 
 <div class="highlight highlight-js"><pre><span class="c1">// Immediately retry this asynchronous part of a larger task list</span>
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 
   <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">){</span>
@@ -517,7 +521,7 @@
 
 <p>Let's say we use the source code received from Google.com in a later function but the <code>GET</code> request fails the first time, we want to make sure every piece of data we stored is removed from our RAM. We need a way to make <code>f_</code> know what data to remove from the data namespace object. We can do this by manualy providing <code>f_</code> with objects.</p>
 
-<div class="highlight highlight-js"><pre><span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<div class="highlight highlight-js"><pre><span class="nx">proto</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 
   <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'http://www.google.com'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">){</span>
@@ -562,7 +566,7 @@ Please note that when you use the <code>self.resetAllData();</code> all namespac
 <span class="cm"> * When using f_, I tend to use 'start' as a function which will check</span>
 <span class="cm"> * for dependencies and as a setup.</span>
 <span class="cm"> */</span>
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">start</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">start</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="c1">// ... dependency verification could/should be here ...</span>
 
   <span class="nx">self</span><span class="p">.</span><span class="nx">setDataObject</span><span class="p">(</span><span class="s1">'d'</span><span class="p">);</span>
@@ -581,7 +585,7 @@ Please note that when you use the <code>self.resetAllData();</code> all namespac
 
 <span class="p">};</span>
 
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">getGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 
   <span class="nx">self</span><span class="p">.</span><span class="nx">d</span><span class="p">.</span><span class="nx">googleSource</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
@@ -599,7 +603,7 @@ Please note that when you use the <code>self.resetAllData();</code> all namespac
 
 <span class="p">};</span>
 
-<span class="nx">GetAndWriteTasks</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">writeGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+<span class="nx">proto</span><span class="p">.</span><span class="nx">writeGoogle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
   <span class="c1">// Check if the required data is present. In case it isn't,</span>
   <span class="c1">// we retry our whole task list</span>
 <span class="p">};</span>
