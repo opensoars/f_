@@ -7,8 +7,6 @@ var log = new Ezlog({ pref: {t: '[sourceWriter]', c: 'green' } });
 
 var f_ = require('./../../index.js');
 
-
-
 var URLS = [
   'https://github.com/opensoars',
   'https://developer.mozilla.org/en-US/',
@@ -20,15 +18,26 @@ var URLS = [
 ];
 
 
-
+/** SourceWriter Class constructor function
+ * @arg     o    {object}  Options object
+ * @returns self {Class}   Make chains possible
+ */
 function SourceWriter(o){
   o = o || {}; for(var key in o) this[key] = o[key];
   return this;
 }
 
+
+// Empty object which will hold our f_ functionality untill
+// we assign it to the SourceWriter.prototype
 var proto = {};
 
 
+/** SourceWriter.start
+ * Starts up our f_ task list
+ * IF no or wrong url, f_abort
+ * Log if url is OK
+ */
 proto.start = function (){
   if(!this.url || this.url.length < 3) return this.f_abort(
     'No url, or url is to short',
@@ -40,11 +49,14 @@ proto.start = function (){
   return this.f_next();
 };
 
+/** SourceWriter.getSource
+ * Gets a source code from given url
+ * IF request fails, f_retryThis
+ * @d.src {string}  Source code
+ */
 proto.getSource = function (){
   var self = this,
       url = self.url;
-
-
 
   function onRes(res){
     var d = '';
@@ -66,6 +78,12 @@ proto.getSource = function (){
 
 };
 
+/** SourceWriter.findSubject
+ * Finds a subject string in our url
+ * Example:  https://google.com  =>  google
+ * IF there aren't regex matches, f_retryAll
+ * @d.subject {string}  Source code subject
+ */
 proto.findSubject = function (){
   var url = this.url;
 
@@ -82,6 +100,11 @@ proto.findSubject = function (){
   return this.f_next();
 };
 
+/** SourceWriter.writeSource
+ * Writes source code to HD
+ * IF it could not write, f_retryThis
+ * @d.fn {string}  Filename of the file to be written
+ */
 proto.writeSource = function (){
   var self = this,
       writeDir = self.writeDir,
@@ -93,10 +116,9 @@ proto.writeSource = function (){
   self.d.fn = fn;
 
   function cb(err){
-    if(err){
-      self.f_resetNamespace();
+    if(err)
       return self.f_retryThis('Could not write file to: ' + writeDir, err);
-    }
+    
 
     return self.f_next();
   }
@@ -104,6 +126,9 @@ proto.writeSource = function (){
   fs.writeFile(fn, src, cb);
 };
 
+/** SourceWriter.notify
+ * Does some pretty logging about results
+ */
 proto.notify = function (){
 
   log('Succes!');
@@ -115,12 +140,16 @@ proto.notify = function (){
 };
 
 
+// writeDir has to be the same with every instance, so we just assign
+// it to the proto
 proto.writeDir = __dirname + '/sources';
 
 
+// Let's give our SourceWriter a complete prototype from proto
 SourceWriter.prototype = proto;
 
 
+// f_.augment our SourceWriter. Will make the Class ready for initialization
 SourceWriter = f_.augment(SourceWriter, {
   functionFlow: ['getSource', 'findSubject', 'writeSource', 'notify'],
   toLog: ['all'],
@@ -132,6 +161,7 @@ SourceWriter = f_.augment(SourceWriter, {
 });
 
 
+// for each url, spawn a SourceWriter instance and pass the url
 var c = 0;
 URLS.forEach(function (url){
 
