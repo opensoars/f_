@@ -33,8 +33,8 @@ TaskList = f_.augment(require('TaskList.js'));
 // Setup a task list instance.
 var taskListInstance = f_.setup( new TaskList() );
 
-// Call task list it's self written start mmethod.
-// .start() will call f_next();
+// Call task list it's self written start method.
+// taskListInstance.start(); will call f_next();
 taskListInstance.start();
 ```
 
@@ -50,7 +50,7 @@ taskListInstance.start();
 * Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
 ###### Optional
-* Add default method maxTries example: `maxTries: { allMethods: 5 }`
+* Add default method maxTries. Example: `maxTries: { allMethods: 5 }`
 
 
 ### Time schedule (from the 10th of September 2014)
