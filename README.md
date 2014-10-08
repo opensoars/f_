@@ -23,7 +23,7 @@ Asynchronous Node.js made easy and fun!
 `npm install f_`
 
 
-### Use
+### Usage
 ```js
 var f_ = require('f_');
 
@@ -37,9 +37,6 @@ var taskListInstance = f_.setup( new TaskList() );
 // taskListInstance.start(); will call f_next();
 taskListInstance.start();
 ```
-
-
----
 
 
 ### [Examples](https://github.com/opensoars/f_/tree/master/doc/examples)
