@@ -1,4 +1,4 @@
-var f_ = require('./../node_modules/f_');
+var f_ = require('./../../../index.js');
 
 function TaskList(){}
 
