@@ -47,10 +47,6 @@ proto.start = function (){
  */
 proto.getSource = function (retryMethod){
 
-	//if(retryMethod) console.log('getSource,', retryMethod);
-
-	//log('getSource');
-
 	var self = this;
 
 	self.d = { hello: 'world' };
@@ -174,35 +170,8 @@ proto.notify = function (){
 
 };
 
-
-/*
-proto.onRetryThis = function (){
-	log('!onRetryThis');
-}
-
-proto.onRetryAll = function (){
-
-};
-
-proto.onNext = function (nextData){
-	//log('!onNext!' + JSON.stringify(nextData));
-};
-
-proto.onFinish = function (){
-	//log('!onFinish!');
-	clear()
-};
-
-proto.onAbort = function (){
-	//log('!onAbort!');
-};
-*/
-
-
-// Adding data to Class proto object, will be same in every instance.
-// No need to add in our shared data object namespace, which could be reset.
-// Also using the proto object, we will only assign it once.
 proto.writeDir = './sourceCodes';
+
 
 TaskList.prototype = proto;
 
