@@ -22,7 +22,12 @@ Asynchronous Node.js made easy and fun!
 ### Install
 `npm install f_`
 
-### [Examples](https://github.com/opensoars/f_/tree/master/doc/examples)
+### Examples
+Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse f_ examples. Altogether they will cover everything f_ has to offer.
+
+### Run tests and get coverage (lcov) report
+`npm run localTest`
+
 
 ### Basic usage
 ```js
@@ -40,10 +45,6 @@ var taskListInstance = f_.setup( new TaskList() );
 // taskListInstance.start(); will call f_next();
 taskListInstance.start();
 ```
-
-
-### Run tests and get coverage (lcov) report
-`npm run localTest`
 
 
 ---
