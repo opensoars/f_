@@ -1,11 +1,11 @@
 var fs = require('fs'),
     http = require('http'),
     https = require('https'),
-    Ezlog = require('./../../../node_modules/Ezlog');
+    Ezlog = require('./../node_modules/Ezlog');
 
 var log = new Ezlog({ pref: {t: '[sourceWriter]', c: 'green' } });
 
-var f_ = require('./../../../index.js');
+var f_ = require('./../node_modules/f_');
 
 var SOURCES = [
   { url: 'https://github.com/opensoars', title: 'github'},
