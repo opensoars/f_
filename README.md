@@ -45,16 +45,18 @@ taskListInstance.start();
 ### Todo
 
 ###### Mandatory
-* Make user have a choice about wheter to prefix f_ methods and properties, example: `f_next`. Or to namespace them, example: `f_.next()`. It would require a LOT of `if(this.f_i === 0 || this.f_.i === 0`. I do not think this is the way to do it. Maybe it just has to be namespaced...
+
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo)
 * Add [real example](https://github.com/opensoars/f_/blob/master/doc/examples/real_example/real_example.js) to documentation
 * Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
 ###### Optional
+
 * Add default method maxTries. Example: `maxTries: { allMethods: 5 }`
 
 
 ### Time schedule (from the 10th of September 2014)
+
 * 1.5/2 weeks (will result in pre-alpha release)
   - Further brainstorming
   - Expand documentation all features
@@ -75,6 +77,7 @@ taskListInstance.start();
 
 
 ## Future documentation content
+
 1. Title
 2. Badges
 3. One liner
