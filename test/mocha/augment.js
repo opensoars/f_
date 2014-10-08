@@ -111,11 +111,11 @@ describe('f_.augment', function (){
   describe('#augment object', function (){
     it('should be able to augment a plain object', function (done){
       
-      taskList = f_.augment(taskListObject, {
+      TaskList = f_.augment(taskListObject, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
 
-      taskList = f_.setup(taskList);
+      taskList = f_.setup(TaskList);
 
       // Just a random property to check if it worked
       assert.equal(typeof taskList.f_next, 'function');
@@ -124,14 +124,33 @@ describe('f_.augment', function (){
     });
 
     it('should be able to run the same as with a function / class', function (done){
-      taskList = f_.augment(taskListObject, {
+      TaskList = f_.augment(taskListObject, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
-      taskList = f_.setup(taskList);
+      taskList = f_.setup(TaskList);
       taskList.start();
       taskList.onFinish = done();
     });
 
+  });
+
+
+  describe('#maxTries.allMethods', function (){
+    it('should have set maxTries for all methods to the given allMethods value', function (done){
+      var retryValue = 5,
+          m1 = 'getSource', m2 = 'writeSource', m3 = 'notify';
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: [m1, m2, m3],
+        maxTries: { allMethods: retryValue }
+      });
+
+      assert.equal(TaskList.f_maxTries[m1], retryValue);
+      assert.equal(TaskList.f_maxTries[m2], retryValue);
+      assert.equal(TaskList.f_maxTries[m3], retryValue);
+
+      done();
+    });
   });
 
 });
