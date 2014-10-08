@@ -52,6 +52,7 @@ taskListInstance.start();
 
 ### Todo
 
+* Write more [examples](https://github.com/opensoars/f_/tree/master/doc/examples)
 * Write memory tests using [raminfo](https://github.com/opensoars/raminfo)
 * Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
