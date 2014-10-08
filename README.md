@@ -29,7 +29,9 @@ Asynchronous Node.js made easy and fun!
 var f_ = require('f_');
 
 // Augment a task list class.
-TaskList = f_.augment(require('TaskList.js'));
+TaskList = f_.augment(require('TaskList.js'), {
+  functionFlow: ['firstMethod', 'secondMethod', 'lastMethod']
+});
 
 // Setup a task list instance.
 var taskListInstance = f_.setup( new TaskList() );
@@ -38,6 +40,10 @@ var taskListInstance = f_.setup( new TaskList() );
 // taskListInstance.start(); will call f_next();
 taskListInstance.start();
 ```
+
+
+### Run tests and get coverage (lcov) report
+`npm run localTest`
 
 
 ---
