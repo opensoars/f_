@@ -1,11 +1,11 @@
 var cls = require('opensoars_cls');
 
+
 /**
  * Top level class to draw insances from
- * @o.pref {object}  How to log prefix
- * @o.text {object}  How to log text
- *
- * If the message to log is an object, we JSON stringify it.
+ * @o.p {object}   How to log prefix
+ * @o.t {object}   How to log text
+ * @return {function} Logger function closure over params
  */
 function Ezlog(o){
 	o = o || {};
@@ -13,22 +13,14 @@ function Ezlog(o){
 	if(typeof o === 'string') o = {};
 	if(o instanceof Array) o = {};
 
-	if(!o.pref) o.pref = { t: '[ezlog]', c: 'white', s: '' };
-	if(!o.text) o.text = { t: '', c: 'white', s: '' };
+	if(!o.p) o.p = { t: '', c: '', s: '' };
+	if(!o.t) o.t = { t: '', c: '', s: '' };
 
-	var pref = cls({ t: o.pref.t, c: o.pref.c, s: o.pref.s });
+	var pref = cls(o.p.t, o.p.c, o.p.s);
 
-	return function Ezlog(){
-
+	return function ezlog(){
 		for(var i=0, as=arguments; i<as.length; i+=1)
-			console.log(
-				pref,
-				cls({
-					t: typeof as[i] === 'object' ? JSON.stringify(as[i]) : as[i],
-					c: o.text.c, s: o.text.s
-				})
-			);
-		
+			console.log( pref, cls(as[i], o.t.c, o.t.s) );
 	};
 
 }
