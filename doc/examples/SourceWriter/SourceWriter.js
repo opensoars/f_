@@ -18,7 +18,8 @@ var SOURCES = [
 ];
 
 
-/** SourceWriter Class constructor function
+/**
+ * @class SourceWriter
  * @arg     o    {object}  Options object
  * @returns self {Class}   Make chains possible
  */
@@ -33,7 +34,8 @@ function SourceWriter(o){
 var proto = {};
 
 
-/** SourceWriter.start
+/**
+ * @method start
  * Starts up our f_ task list
  * IF no or wrong url, f_abort
  * Log if url is OK
@@ -49,7 +51,8 @@ proto.start = function (){
   return this.f_next();
 };
 
-/** SourceWriter.getSource
+/**
+ * @method getSource
  * Gets a source code from given url
  * IF request fails, f_retryThis
  * @d.src {string}  Source code
@@ -78,7 +81,8 @@ proto.getSource = function (){
 
 };
 
-/** SourceWriter.writeSource
+/**
+ * @method writeSource
  * Writes source code to HD
  * IF it could not write, f_retryThis
  * @d.fn {string}  Filename of the file to be written
@@ -104,7 +108,8 @@ proto.writeSource = function (){
   fs.writeFile(fn, src, cb);
 };
 
-/** SourceWriter.notify
+/**
+ * @method notify
  * Does some pretty logging about results
  */
 proto.notify = function (){
