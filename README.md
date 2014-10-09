@@ -21,9 +21,6 @@ Asynchronous Node.js made easy and fun!
 * [ezlog](https://github.com/opensoars/ezlog)
 
 
-### Install
-`npm install f_`
-
 ### Examples
 Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse f_ examples. Altogether they will cover everything f_ has to offer.
 
