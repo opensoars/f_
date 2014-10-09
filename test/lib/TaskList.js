@@ -1,5 +1,5 @@
 var Ezlog = require('ezlog'),
-		log = new Ezlog({pref:{t:'[TaskList]',c:'green'}});
+		log = new Ezlog({ p: {t:'[TaskList]', c:'green'} });
 
 
 var TaskList = function TaskList (o){

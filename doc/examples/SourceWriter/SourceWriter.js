@@ -20,7 +20,7 @@ var SOURCES = [
 
 /**
  * @class SourceWriter
- * @arg     o    {object}  Options object
+ * @param   o    {object}  Options object
  * @returns self {Class}   Make chains possible
  */
 function SourceWriter(o){
