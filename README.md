@@ -2,8 +2,8 @@ f_ (f.low, flow)
 ==================
 
 
-[![Build Status](https://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
-[![Coverage Status](https://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
+[![Build Status](https://travis-ci.org/opensoars/f_.svg?branch=master)](https://travis-ci.org/opensoars/f_)
+[![Coverage Status](https://img.shields.io/coveralls/opensoars/f_.svg)](https://coveralls.io/r/opensoars/f_?branch=master)
 [![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
 [![Development Dependency Status](https://david-dm.org/opensoars/f_/dev-status.svg?style=flat)](https://david-dm.org/opensoars/f_#info=devDependencies&view=table)
 
@@ -23,6 +23,7 @@ Asynchronous Node.js made easy and fun!
 
 ### Examples
 Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse f_ examples. Altogether they will cover everything f_ has to offer.
+
 
 ### Run tests and get coverage (lcov) report
 `npm run localTest`
