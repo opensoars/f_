@@ -1,3 +1,5 @@
+var qs = require('querystring');
+
 function GET(req, res){
 
   this.req = req;
@@ -12,27 +14,36 @@ proto.start  = function (){
   if(!this.req) return this.f_abort('@GET.start', '!this.req');
   if(!this.res) return this.f_abort('@GET.start', '!this.res');
 
+  this.f_next();
 
+  return this;
+};
+
+proto.getQs = function (){
+  this.d.qs = this.req.url.slice(2);
   this.f_next();
 };
 
 proto.collectInfo = function (){
-
-
-  //this.d
-
+  this.d.info = qs.parse(this.d.qs);
 
   this.f_next();
-
 };
 
 proto.end = function (){
-
-  this.res.end('end');
-
   this.f_next();
+
+  this.removeFromStack();
 };
 
+
+proto.onAbort = function (){
+  this.res.end('abort!');
+};
+
+proto.onFinish = function (){
+  this.res.end('finish!');
+};
 
 GET.prototype = proto;
 
@@ -41,7 +52,7 @@ module.exports = {
   tasks: GET,
 
   f_config: {
-    functionFlow: ['collectInfo', 'end'],
+    functionFlow: ['getQs', 'collectInfo', 'end'],
     toLog: ['all']
   }
 };
