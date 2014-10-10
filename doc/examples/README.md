@@ -9,6 +9,7 @@ Some (basic) f_ examples.
 
 * [SourceWriter](https://github.com/opensoars/f_/tree/master/doc/examples/SourceWriter)
 * [minimal](https://github.com/opensoars/f_/tree/master/doc/examples/minimal)
+* [middleware](https://github.com/opensoars/f_/tree/master/doc/examples/middleware)
 
 
 --- 
