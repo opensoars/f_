@@ -1,21 +1,29 @@
-// Simple HTTP requester to test handleHTTP.js
+/** 
+ * Simple HTTP requester to test httpHandler.js
+ */
 
 var http = require('http'),
     qs = require('querystring');
 
 
-var Ezlog = require('./../../../node_modules/Ezlog');
-
-var log = new Ezlog({ p: {t: '[requester]', c: 'blue', s: 'bold' } }),
+var Ezlog = require('./../../../node_modules/Ezlog'),
+    log = new Ezlog({ p: {t: '[requester]', c: 'blue', s: 'bold' } }),
     logRed = new Ezlog({ p: {t: '[requester]', c: 'red' } });
 
 
-
+/** randomQs namespace
+ * @prop   keys   {array}  Characters
+ * @prop   vals   {array}  Integers
+ * @method create  Creates a random querystring
+ */
 var randomQs = {
 
   keys: function (){ return 'abcdefghijklmnopqrstuvwxyz'.split(''); }(),
   vals: function (){ return '1234567890'.split(''); }(),
 
+  /** Creates a random querystring
+   * @return {string}  A random querystring
+   */
   create: function (){
     var k = this.keys, v = this.vals,
         json = {};
@@ -29,7 +37,10 @@ var randomQs = {
 };
 
 
-
+/** Request looper
+ * GETs localhost:8888/?random=querystring every 5s
+ * Logs about request status
+ */
 (function makeGet(){
 
   var url = 'http://127.0.0.1:' + process.PORT + '?' + randomQs.create()
