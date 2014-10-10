@@ -21,9 +21,12 @@ var handlers = {
 
 };
 
-
+// Holds our handlers
 var handlerStack = [];
 
+/** Simple method that removed a handler from array
+ * @param handler {object}  A handler instance to remove
+ */
 handlerStack.remove = function (handler){
   this.splice(this.indexOf(handler, 1));
 };
@@ -35,11 +38,10 @@ handlerStack.remove = function (handler){
  */
 http.createServer(function (req, res){
 
-  // Is there a handler?
+  // Is there a handler for the incomming request it's method?
   if(handlers[req.method]){
 
     var handlerInstance = f_.setup( new handlers[req.method](req, res) );
-
 
     handlerInstance.removeFromStack = function (){
       handlerStack.remove(this);

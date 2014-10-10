@@ -21,6 +21,7 @@ proto.start  = function (){
 
 proto.getQs = function (){
   this.d.qs = this.req.url.slice(2);
+  
   this.f_next();
 };
 
