@@ -3,7 +3,7 @@ var fs = require('fs'),
     https = require('https'),
     Ezlog = require('./../../../node_modules/Ezlog');
 
-var log = new Ezlog({ pref: {t: '[sourceWriter]', c: 'green' } });
+var log = new Ezlog({ p: {t: '[sourceWriter]', c: 'green' } });
 
 var f_ = require('./../../../index.js');
 

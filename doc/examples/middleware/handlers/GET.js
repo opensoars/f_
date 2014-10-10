@@ -26,7 +26,22 @@ proto.collectInfo = function (){
 
 };
 
+proto.end = function (){
+
+  this.res.end('end');
+
+  this.f_next();
+};
+
+
 GET.prototype = proto;
 
 
-module.exports = GET;
+module.exports = {
+  tasks: GET,
+
+  f_config: {
+    functionFlow: ['collectInfo', 'end'],
+    toLog: ['all']
+  }
+};
