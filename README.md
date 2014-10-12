@@ -20,14 +20,11 @@ Asynchronous Node.js made easy and fun!
 * [cls](https://github.com/opensoars/cls)
 * [ezlog](https://github.com/opensoars/ezlog)
 
-
 ### Examples
 Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse f_ examples. Altogether they will cover everything f_ has to offer.
 
-
 ### Run tests and get coverage (lcov) report
 `npm run localTest`
-
 
 ### Basic usage
 ```js
