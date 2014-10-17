@@ -34,8 +34,10 @@ var i = 0;
   taskList.f_desc = i;
 
   taskList.onFinish = function (){
-    this.f_cleanup();
-    taskList = null;
+    
+    taskList = this.f_cleanup();
+
+    console.log(taskList);
   };
 
   taskList.start();
