@@ -27,9 +27,11 @@ var taskList = new TaskList({
 taskList = f_.setup(taskList);
 
 taskList.onFinish = function (){
-  console.log(' ! onFinish !');
-  //console.log(this);
- // console.log(this);
+  this.f_cleanup();
+
+  console.log(this);
+  console.log(this.__proto__);
+
 };
 
 taskList.start();
