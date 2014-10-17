@@ -37,4 +37,21 @@ describe('cleanup', function (){
     taskList.start();
   });
 
+  describe('#f_cleanup();', function (){
+    it('should return `null`', function (done){
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = new TaskList();
+      taskList = f_.setup(taskList);
+      taskList.onFinish = function (){
+        assert.equal(this.f_cleanup(), null);
+        done();
+      };
+      taskList.start();
+    });
+  });
+
+
 });
