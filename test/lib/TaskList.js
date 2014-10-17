@@ -65,15 +65,13 @@ proto.getSource = function (retryMethod){
 
 	if(self.emptyAbortErr) return self.f_abort();
 
-
-	var timeOut = 1;
-
 	if(self.randomTimeout)
-		timeOut = Math.round( (Math.random() * 40) + 10 );
+		return setTimeout(function (){
+			self.f_next();
+		}, Math.round( (Math.random() * 40) + 10 ));
 	
-	// Make it async
-	setTimeout(function (){ self.f_next(); }, timeOut);
 
+	self.f_next();
 };
 
 
