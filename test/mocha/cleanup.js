@@ -7,6 +7,7 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('cleanup', function (){
   it('should clean the __proto__', function (done){
+
     TaskList = f_.augment(TaskList, {
       functionFlow: ['getSource', 'writeSource', 'notify']
     });
@@ -19,9 +20,11 @@ describe('cleanup', function (){
       done();
     };
     taskList.start();
+
   });
 
   it('should have 0 own properties', function (done){
+
     TaskList = f_.augment(TaskList, {
       functionFlow: ['getSource', 'writeSource', 'notify']
     });
@@ -35,10 +38,13 @@ describe('cleanup', function (){
       done();
     };
     taskList.start();
+
   });
 
   describe('#f_cleanup();', function (){
+
     it('should return `null`', function (done){
+
       TaskList = f_.augment(TaskList, {
         functionFlow: ['getSource', 'writeSource', 'notify']
       });
@@ -50,7 +56,9 @@ describe('cleanup', function (){
         done();
       };
       taskList.start();
+      
     });
+
   });
 
 
