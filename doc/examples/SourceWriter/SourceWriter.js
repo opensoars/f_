@@ -76,7 +76,7 @@ proto.getSource = function (){
     return self.f_retryThis('Could not get url: ' + url, err);
   }
 
-  ((url.indexOf('https') !== -1) ? https : http).get(url, onRes)
+  (url.indexOf('https') !== -1 ? https : http).get(url, onRes)
     .on('error', onError);
 
 };
