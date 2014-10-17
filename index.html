@@ -39,24 +39,41 @@
 <a href="https://david-dm.org/opensoars/f_"><img src="https://david-dm.org/opensoars/f_.svg?style=flat" alt="Dependency Status"></a>
 <a href="https://david-dm.org/opensoars/f_#info=devDependencies&amp;view=table"><img src="https://david-dm.org/opensoars/f_/dev-status.svg?style=flat" alt="Development Dependency Status"></a></p>
 
-<hr><h3>
+<p><a href="https://www.npmjs.org/package/f_"><img src="https://nodei.co/npm/f_.png?compact=true" alt="NPM"></a></p>
+
+<hr>
+
+<h3>
 <a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h3>
 
 <ul>
 <li><a href="https://github.com/opensoars/cls">cls</a></li>
 <li><a href="https://github.com/opensoars/ezlog">ezlog</a></li>
-</ul><h3>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h3>
-
-<p><code>npm install f_</code></p>
+</ul>
 
 <h3>
-<a name="use" class="anchor" href="#use"><span class="octicon octicon-link"></span></a>Use</h3>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<p>Click <a href="https://github.com/opensoars/f_/tree/master/doc/examples">here</a> to browse f_ examples. Altogether they will cover everything f_ has to offer.</p>
+
+<h3>
+<a name="run-tests-and-get-coverage-lcov-report" class="anchor" href="#run-tests-and-get-coverage-lcov-report"><span class="octicon octicon-link"></span></a>Run tests and get coverage (lcov) report</h3>
+
+<p><code>npm run localTest</code></p>
+
+<h3>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic usage</h3>
 
 <div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">f_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'f_'</span><span class="p">);</span>
 
+<span class="kd">var</span> <span class="nx">TaskList</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'TaskList.js'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">f_config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">functionFlow</span><span class="o">:</span> <span class="p">[</span><span class="s1">'firstMethod'</span><span class="p">,</span> <span class="s1">'secondMethod'</span><span class="p">,</span> <span class="s1">'lastMethod'</span><span class="p">]</span>
+<span class="p">};</span>
+
 <span class="c1">// Augment a task list class.</span>
-<span class="nx">TaskList</span> <span class="o">=</span> <span class="nx">f_</span><span class="p">.</span><span class="nx">augment</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">'TaskList.js'</span><span class="p">));</span>
+<span class="nx">TaskList</span> <span class="o">=</span> <span class="nx">f_</span><span class="p">.</span><span class="nx">augment</span><span class="p">(</span><span class="nx">TaskList</span><span class="p">,</span> <span class="nx">f_config</span><span class="p">);</span>
 
 <span class="c1">// Setup a task list instance.</span>
 <span class="kd">var</span> <span class="nx">taskListInstance</span> <span class="o">=</span> <span class="nx">f_</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span> <span class="k">new</span> <span class="nx">TaskList</span><span class="p">()</span> <span class="p">);</span>
@@ -66,25 +83,22 @@
 <span class="nx">taskListInstance</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 </pre></div>
 
-<hr><h3>
+<hr>
+
+<h3>
 <a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>Todo</h3>
 
-<h6>
-<a name="mandatory" class="anchor" href="#mandatory"><span class="octicon octicon-link"></span></a>Mandatory</h6>
-
 <ul>
+<li>Write a cleanup method that can be called by users!</li>
+<li>Write more <a href="https://github.com/opensoars/f_/tree/master/doc/examples">examples</a>
+</li>
 <li>Write memory tests using <a href="https://github.com/opensoars/raminfo">raminfo</a>
 </li>
-<li>Add <a href="https://github.com/opensoars/f_/blob/master/doc/examples/real_example/real_example.js">real example</a> to documentation</li>
 <li>Complete <a href="https://github.com/opensoars/f_#documentation-outdated">documentation</a>
 </li>
-</ul><h6>
-<a name="optional" class="anchor" href="#optional"><span class="octicon octicon-link"></span></a>Optional</h6>
+</ul>
 
-<ul>
-<li>Add default method maxTries. Example: <code>maxTries: { allMethods: 5 }</code>
-</li>
-</ul><h3>
+<h3>
 <a name="time-schedule-from-the-10th-of-september-2014" class="anchor" href="#time-schedule-from-the-10th-of-september-2014"><span class="octicon octicon-link"></span></a>Time schedule (from the 10th of September 2014)</h3>
 
 <ul>
@@ -115,7 +129,11 @@
 <li>Complete documentation</li>
 </ul>
 </li>
-</ul><hr><h2>
+</ul>
+
+<hr>
+
+<h2>
 <a name="future-documentation-content" class="anchor" href="#future-documentation-content"><span class="octicon octicon-link"></span></a>Future documentation content</h2>
 
 <ol>
@@ -148,13 +166,17 @@
 </ol>
 </li>
 <li>Example usage</li>
-</ol><hr><h2>
+</ol>
+
+<hr>
+
+<h2>
 <a name="documentation-outdated" class="anchor" href="#documentation-outdated"><span class="octicon octicon-link"></span></a>Documentation (outdated)</h2>
 
 <h3>
 <a name="problem-to-be-solved" class="anchor" href="#problem-to-be-solved"><span class="octicon octicon-link"></span></a>Problem to be solved</h3>
 
-<p>Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you down in callback hell).</p>
+<p>Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you into (callback) hell).</p>
 
 <h3>
 <a name="how-is-f_-going-to-solve-this-problem" class="anchor" href="#how-is-f_-going-to-solve-this-problem"><span class="octicon octicon-link"></span></a>How is <code>f_</code> going to solve this problem?</h3>
@@ -170,18 +192,26 @@
 <li>HTTP requests</li>
 <li>Complex equation solving</li>
 <li>Audio/video compressing</li>
-</ul><p>Ofcourse small tasks in larger asynchronous tasks will be synchronous. Some examples are:</p>
+</ul>
+
+<p>Ofcourse small tasks in larger asynchronous tasks will be synchronous. Some examples are:</p>
 
 <ul>
 <li>Concatenating a string</li>
 <li>solving simple equations</li>
 <li>Declaring variables</li>
-</ul><p>When we look at the two lists above, we can categorize computational tasks into two separate groups:</p>
+</ul>
+
+<p>When we look at the two lists above, we can categorize computational tasks into two separate groups:</p>
 
 <ol>
 <li>Asynchronous (either simple and quick or complex and long lasting)</li>
 <li>Synchronous (only simple and quick)</li>
-</ol><h3>
+</ol>
+
+
+
+<h3>
 <a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h3>
 
 <p>Everything <code>f_</code> offers will be used in the code example below. We will be using a class based approach (plain object not recommended). Since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.</p>
@@ -559,7 +589,9 @@ Please note that when you use the <code>self.resetAllData();</code> all namespac
 </li>
 <li>DISCUSS: <code>retryThis(optErrMsgString, optErrObj);</code>
 </li>
-</ul><p>Let's put everything in a part of a 'real world' code example:</p>
+</ul>
+
+<p>Let's put everything in a part of a 'real world' code example:</p>
 
 <div class="highlight highlight-js"><pre><span class="cm">/**</span>
 <span class="cm"> * When using f_, I tend to use 'start' as a function which will check</span>
