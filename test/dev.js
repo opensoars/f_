@@ -4,7 +4,7 @@ var f_ = require(__dirname + './../index.js'),
 
 TaskList = f_.augment(TaskList, {
   functionFlow: ['getSource', 'writeSource', 'notify'],
-  toLog: ['all'],
+  toLog: ['none'],
   desc: 'dev.js task list',
   maxTries: {
     wholeList: 2,
@@ -15,23 +15,39 @@ TaskList = f_.augment(TaskList, {
   }
 });
 
+var i = 0;
+(function run(){
 
-var taskList = new TaskList({
-  //retryAllOnce: true
-  //retryThisOnce: true
-  //retryFromOnce: true
-  //retryMethodOnceFromFirst: true
-  //retryMethodOnceWithoutCb: true
-});
+  if(i >= 5) return;
 
-taskList = f_.setup(taskList);
 
-taskList.onFinish = function (){
-  this.f_cleanup();
 
-  console.log(this);
-  console.log(this.__proto__);
+  var taskList = new TaskList({
+    //retryAllOnce: true
+    //retryThisOnce: true
+    //retryFromOnce: true
+    //retryMethodOnceFromFirst: true
+    //retryMethodOnceWithoutCb: true,
+    randomTimeout: true
+  });
 
-};
+  taskList = f_.setup(taskList);
 
-taskList.start();
+  taskList.f_desc = i;
+
+  taskList.onFinish = function (){
+    console.log(this.f_desc, this.f_timeTaken);
+
+    this.f_cleanup();
+  };
+
+  taskList.start();
+
+
+  i += 1;
+  return run();
+
+}());
+
+
+
