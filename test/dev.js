@@ -20,8 +20,6 @@ var i = 0;
 
   if(i >= 5) return;
 
-
-
   var taskList = new TaskList({
     //retryAllOnce: true
     //retryThisOnce: true
@@ -36,13 +34,11 @@ var i = 0;
   taskList.f_desc = i;
 
   taskList.onFinish = function (){
-    console.log(this.f_desc, this.f_timeTaken);
-
     this.f_cleanup();
+    taskList = null;
   };
 
   taskList.start();
-
 
   i += 1;
   return run();
