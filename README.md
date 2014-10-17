@@ -30,10 +30,14 @@ Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse
 ```js
 var f_ = require('f_');
 
-// Augment a task list class.
-TaskList = f_.augment(require('TaskList.js'), {
+var TaskList = require('TaskList.js');
+
+var f_config = {
   functionFlow: ['firstMethod', 'secondMethod', 'lastMethod']
-});
+};
+
+// Augment a task list class.
+TaskList = f_.augment(TaskList, f_config);
 
 // Setup a task list instance.
 var taskListInstance = f_.setup( new TaskList() );
