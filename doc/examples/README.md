@@ -9,7 +9,7 @@ Some (basic) f_ examples.
 
 * [SourceWriter](https://github.com/opensoars/f_/tree/master/doc/examples/SourceWriter)
 * [minimal](https://github.com/opensoars/f_/tree/master/doc/examples/minimal)
-* [handleHTTP](https://github.com/opensoars/f_/tree/master/doc/examples/handleHTTP)
+* [httpHandler](https://github.com/opensoars/f_/tree/master/doc/examples/httpHandler)
 
 
 --- 
