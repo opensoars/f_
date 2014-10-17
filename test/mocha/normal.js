@@ -42,4 +42,22 @@ describe('normal run', function (){
 
   });
 
+  describe('#async', function (){
+    it('should be able to finish when we run async methods', function (done){
+
+      TaskList = f_.augment(TaskList, {
+        functionFlow: ['getSource', 'writeSource', 'notify']
+      });
+
+      var taskList = f_.setup( new TaskList({
+         randomTimeout: true
+      }) );
+
+      taskList.onFinish = done
+
+      taskList.start();
+
+    });
+  });
+
 });

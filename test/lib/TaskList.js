@@ -69,7 +69,7 @@ proto.getSource = function (retryMethod){
 	var timeOut = 1;
 
 	if(self.randomTimeout)
-		timeOut = Math.round( Math.random() * 1000 );
+		timeOut = Math.round( (Math.random() * 40) + 10 );
 	
 	// Make it async
 	setTimeout(function (){ self.f_next(); }, timeOut);
