@@ -95,8 +95,8 @@ taskListInstance.start();
     * Small examples
       * Not wanted
       * Wanted
-  4. Full example covering complete usage (API)
-  5. Individual components
+  4. Individual components
+  5. Full example covering complete usage (API)
 8. Example usage
 
 
