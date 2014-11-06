@@ -55,7 +55,6 @@ taskListInstance.start();
 
 * Write a cleanup method that can be called by users!
 * Write more [examples](https://github.com/opensoars/f_/tree/master/doc/examples)
-* Write memory tests using [raminfo](https://github.com/opensoars/raminfo)
 * Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
 ### Time schedule (from the 10th of September 2014)
