@@ -7,6 +7,7 @@ var http = require('http');
 var f_ = require('./../../../index.js'),
     requester = require('./requester.js');
 
+var f_
 
 // Create handlers namespace
 var handlers = {
@@ -55,3 +56,4 @@ http.createServer(function (req, res){
   else res.end('');
 
 }).listen(process.PORT);
+
