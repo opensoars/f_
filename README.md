@@ -53,7 +53,7 @@ taskListInstance.start();
 
 ### Todo
 
-* Write a cleanup method that can be called by users!
+* Cleanup API function
 * Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
 ---
