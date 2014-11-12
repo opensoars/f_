@@ -56,24 +56,6 @@ taskListInstance.start();
 * Write a cleanup method that can be called by users!
 * Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
 
-### Time schedule (from the 10th of September 2014)
-
-* 1.5/2 weeks (will result in pre-alpha release)
-  - Further brainstorming
-  - Expand documentation all features
-  - Complete features
-  - Release of a working prototype
-
-* 2.5/3 weeks (will result in alpha release)
-  - Complete product development
-  - Documentation of development process
-
-* 2.5/3 weeks (will result in beta release)
-  - Testing
-  - Fixing unexpected behaviour
-  - Complete documentation
-
-
 ---
 
 
