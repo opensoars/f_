@@ -59,7 +59,7 @@ taskListInstance.start();
 ---
 
 
-## Future documentation content
+## Future (readme) documentation content
 
 1. Title
 2. Badges
