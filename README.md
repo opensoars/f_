@@ -83,9 +83,6 @@ taskListInstance.start();
 ---
 
 
-## Documentation (outdated)
-
-
 ### Problem to be solved
 Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you into (callback) hell).
 
