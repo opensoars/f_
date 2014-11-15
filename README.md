@@ -28,7 +28,7 @@ Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse
 
 ### Basic usage
 ```js
-var f_ = require('./../../../index.js');
+var f_ = require('f_');
 
 // TaskList constructor
 function TaskList(){}
