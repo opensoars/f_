@@ -54,7 +54,7 @@ taskListInstance.start();
 ### Todo
 
 * Cleanup API function
-* Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
+* Complete documentation
 
 ---
 
