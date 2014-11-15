@@ -53,7 +53,6 @@ taskListInstance.start();
 
 ### Todo
 
-* Cleanup API function
 * Complete documentation
 
 ---
