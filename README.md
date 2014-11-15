@@ -28,23 +28,31 @@ Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse
 
 ### Basic usage
 ```js
-var f_ = require('f_');
+var f_ = require('./../../../index.js');
 
-var TaskList = require('TaskList.js');
+// TaskList constructor
+function TaskList(){}
 
-var f_config = {
-  functionFlow: ['firstMethod', 'secondMethod', 'lastMethod']
+// function flow methods
+TaskList.prototype.start     = function (){ this.f_next(); };
+TaskList.prototype.firstTask = function (){ this.f_next(); };
+TaskList.prototype.lastTask  = function (){ this.f_next(); };
+
+// Example of event a handler function
+TaskList.prototype.onFinish  = function (){
+  console.log('onFinish');
 };
 
-// Augment a task list class.
-TaskList = f_.augment(TaskList, f_config);
+// Augment TaskList instance, passing f_.augment the instance to augment
+// and a configuration object
+TaskList = f_.augment(TaskList, { functionFlow: ['firstTask', 'lastTask'] });
 
-// Setup a task list instance.
-var taskListInstance = f_.setup( new TaskList() );
-
-// Call task list it's self written start method.
-// taskListInstance.start(); will call f_next();
-taskListInstance.start();
+// Let's create instances and call our self defined start function
+for(var i=0; i<500; i+=1){
+  var taskList = new TaskList()
+  f_.setup(taskList);
+  tasklist.start();
+}
 ```
 
 
