@@ -56,7 +56,7 @@ TaskList = f_.augment(TaskList, f_config;
 
 // Let's create instances and call our self defined start function
 for(var i=0; i<500; i+=1){
-  var taskList = new TaskList()
+  var taskList = new TaskList();
   f_.setup(taskList);
   tasklist.start();
 }
