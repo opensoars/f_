@@ -43,9 +43,16 @@ TaskList.prototype.onFinish  = function (){
   console.log('onFinish');
 };
 
+
+// configuration object that get's passed to augment
+var f_config = {
+  functionFlow: ['firstTask', 'lastTask']
+};
+
 // Augment TaskList instance, passing f_.augment the instance to augment
-// and a configuration object
-TaskList = f_.augment(TaskList, { functionFlow: ['firstTask', 'lastTask'] });
+// and the configuration object
+TaskList = f_.augment(TaskList, f_config;
+
 
 // Let's create instances and call our self defined start function
 for(var i=0; i<500; i+=1){
