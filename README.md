@@ -123,9 +123,7 @@ When we look at the two lists above, we can categorize computational tasks into 
 
 
 <!---
-LET'S FIX THIS SHIT BELOW!
-LET'S FIX THIS SHIT BELOW!
-LET'S FIX THIS SHIT BELOW!
+FIX BELOW
 -->
 
 ### API
