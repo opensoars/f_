@@ -198,9 +198,7 @@ proto.writeDir = './sourceCodes';
 
 /**
  * Assign methods from proto object to our TaskList its actual
- * prototype object.
- * Ofcourse, make sure our proto object has all properties we want it
- * to have before we assign it!
+ * prototype object
  */
 TaskList.prototype = proto;
 
