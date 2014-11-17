@@ -128,7 +128,7 @@ FIX BELOW
 -->
 
 ### API
-Everything `f_` offers will be used in the code example below. We will be using a class/constructor based approach (plain object not recommended). Since we will be initiating a lot of instances, so we will make use of JavaScript its prototypal inheritance pattern.
+Everything `f_` offers will be used in the code example below. We will be using a class/constructor based approach (plain object not recommended for multiple instances). Since we will be initiating a lot of instances, so we will make use of JavaScript its prototypal inheritance pattern.
 ```js
 
 // EDIT THIS WITH NEW API / PROTO ASSIGMENT
