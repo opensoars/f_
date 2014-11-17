@@ -104,6 +104,7 @@ Writing asynchronous, maintainable, modular and loosely coupled programs in Node
 ### How is `f_` going to solve this problem?
 Allow programmers to use a Node.js module with a simple API which will make separation of concerns (which results in loosely coupled programs), modular and asynchronous programming a breeze.
 
+---
 
 ### Introduction
 Every (large) Node.js program has lots of asynchronous tasks such as:
