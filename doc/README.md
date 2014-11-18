@@ -10,8 +10,21 @@ Asynchronous node.js made easy.
 * Introduction
     - Asynchronous Node.js
     - Problem to be solved
-* Solution
-    - Abstract
-    - In depth
+* Abstract solution
+* In depth solution
+* API
+    - augment
+    - setup
+    - next
+    - retryAll
+    - retryThis
+    - retryFrom
+    - retryMethod
+    - abort
+    - finish
+    - resetNamespace
+    - addErr
+    - cleanup
+* Examples
 
 ---
