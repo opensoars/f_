@@ -33,6 +33,9 @@ Asynchronous and modular Node.js made easy.
         + Alpha
         + Beta
         + Release candidates
+            * Candidate 1
+            * Candidate 2
+            * Feedback
         + Production release
 * **API**
     - augment
