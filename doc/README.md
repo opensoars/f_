@@ -10,8 +10,9 @@ Asynchronous node.js made easy.
 * Introduction
     - Asynchronous Node.js
     - Problem to be solved
-* Abstract solution
-* In depth solution
+* Solution
+    - Abstract
+    - In depth
 * API
     - augment
     - setup
@@ -25,12 +26,14 @@ Asynchronous node.js made easy.
     - resetNamespace
     - addErr
     - cleanup
+* Examples
+    - Minimal setup
+    - HTTP request handler
+    - Source code ripper
 * Development tools
     - Building the module
     - Continuous integration
     - Integration testing
     - Unit testing
     - Code coverage
-* Examples
-
 ---
