@@ -20,7 +20,7 @@ Asynchronous and modular Node.js made easy.
 * **[Solution](#solution)**
   - Abstract
   - In depth
-* **[Building the application](#building-the-application)**
+* **[Application building](#application-building)**
   - Tools
     + Continuous integration
       * Travis-ci 
@@ -87,7 +87,7 @@ Asynchronous and modular Node.js made easy.
 
 ---
 
-## Building the application
+## Application building
 
 ...
 
