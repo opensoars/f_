@@ -21,12 +21,6 @@ Asynchronous node.js made easy.
 * Solution
     - Abstract
     - In depth
-* Development tools
-    - Continuous integration
-        + Travis-ci
-        + Integration testing
-    - Unit testing
-    - Code coverage
 * API
     - augment
     - setup
@@ -44,10 +38,17 @@ Asynchronous node.js made easy.
 * Flowcharts
     - augment/setup
     - next
+    - Simple program
+* Development tools
+    - Continuous integration
+        + Travis-ci
+        + Integration testing
+    - Unit testing
+    - Code coverage
 * Examples
     - Minimal
-    - HTTP request handler
     - Source code ripper
+    - HTTP request handler
     - Database interface
         + Description
         + Flowchart
