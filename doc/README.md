@@ -15,12 +15,23 @@ Asynchronous node.js made easy.
     - Separation of concerns
     - Maintainable code
     - Testable code
+
 * Problem
     - Abstract
     - In depth
+
 * Solution
     - Abstract
     - In depth
+* Building the application
+
+* Development tools
+    - Continuous integration
+        + Travis-ci
+        + Integration testing
+    - Unit testing
+    - Code coverage
+
 * API
     - augment
     - setup
@@ -35,16 +46,12 @@ Asynchronous node.js made easy.
     - addErr
     - logErrStack
     - cleanup
+
 * Flowcharts
     - augment/setup
     - next
     - Simple program
-* Development tools
-    - Continuous integration
-        + Travis-ci
-        + Integration testing
-    - Unit testing
-    - Code coverage
+
 * Examples
     - Minimal
     - Source code ripper
@@ -53,9 +60,11 @@ Asynchronous node.js made easy.
         + Description
         + Flowchart
         + Code
+
 * Project maintenance
     - Project stability
     - Future features
+
 * Feedback
 
 
