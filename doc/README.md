@@ -8,7 +8,7 @@ Asynchronous and modular Node.js made easy.
 
 ## Table of contents
 
-* **[Introduction](#Introduction)**
+* **[Introduction](#introduction)**
   - Asynchronous Node.js
   - Modular Node.js
   - Errors in Node.js
@@ -16,13 +16,13 @@ Asynchronous and modular Node.js made easy.
   - Loosely coupled application logic
   - Maintainable code
   - Testable code
-* **[Problem](#Problem)**
+* **[Problem](#problem)**
   - Abstract
   - In depth
-* **[Solution](#Solution)**
+* **[Solution](#solution)**
   - Abstract
   - In depth
-* **[Building the application](#Building the application)**
+* **[Building the application](#building-the-application)**
   - Tools
     + Continuous integration
       * Travis-ci 
@@ -38,7 +38,7 @@ Asynchronous and modular Node.js made easy.
       * Candidate 2
       * Feedback
     + Production release
-* **[API](#API)**
+* **[API](#api)**
   - augment
   - setup
   - next
@@ -52,11 +52,11 @@ Asynchronous and modular Node.js made easy.
   - addErr
   - logErrStack
   - cleanup
-* **[Flowcharts](#Flowcharts)**
+* **[Flowcharts](#flowcharts)**
   - augment/setup
   - next
   - Simple program
-* **[Examples](#Examples)**
+* **[Examples](#examples)**
   - Minimal
   - Source code ripper
   - HTTP request handler
@@ -64,10 +64,10 @@ Asynchronous and modular Node.js made easy.
     + Description
     + Flowchart
     + Code
-* **[Project maintenance](#Project maintenance)**
+* **[Project maintenance](#project-maintenance)**
   - Project stability
   - Future features
-* **[Feedback](#Feedback)**
+* **[Feedback](#feedback)**
 
 ---
 
