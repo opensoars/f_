@@ -9,7 +9,10 @@ Asynchronous node.js made easy.
 
 * Introduction
     - Asynchronous Node.js
-    - Problem to be solved
+    - Modular Node.js
+* Problem
+    - Abstract problem
+    - In depth problem
 * Solution
     - Abstract
     - In depth
