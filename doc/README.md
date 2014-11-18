@@ -1,40 +1,40 @@
-f_
-==
+# f_
 
-Asynchronous node.js made easy.
+Asynchronous and modular Node.js made easy.
 
 ---
 
 
 ## Table of contents
 
-* Introduction
+* **Introduction**
     - Asynchronous Node.js
     - Modular Node.js
-    - Loosely coupled application logic
+    - Errors in Node.js
     - Separation of concerns
+    - Loosely coupled application logic
     - Maintainable code
     - Testable code
-* Problem
+* **Problem**
     - Abstract
     - In depth
-* Solution
+* **Solution**
     - Abstract
     - In depth
-* Building the application
+* **Building the application**
     - Tools
         + Continuous integration
             * Travis-ci 
             * Integration tests
         + Unit tests
         + Code coverage
-* Tools
-    - Continuous integration
-        + Travis-ci
-        + Integration testing
-    - Unit testing
-    - Code coverage
-* API
+    - Application realization
+        + Pre-alpha
+        + Alpha
+        + Beta
+        + Release candidates
+        + Production release
+* **API**
     - augment
     - setup
     - next
@@ -48,11 +48,11 @@ Asynchronous node.js made easy.
     - addErr
     - logErrStack
     - cleanup
-* Flowcharts
+* **Flowcharts**
     - augment/setup
     - next
     - Simple program
-* Examples
+* **Examples**
     - Minimal
     - Source code ripper
     - HTTP request handler
@@ -60,10 +60,9 @@ Asynchronous node.js made easy.
         + Description
         + Flowchart
         + Code
-* Project maintenance
+* **Project maintenance**
     - Project stability
     - Future features
-* Feedback
-
+* **Feedback**
 
 ---
