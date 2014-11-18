@@ -4,7 +4,7 @@ Asynchronous and modular Node.js made easy.
 
 ---
 
-[test](#introduction)
+[test](/#introduction)
 
 ## Table of contents
 
