@@ -11,8 +11,8 @@ Asynchronous node.js made easy.
     - Asynchronous Node.js
     - Modular Node.js
 * Problem
-    - Abstract problem
-    - In depth problem
+    - Abstract  
+    - In depth
 * Solution
     - Abstract
     - In depth
