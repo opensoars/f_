@@ -5,7 +5,7 @@ Asynchronous node.js made easy.
 
 ---
 
-### Table of contents
+## Table of contents
 
 * Introduction
     - Asynchronous Node.js
