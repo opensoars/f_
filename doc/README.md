@@ -25,6 +25,12 @@ Asynchronous node.js made easy.
     - resetNamespace
     - addErr
     - cleanup
+* Development tools
+    - Building the module
+    - Continuous integration
+    - Integration testing
+    - Unit testing
+    - Code coverage
 * Examples
 
 ---
