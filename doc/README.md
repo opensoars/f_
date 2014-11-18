@@ -24,7 +24,7 @@ Asynchronous node.js made easy.
 * Development tools
     - Continuous integration
         + Travis-ci
-        + Testing
+        + Integration testing
     - Unit testing
     - Code coverage
 * API
@@ -48,6 +48,10 @@ Asynchronous node.js made easy.
     - Minimal
     - HTTP request handler
     - Source code ripper
+    - Database interface
+        + Description
+        + Flowchart
+        + Code
 * Project maintenance
     - Project stability
     - Future features
