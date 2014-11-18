@@ -4,7 +4,6 @@ Asynchronous and modular Node.js made easy.
 
 ---
 
-
 ## Table of contents
 
 * **Introduction**
