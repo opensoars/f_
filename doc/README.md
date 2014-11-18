@@ -5,12 +5,13 @@ Asynchronous node.js made easy.
 
 ---
 
-Table of contents
+### Table of contents
 
 * Introduction
     - Asynchronous Node.js
     - Problem to be solved
-    - Abstract solution
-* 
+* Solution
+    - Abstract
+    - In depth
 
 ---
