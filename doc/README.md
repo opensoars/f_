@@ -25,6 +25,7 @@ Asynchronous node.js made easy.
     - finish
     - resetNamespace
     - addErr
+    - logErrStack
     - cleanup
 * Examples
     - Minimal setup
@@ -36,4 +37,7 @@ Asynchronous node.js made easy.
     - Integration testing
     - Unit testing
     - Code coverage
+* Feedback
+
+
 ---
