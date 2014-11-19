@@ -7,7 +7,7 @@ Asynchronous and modular Node.js made easy.
 ## Table of contents
 
 * **[Introduction](#introduction)**
-  - [Asynchronous Node.js](asynchronous-node.js)
+  - [Asynchronous Node.js](#asynchronous-node.js)
   - Modular Node.js
   - Errors in Node.js
   - Separation of concerns
