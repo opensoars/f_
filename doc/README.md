@@ -14,10 +14,10 @@ Asynchronous and modular Node.js made easy.
   - Loosely coupled application logic
   - Maintainable code
   - Testable code
-* **[Problem](#problem)**
+* **[Problem to solve](#problem-to-solve)**
   - Abstract
   - In depth
-* **[Solution](#solution)**
+* **[Solution to the problem](#solution-to-the-problem)**
   - Abstract
   - In depth
 * **[Application building](#application-building)**
@@ -71,25 +71,25 @@ Asynchronous and modular Node.js made easy.
 
 ## Introduction
 
-### Asynchronous Node.js
-### Modular Node.js
-### Errors in Node.js
-### Separation of concerns
-### Loosely coupled application logic
-### Maintainable code
-### Testable code
+#### Asynchronous Node.js
+#### Modular Node.js
+#### Errors in Node.js
+#### Separation of concerns
+#### Loosely coupled application logic
+#### Maintainable code
+#### Testable code
 
 
 ---
 
-## Problem
+## Problem to solve
 
 ...
 
 
 ---
 
-## Solution
+## Solution to the problem
 
 ...
 
