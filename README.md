@@ -54,7 +54,7 @@ TaskList.prototype.secondMethod = function (){
 
 // Augment a task list constructor.
 TaskList = f_.augment(TaskList, {
-  functionFlow: ['firstMethod', 'secondMethod', 'lastMethod'],
+  functionFlow: ['firstMethod', 'secondMethod'],
   toLog: ['all']
 });
 
