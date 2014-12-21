@@ -1,4 +1,4 @@
-f_ (flow)
+f_ (f.low, flow)
 ==================
 
 
@@ -6,8 +6,6 @@ f_ (flow)
 [![Coverage Status](https://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
 [![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
 [![Development Dependency Status](https://david-dm.org/opensoars/f_/dev-status.svg?style=flat)](https://david-dm.org/opensoars/f_#info=devDependencies&view=table)
-
-[![NPM](https://nodei.co/npm/f_.png?compact=true)](https://www.npmjs.org/package/f_)
 
 
 Asynchronous Node.js made easy and fun!
@@ -20,46 +18,56 @@ Asynchronous Node.js made easy and fun!
 * [cls](https://github.com/opensoars/cls)
 * [ezlog](https://github.com/opensoars/ezlog)
 
+
+### Install
+`npm install f_`
+
 ### Examples
 Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse f_ examples. Altogether they will cover everything f_ has to offer.
 
 ### Run tests and get coverage (lcov) report
 `npm run localTest`
 
+
 ### Basic usage
 ```js
 var f_ = require('f_');
 
-// TaskList constructor
-function TaskList(){}
+// Create constructor function
+var TaskList = function (){};
 
-// function flow methods
-TaskList.prototype.start     = function (){ this.f_next(); };
-TaskList.prototype.firstTask = function (){ this.f_next(); };
-TaskList.prototype.lastTask  = function (){ this.f_next(); };
-
-// Example of event a handler function
-TaskList.prototype.onFinish  = function (){
-  console.log('onFinish');
+// We call this method our self, you can ofcourse
+// automate this process by calling f_next in the
+// constructor function
+TaskList.prototype.start = function (){
+  this.f_next();
 };
 
-
-// configuration object that get's passed to augment
-var f_config = {
-  functionFlow: ['firstTask', 'lastTask']
+// Methods that are run by f_
+TaskList.prototype.firstMethod = function (){
+  this.f_next();
 };
 
-// Augment TaskList instance, passing f_.augment the instance to augment
-// and the configuration object
-TaskList = f_.augment(TaskList, f_config;
+TaskList.prototype.secondMethod = function (){
+  this.f_next();
+};
 
+TaskList.prototype.lastMethod = function (){
+  this.f_next();
+};
 
-// Let's create instances and call our self defined start function
-for(var i=0; i<500; i+=1){
-  var taskList = new TaskList();
-  f_.setup(taskList);
-  tasklist.start();
-}
+// Augment a task list constructor.
+TaskList = f_.augment(TaskList, {
+  functionFlow: ['firstMethod', 'secondMethod', 'lastMethod'],
+  toLog: ['all']
+});
+
+// Setup a task list instance.
+var taskListInstance = f_.setup( new TaskList() );
+
+// Call task list its self written start method.
+// taskListInstance.start(); will call f_next();
+taskListInstance.start();
 ```
 
 
@@ -68,12 +76,32 @@ for(var i=0; i<500; i+=1){
 
 ### Todo
 
-* Complete documentation
+* Write more [examples](https://github.com/opensoars/f_/tree/master/doc/examples)
+* Write memory tests using [raminfo](https://github.com/opensoars/raminfo)
+* Complete [documentation](https://github.com/opensoars/f_#documentation-outdated)
+
+### Time schedule (from the 10th of September 2014)
+
+* 1.5/2 weeks (will result in pre-alpha release)
+  - Further brainstorming
+  - Expand documentation all features
+  - Complete features
+  - Release of a working prototype
+
+* 2.5/3 weeks (will result in alpha release)
+  - Complete product development
+  - Documentation of development process
+
+* 2.5/3 weeks (will result in beta release)
+  - Testing
+  - Fixing unexpected behaviour
+  - Complete documentation
+
 
 ---
 
 
-## Future (readme) documentation content
+## Future documentation content
 
 1. Title
 2. Badges
@@ -89,12 +117,15 @@ for(var i=0; i<500; i+=1){
     * Small examples
       * Not wanted
       * Wanted
-  4. Individual components
-  5. Full example covering complete usage (API)
+  4. Full example covering complete usage (API)
+  5. Individual components
 8. Example usage
 
 
 ---
+
+
+## Documentation (outdated)
 
 
 ### Problem to be solved
@@ -104,7 +135,6 @@ Writing asynchronous, maintainable, modular and loosely coupled programs in Node
 ### How is `f_` going to solve this problem?
 Allow programmers to use a Node.js module with a simple API which will make separation of concerns (which results in loosely coupled programs), modular and asynchronous programming a breeze.
 
----
 
 ### Introduction
 Every (large) Node.js program has lots of asynchronous tasks such as:
@@ -124,11 +154,11 @@ When we look at the two lists above, we can categorize computational tasks into 
 
 
 <!---
-FIX BELOW
+  fix below
 -->
 
 ### API
-Everything `f_` offers will be used in the code example below. We will be using a class/constructor based approach (plain object not recommended for multiple instances). Since we will be initiating a lot of instances, so we will make use of JavaScript its prototypal inheritance pattern.
+Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended). Since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
 ```js
 
 // EDIT THIS WITH NEW API / PROTO ASSIGMENT
@@ -198,7 +228,9 @@ proto.writeDir = './sourceCodes';
 
 /**
  * Assign methods from proto object to our TaskList its actual
- * prototype object
+ * prototype object.
+ * Ofcourse, make sure our proto object has all properties we want it
+ * to have before we assign it!
  */
 TaskList.prototype = proto;
 
