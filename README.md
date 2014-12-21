@@ -52,10 +52,6 @@ TaskList.prototype.secondMethod = function (){
   this.f_next();
 };
 
-TaskList.prototype.lastMethod = function (){
-  this.f_next();
-};
-
 // Augment a task list constructor.
 TaskList = f_.augment(TaskList, {
   functionFlow: ['firstMethod', 'secondMethod', 'lastMethod'],
