@@ -96,12 +96,12 @@ describe('f_.augment', function (){
 
   });
 
-  describe('#default maxTries.wholeList', function (){
-    it('should set `maxTries.wholeList` to `10` when it\'s given a wrong maxTries.wholeList', function (){
+  describe('#default max_tries.wholeList', function (){
+    it('should set `max_tries.wholeList` to `10` when it\'s given a wrong max_tries.wholeList', function (){
       
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { notWholeList: 5 }
+        max_tries: { notWholeList: 5 }
       });
 
       assert.equal(TaskList.prototype.f_maxTries.wholeList, 10);
@@ -135,14 +135,14 @@ describe('f_.augment', function (){
   });
 
 
-  describe('#maxTries.allMethods', function (){
-    it('should have set maxTries for all methods to the given allMethods value', function (done){
+  describe('#max_tries.allMethods', function (){
+    it('should have set max_tries for all methods to the given allMethods value', function (done){
       var retryValue = 5,
           m1 = 'getSource', m2 = 'writeSource', m3 = 'notify';
 
       TaskList = f_.augment(TaskList, {
         function_flow: [m1, m2, m3],
-        maxTries: { allMethods: retryValue }
+        max_tries: { allMethods: retryValue }
       });
 
       assert.equal(TaskList.f_maxTries[m1], retryValue);

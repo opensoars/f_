@@ -32,11 +32,11 @@ describe('f_.setup', function (){
 
 
   describe('#method tries default', function (){
-    it('should have set `f_.maxTries.getSource` to `0`', function (){
+    it('should have set `f_.max_tries.getSource` to `0`', function (){
       
       var taskList = f_.setup( new (f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { getSource: 2 }
+        max_tries: { getSource: 2 }
       })) );
 
       assert.equal(taskList.f_tries['getSource'], 0);
@@ -44,13 +44,13 @@ describe('f_.setup', function (){
   });
 
 
-  describe('method maxTries defaults', function (){
+  describe('method max_tries defaults', function (){
     it('should be set to `10`', function (){
       var taskList = f_.setup( new (f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       })) );
 
-      assert.equal(taskList.f_maxTries['getSource'], 10);
+      assert.equal(taskList.f_max_tries['getSource'], 10);
     });
   });
 
