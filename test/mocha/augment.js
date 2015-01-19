@@ -7,32 +7,32 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('f_.augment', function (){
 
-  describe('#undefined toAugment', function (){
-    it('should throw when no or undefined `toAugment` is given', function (done){
+  describe('#undefined to_augment', function (){
+    it('should throw when no or undefined `to_augment` is given', function (done){
       try { TaskList = f_.augment(undefined); }
       catch(e){ done(); }
     });
 
-    it('should throw `!toAugment Class|Object given`', function (done){
+    it('should throw `!to_augment Class|Object given`', function (done){
       try { TaskList = f_.augment(undefined); }
       catch(e){
-        assert.equal(e, '!toAugment Class|Object given');
+        assert.equal(e, '!to_augment constructor|Object given');
         done();
       }
     });
-  }); // / undefined toAugment
+  }); // / undefined to_augment
 
 
-  describe('#wrong toAugment type', function (){
-    it('should throw when `typeof toAugment` does not equal `function` OR `object` ', function (done){
+  describe('#wrong to_augment type', function (){
+    it('should throw when `typeof to_augment` does not equal `function` OR `object` ', function (done){
       try { TaskList = f_.augment('wrong type'); }
       catch(e){ done(); }
     });
 
-    it('should throw `wrong toAugment type, !function`', function (done){
+    it('should throw `wrong to_augment type, !function`', function (done){
       try { TaskList = f_.augment('wrong type'); }
       catch(e){
-        assert.equal(e, 'wrong toAugment type, !function && !object');
+        assert.equal(e, 'wrong to_augment type, !function && !object');
         done();
       }
     });
