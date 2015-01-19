@@ -10,7 +10,7 @@ describe('normal run', function (){
     it('should be `finished`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup( new TaskList() );
@@ -30,7 +30,7 @@ describe('normal run', function (){
     it('f_ should call `onFinish`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup( new TaskList() );
@@ -46,7 +46,7 @@ describe('normal run', function (){
     it('should be able to finish when we run async methods', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup( new TaskList({

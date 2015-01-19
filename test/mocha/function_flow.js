@@ -4,20 +4,20 @@ var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
 
-describe('functionFlow', function (){
+describe('function_flow', function (){
 
   describe('#no next method', function (){
 
     it('should not throw', function (){
       f_.setup( new (f_.augment(TaskList, {
-        functionFlow: ['this is not a method']
+        function_flow: ['this is not a method']
       })) ).start();
     });
 
     it('should abort', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['this is not a method']
+        function_flow: ['this is not a method']
       });
 
       var taskList = new TaskList();
@@ -30,7 +30,7 @@ describe('functionFlow', function (){
     it('should set f_status to `aborted`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['this is not a method']
+        function_flow: ['this is not a method']
       });
 
       var taskList = f_.setup( new TaskList() );
@@ -47,16 +47,16 @@ describe('functionFlow', function (){
   describe('#normal', function (){
 
     describe('#f_i', function (){
-      it('should have set f_i to to functionFlow.length', function (done){
+      it('should have set f_i to to function_flow.length', function (done){
 
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify']
+          function_flow: ['getSource', 'writeSource', 'notify']
         });
 
         var taskList = new TaskList();
         taskList = f_.setup(taskList);
         taskList.onFinish = function (){
-          assert.equal(this.f_i, this.f_functionFlow.length);
+          assert.equal(this.f_i, this.f_function_flow.length);
           done();
         };
         taskList.start();
@@ -70,7 +70,7 @@ describe('functionFlow', function (){
         var infoGiven = false;
 
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify']
+          function_flow: ['getSource', 'writeSource', 'notify']
         });
 
         var taskList = new TaskList();
@@ -87,16 +87,16 @@ describe('functionFlow', function (){
         taskList.start();
       });
 
-      it('should call all methods from functionFlow', function (done){
+      it('should call all methods from function_flow', function (done){
         
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify']
+          function_flow: ['getSource', 'writeSource', 'notify']
         });
 
         var called = function (){
           var toReturn = {};
 
-          TaskList.prototype.f_functionFlow.forEach(function (method){
+          TaskList.prototype.f_function_flow.forEach(function (method){
             toReturn[method] = false;
           });
 
@@ -123,4 +123,4 @@ describe('functionFlow', function (){
 
   }); // /normal
 
-}); // /functionFlow
+}); // /function_flow

@@ -54,31 +54,31 @@ describe('f_.augment', function (){
     });
   });
 
-  describe('#no functionFlow', function (){
-    it('should throw when no functionFlow is given in options', function (done){
+  describe('#no function_flow', function (){
+    it('should throw when no function_flow is given in options', function (done){
       try { TaskList = f_.augment(TaskList, {}); }
       catch(e){ done(); }
     });
 
-    it('should throw `!config.functionFlow, f_ needs to know which methods to call`', function (done){
+    it('should throw `!config.function_flow, f_ needs to know which methods to call`', function (done){
       try { TaskList = f_.augment(TaskList, {}); }
       catch(e){
-        assert.equal(e, '!config.functionFlow, f_ needs to know which methods to call');
+        assert.equal(e, '!config.function_flow, f_ needs to know which methods to call');
         done();
       }
     });
   });
 
-  describe('#wrong functionFlow', function (){
-    it('should throw when wrong functionFlow is given', function (done){
-      try { TaskList = f_.augment(TaskList, {functionFlow: 'wrong type'}); }
+  describe('#wrong function_flow', function (){
+    it('should throw when wrong function_flow is given', function (done){
+      try { TaskList = f_.augment(TaskList, {function_flow: 'wrong type'}); }
       catch(e){ done(); }
     });
 
-    it('should throw `wrong config.functionFlow type, !array`', function (done){
-      try { TaskList = f_.augment(TaskList, {functionFlow: 'wrong type'}); }
+    it('should throw `wrong config.function_flow type, !array`', function (done){
+      try { TaskList = f_.augment(TaskList, {function_flow: 'wrong type'}); }
       catch(e){
-        assert.equal(e, 'wrong config.functionFlow type, !array');
+        assert.equal(e, 'wrong config.function_flow type, !array');
         done();
       }
     });
@@ -88,7 +88,7 @@ describe('f_.augment', function (){
 
     it('should have set f_.toLog to [] when `toLog` is undefined', function (){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
       });
 
       assert.equal(TaskList.prototype.f_toLog.length, 0);
@@ -100,7 +100,7 @@ describe('f_.augment', function (){
     it('should set `maxTries.wholeList` to `10` when it\'s given a wrong maxTries.wholeList', function (){
       
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { notWholeList: 5 }
       });
 
@@ -112,7 +112,7 @@ describe('f_.augment', function (){
     it('should be able to augment a plain object', function (done){
       
       TaskList = f_.augment(taskListObject, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       taskList = f_.setup(TaskList);
@@ -125,7 +125,7 @@ describe('f_.augment', function (){
 
     it('should be able to run the same as with a function / class', function (done){
       TaskList = f_.augment(taskListObject, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
       taskList = f_.setup(TaskList);
       taskList.start();
@@ -141,7 +141,7 @@ describe('f_.augment', function (){
           m1 = 'getSource', m2 = 'writeSource', m3 = 'notify';
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: [m1, m2, m3],
+        function_flow: [m1, m2, m3],
         maxTries: { allMethods: retryValue }
       });
 

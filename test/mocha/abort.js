@@ -10,7 +10,7 @@ describe('abort', function (){
     it('f_ should call `onAbort`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup( new TaskList({ abort: true }) );
@@ -22,7 +22,7 @@ describe('abort', function (){
     it('f_ should have set f_status to `aborted`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup( new TaskList({ abort: true }) );
@@ -42,7 +42,7 @@ describe('abort', function (){
     it('f_ should be able to abort when no errors are given', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ emptyAbortErr: true });

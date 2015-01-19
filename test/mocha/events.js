@@ -10,7 +10,7 @@ describe('events', function (){
     it('should be able to finish the task with no onFinish (using timeout to check)', function (done){
 
       var taskList = f_.setup( new (f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       })) );
 
       taskList.onFinish = undefined;
@@ -29,7 +29,7 @@ describe('events', function (){
     it('should be able to abort the task with no onAbort (using timeout to check)', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ abort: true });
@@ -51,16 +51,16 @@ describe('events', function (){
 
   describe('#onNext', function (){
 
-    it('should call onNext and give it functionFlow info', function (done){
+    it('should call onNext and give it function_flow info', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
       taskList = f_.setup(taskList);
       taskList.onNext = function (info){
-        if(info.f_i === TaskList.prototype.f_functionFlow.length) done();
+        if(info.f_i === TaskList.prototype.f_function_flow.length) done();
       }
       taskList.start();
     });
@@ -68,7 +68,7 @@ describe('events', function (){
     it('should be able to call f_next with no onNext (using timeout to check)', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
@@ -87,7 +87,7 @@ describe('events', function (){
     it('should call onRetry and give us an info object', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup(new TaskList({ retryAllOnce: true }));
@@ -101,7 +101,7 @@ describe('events', function (){
     it('should be able to `retryAll` with no onRetry', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
@@ -116,7 +116,7 @@ describe('events', function (){
 
     it('should call onRetry and give an info object', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = f_.setup(new TaskList({ retryThisOnce: true }));
@@ -129,7 +129,7 @@ describe('events', function (){
 
     it('should be able to `retryThis` with no onRetry', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryThisOnce: true });

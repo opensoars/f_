@@ -11,7 +11,7 @@ describe('addErr', function (){
 
     it('should add a description / `desc`', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
@@ -25,7 +25,7 @@ describe('addErr', function (){
 
     it('should add an error object / `err`', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
@@ -43,7 +43,7 @@ describe('addErr', function (){
 
     it('should not fail when no arguments are given', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
@@ -55,7 +55,7 @@ describe('addErr', function (){
 
     it('should add an empty string to desc when no desc argument is given', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
@@ -69,7 +69,7 @@ describe('addErr', function (){
 
     it('should add an empty object to err when no err argument is given', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();

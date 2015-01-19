@@ -35,7 +35,7 @@ describe('f_.setup', function (){
     it('should have set `f_.maxTries.getSource` to `0`', function (){
       
       var taskList = f_.setup( new (f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { getSource: 2 }
       })) );
 
@@ -47,7 +47,7 @@ describe('f_.setup', function (){
   describe('method maxTries defaults', function (){
     it('should be set to `10`', function (){
       var taskList = f_.setup( new (f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       })) );
 
       assert.equal(taskList.f_maxTries['getSource'], 10);

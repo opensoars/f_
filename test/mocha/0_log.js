@@ -23,7 +23,7 @@ describe('log', function (){
 
     it('should log ^ about start (with blue desc)', function (){
       f_.setup( new (f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['start'],
         desc: 'f_ logging #start task list'
       })) ).start();
@@ -31,7 +31,7 @@ describe('log', function (){
 
     it('should log ^ about start (but no blue desc)', function (){
       f_.setup( new (f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['start']
       })) ).start();
     });
@@ -42,7 +42,7 @@ describe('log', function (){
 
     it('should log ^ start next and finish', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['all'],
         desc: 'logAll task list'
       });
@@ -60,7 +60,7 @@ describe('log', function (){
     it('^ should not log /maxTries information just current try', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['all'],
         desc: 'logAll task list',
         maxTries: {
@@ -83,7 +83,7 @@ describe('log', function (){
   describe('#finite retries', function (){
     it('should log ^ about method attempts', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['next'],
         maxTries: { writeSource: 2 }
       });
@@ -103,7 +103,7 @@ describe('log', function (){
       it('should log ^ retry information when toLog[\'retry\'] is set', function (done){
 
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           maxTries: { wholeList: 2 },
           toLog: ['retry']
         });
@@ -117,7 +117,7 @@ describe('log', function (){
       it('should log ^ even when no details are given to log', function (done){
 
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           maxTries: { wholeList: 2 },
           toLog: ['retry']
         });
@@ -134,7 +134,7 @@ describe('log', function (){
       it('should log ^ about not being able to find method when we call retryFrom with wrong method name', function (done){
 
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -149,7 +149,7 @@ describe('log', function (){
 
       it('should log ^ NO desc:', function (done){
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -163,7 +163,7 @@ describe('log', function (){
 
       it('should log ^ retry information', function (done){
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -177,7 +177,7 @@ describe('log', function (){
 
       it('should log ^ retry information even when no info is given', function (done){
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -195,7 +195,7 @@ describe('log', function (){
     describe('##retryThis', function (){
       it('should log ^ retryThis information', function (done){
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -209,7 +209,7 @@ describe('log', function (){
 
       it('should log ^ retryThis information even when no info is given', function (done){
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -226,7 +226,7 @@ describe('log', function (){
     describe('##retryMethod', function (){
       it('should log ^ retryMethod information', function (done){
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -238,7 +238,7 @@ describe('log', function (){
 
       it('should log ^ retryMethod information even when no info is given', function (done){
         TaskList = f_.augment(TaskList, {
-          functionFlow: ['getSource', 'writeSource', 'notify'],
+          function_flow: ['getSource', 'writeSource', 'notify'],
           toLog: ['retry']
         });
 
@@ -260,7 +260,7 @@ describe('log', function (){
 
     it('should log ^ abort information', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['abort']
       });
 
@@ -271,7 +271,7 @@ describe('log', function (){
 
     it('should log ^ the error stack', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['errStack']
       });
 
@@ -283,7 +283,7 @@ describe('log', function (){
 
     it('should log ^ abort information even when no description is given' + hr, function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         toLog: ['abort']
       });
 

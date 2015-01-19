@@ -9,7 +9,7 @@ describe('cleanup', function (){
   it('should clean the __proto__', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify']
+      function_flow: ['getSource', 'writeSource', 'notify']
     });
 
     var taskList = new TaskList();
@@ -26,7 +26,7 @@ describe('cleanup', function (){
   it('should have 0 own properties', function (done){
 
     TaskList = f_.augment(TaskList, {
-      functionFlow: ['getSource', 'writeSource', 'notify']
+      function_flow: ['getSource', 'writeSource', 'notify']
     });
 
     var taskList = new TaskList();
@@ -46,7 +46,7 @@ describe('cleanup', function (){
     it('should return `null`', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();

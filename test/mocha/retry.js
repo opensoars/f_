@@ -9,7 +9,7 @@ describe('retry', function (){
   describe('#unlimited method tries', function (){
     it('should be able to finish, since there is no maxTries limit', function (){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: {
           wholeList: 2,
           getSource: '?',
@@ -30,7 +30,7 @@ describe('retry', function (){
     it('should call `onFinish` because we do not exceed maxTries', function (done){
       
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { wholeList: 2 }
       });
 
@@ -44,7 +44,7 @@ describe('retry', function (){
     it('should have set `f_tries.wholeList` to `2`', function (done){
       
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { wholeList: 2 }
       });
 
@@ -63,7 +63,7 @@ describe('retry', function (){
 
     it('`(f_.tries.wholeList - 1)` should be equal to `maxTries` (+1 cuz of abort when to much tries )', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { wholeList: 1 }
       });
 
@@ -82,7 +82,7 @@ describe('retry', function (){
     it('should abort when `maxTries.wholeList` is `1` and we try twice', function (done){
       
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { wholeList: 1 }
       });
 
@@ -96,7 +96,7 @@ describe('retry', function (){
     it('should call onRetry and give us an info object', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { wholeList: 1 }
       });
 
@@ -117,7 +117,7 @@ describe('retry', function (){
     it('should be able to retry when no errors are given', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ emptyRetryErr: true });
@@ -134,7 +134,7 @@ describe('retry', function (){
       var dHasProperty = false;
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { wholeList: 2 },
         resetOnRetryAll: true
       });
@@ -157,7 +157,7 @@ describe('retry', function (){
 
     it('should run normaly when 1 method retry is done with no maxTries set', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: {}
       });
 
@@ -170,7 +170,7 @@ describe('retry', function (){
     it('should call onRetry and give us an info object', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: { writeSource: 2 }
       });
 
@@ -189,7 +189,7 @@ describe('retry', function (){
     it('should abort when we retry a specific method to many times', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify'],
+        function_flow: ['getSource', 'writeSource', 'notify'],
         desc: 'dev.js task list',
         maxTries: {
           writeSource: 1
@@ -205,7 +205,7 @@ describe('retry', function (){
     it('should call onRetry and give us an info object', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryThisOnce: true });
@@ -220,7 +220,7 @@ describe('retry', function (){
 
     it('should not call addErr if `desc` and `err` are undefined', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryThisOnceWithoutInfo: true });
@@ -239,7 +239,7 @@ describe('retry', function (){
     it('should run `writeSource` and `notify` twice', function (done){
       
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryFromOnce: true });
@@ -256,7 +256,7 @@ describe('retry', function (){
     it('should call `onRetry` and give us an `info` object containing the method to retry from', function (done){
       
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryFromOnce: true });
@@ -270,7 +270,7 @@ describe('retry', function (){
 
     it('should not add an error object when do not give any arguments but the method to retryFrom', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryFromOnceWithoutInfo: true });
@@ -282,10 +282,10 @@ describe('retry', function (){
       taskList.start();
     });
 
-    it('should not retry anything when the method given is not found in functionflow', function (done){
+    it('should not retry anything when the method given is not found in function_flow', function (done){
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryFromOnceWithWrongMethod: true });
@@ -306,7 +306,7 @@ describe('retry', function (){
   describe('#retryMethod', function (){
     it('should run `writeSource` twice', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryMethodOnce: true });
@@ -320,7 +320,7 @@ describe('retry', function (){
 
     it('should run `getSource` and `notify` once', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryMethodOnce: true });
@@ -336,7 +336,7 @@ describe('retry', function (){
 
     it('should run give us an info object', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryMethodOnce: true });
@@ -350,7 +350,7 @@ describe('retry', function (){
 
     it('should work when `old_f_i === 0` (run retryMethod from first method)', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryMethodOnceFromFirst: true });
@@ -367,7 +367,7 @@ describe('retry', function (){
       var onNextCalled = true;
 
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryMethodOnce: true });
@@ -383,7 +383,7 @@ describe('retry', function (){
 
     it('should call `next` when no `cb` is given to `retryMethod` (results in finish)', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
       var taskList = new TaskList({ retryMethodOnceWithoutCb: true });
       taskList = f_.setup(taskList);
@@ -394,7 +394,7 @@ describe('retry', function (){
 
     it('should not add any errors when we just give `method` and `cb`', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
       var taskList = new TaskList({ retryMethodOnceWithoutInfo: true });
       taskList = f_.setup(taskList);
@@ -407,7 +407,7 @@ describe('retry', function (){
 
     it('should not throw when a wrong method name is given, it should continue normaly', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
       var taskList = new TaskList({ retryMethodOnceWithWrongMethod: true });
       taskList = f_.setup(taskList);
@@ -417,7 +417,7 @@ describe('retry', function (){
 
     it('should give us one error, when a wrong method name is given', function (done){
       TaskList = f_.augment(TaskList, {
-        functionFlow: ['getSource', 'writeSource', 'notify']
+        function_flow: ['getSource', 'writeSource', 'notify']
       });
       var taskList = new TaskList({ retryMethodOnceWithWrongMethod: true });
       taskList = f_.setup(taskList);
