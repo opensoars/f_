@@ -13,7 +13,7 @@ describe('f_.augment', function (){
       catch(e){ done(); }
     });
 
-    it('should throw `!to_augment Class|Object given`', function (done){
+    it('should throw `!to_augment constructor|object given`', function (done){
       try { TaskList = f_.augment(undefined); }
       catch(e){
         assert.equal(e, '!to_augment constructor|Object given');
@@ -123,7 +123,7 @@ describe('f_.augment', function (){
 
     });
 
-    it('should be able to run the same as with a function / class', function (done){
+    it('should be able to run the same as with a function / constructor', function (done){
       TaskList = f_.augment(taskListObject, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
@@ -135,19 +135,19 @@ describe('f_.augment', function (){
   });
 
 
-  describe('#max_tries.allMethods', function (){
-    it('should have set max_tries for all methods to the given allMethods value', function (done){
-      var retryValue = 5,
+  describe('#max_tries.all_methods', function (){
+    it('should have set max_tries for all methods to the given all_methods value', function (done){
+      var retry_count = 5,
           m1 = 'getSource', m2 = 'writeSource', m3 = 'notify';
 
       TaskList = f_.augment(TaskList, {
         function_flow: [m1, m2, m3],
-        max_tries: { allMethods: retryValue }
+        max_tries: { all_methods: retry_count }
       });
 
-      assert.equal(TaskList.f_max_tries[m1], retryValue);
-      assert.equal(TaskList.f_max_tries[m2], retryValue);
-      assert.equal(TaskList.f_max_tries[m3], retryValue);
+      assert.equal(TaskList.f_max_tries[m1], retry_count);
+      assert.equal(TaskList.f_max_tries[m2], retry_count);
+      assert.equal(TaskList.f_max_tries[m3], retry_count);
 
       done();
     });
