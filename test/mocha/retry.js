@@ -52,9 +52,6 @@ describe('retry', function (){
       taskList = f_.setup(taskList);
 
       taskList.onFinish = function (){
-
-        console.log(this);
-
         assert.equal(this.f_tries.whole_list, 2);
         done();
       };
@@ -139,7 +136,7 @@ describe('retry', function (){
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
         max_tries: { whole_list: 2 },
-        resetOnRetryAll: true
+        reset_on_retryAll: true
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
