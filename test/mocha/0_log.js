@@ -144,7 +144,6 @@ describe('log', function (){
           done();
         }
         taskList.start();
-
       });
 
       it('should log ^ NO desc:', function (done){
