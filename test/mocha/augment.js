@@ -86,12 +86,12 @@ describe('f_.augment', function (){
 
   describe('#default log', function (){
 
-    it('should have set f_.toLog to [] when `toLog` is undefined', function (){
+    it('should have set f_.to_log to [] when `to_log` is undefined', function (){
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
       });
 
-      assert.equal(TaskList.prototype.f_toLog.length, 0);
+      assert.equal(TaskList.prototype.f_to_log.length, 0);
     });
 
   });
@@ -104,7 +104,7 @@ describe('f_.augment', function (){
         max_tries: { not_whole_list: 5 }
       });
 
-      assert.equal(TaskList.prototype.f_maxTries.whole_list, 10);
+      assert.equal(TaskList.prototype.f_max_tries.whole_list, 10);
     });
   });
 
@@ -145,9 +145,9 @@ describe('f_.augment', function (){
         max_tries: { allMethods: retryValue }
       });
 
-      assert.equal(TaskList.f_maxTries[m1], retryValue);
-      assert.equal(TaskList.f_maxTries[m2], retryValue);
-      assert.equal(TaskList.f_maxTries[m3], retryValue);
+      assert.equal(TaskList.f_max_tries[m1], retryValue);
+      assert.equal(TaskList.f_max_tries[m2], retryValue);
+      assert.equal(TaskList.f_max_tries[m3], retryValue);
 
       done();
     });
