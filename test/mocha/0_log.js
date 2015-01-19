@@ -64,7 +64,7 @@ describe('log', function (){
         toLog: ['all'],
         desc: 'logAll task list',
         maxTries: {
-          wholeList: '?',
+          whole_list: '?',
           getSource: '?',
           writeSource: '?',
           notify: '?'
@@ -104,7 +104,7 @@ describe('log', function (){
 
         TaskList = f_.augment(TaskList, {
           function_flow: ['getSource', 'writeSource', 'notify'],
-          maxTries: { wholeList: 2 },
+          maxTries: { whole_list: 2 },
           toLog: ['retry']
         });
 
@@ -118,7 +118,7 @@ describe('log', function (){
 
         TaskList = f_.augment(TaskList, {
           function_flow: ['getSource', 'writeSource', 'notify'],
-          maxTries: { wholeList: 2 },
+          maxTries: { whole_list: 2 },
           toLog: ['retry']
         });
 

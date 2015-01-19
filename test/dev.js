@@ -4,10 +4,10 @@ var f_ = require(__dirname + './../index.js'),
 
 TaskList = f_.augment(TaskList, {
   function_flow: ['getSource', 'writeSource', 'notify'],
-  toLog: ['all'],
+  to_log: ['all'],
   desc: 'dev.js task list',
-  maxTries: {
-    wholeList: 2,
+  max_tries: {
+    whole_list: 2,
     //allMethods: 5,
     getSource: '?',
     writeSource: 2,

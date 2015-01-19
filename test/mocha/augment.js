@@ -96,15 +96,15 @@ describe('f_.augment', function (){
 
   });
 
-  describe('#default max_tries.wholeList', function (){
-    it('should set `max_tries.wholeList` to `10` when it\'s given a wrong max_tries.wholeList', function (){
+  describe('#default max_tries.whole_list', function (){
+    it('should set `max_tries.whole_list` to `10` when it\'s given a wrong max_tries.whole_list', function (){
       
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        max_tries: { notWholeList: 5 }
+        max_tries: { not_whole_list: 5 }
       });
 
-      assert.equal(TaskList.prototype.f_maxTries.wholeList, 10);
+      assert.equal(TaskList.prototype.f_maxTries.whole_list, 10);
     });
   });
 

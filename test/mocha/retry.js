@@ -11,7 +11,7 @@ describe('retry', function (){
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
         maxTries: {
-          wholeList: 2,
+          whole_list: 2,
           getSource: '?',
           writeSource: '?',
           notify: '?'
@@ -31,7 +31,7 @@ describe('retry', function (){
       
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 2 }
+        maxTries: { whole_list: 2 }
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
@@ -41,18 +41,18 @@ describe('retry', function (){
 
     });
 
-    it('should have set `f_tries.wholeList` to `2`', function (done){
+    it('should have set `f_tries.whole_list` to `2`', function (done){
       
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 2 }
+        maxTries: { whole_list: 2 }
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
       taskList = f_.setup(taskList);
 
       taskList.onFinish = function (){
-        assert.equal(this.f_tries.wholeList, 2);
+        assert.equal(this.f_tries.whole_list, 2);
         done();
       };
 
@@ -61,17 +61,17 @@ describe('retry', function (){
     });
 
 
-    it('`(f_.tries.wholeList - 1)` should be equal to `maxTries` (+1 cuz of abort when to much tries )', function (done){
+    it('`(f_.tries.whole_list - 1)` should be equal to `maxTries` (+1 cuz of abort when to much tries )', function (done){
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 1 }
+        maxTries: { whole_list: 1 }
       });
 
       var taskList = new TaskList({ exceedRetries: true });
       taskList = f_.setup(taskList);
 
       taskList.onAbort = function (){
-        assert.equal( (this.f_tries.wholeList - 1) , TaskList.prototype.f_maxTries.wholeList);
+        assert.equal( (this.f_tries.whole_list - 1) , TaskList.prototype.f_maxTries.whole_list);
         done();
       };
       taskList.start();
@@ -79,11 +79,11 @@ describe('retry', function (){
     });
 
 
-    it('should abort when `maxTries.wholeList` is `1` and we try twice', function (done){
+    it('should abort when `maxTries.whole_list` is `1` and we try twice', function (done){
       
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 1 }
+        maxTries: { whole_list: 1 }
       });
 
       var taskList = new TaskList({ exceedRetries: true });
@@ -97,7 +97,7 @@ describe('retry', function (){
 
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 1 }
+        maxTries: { whole_list: 1 }
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
@@ -135,7 +135,7 @@ describe('retry', function (){
 
       TaskList = f_.augment(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
-        maxTries: { wholeList: 2 },
+        maxTries: { whole_list: 2 },
         resetOnRetryAll: true
       });
 
