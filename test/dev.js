@@ -4,7 +4,7 @@ var f_ = require(__dirname + './../index.js'),
 
 TaskList = f_.augment(TaskList, {
   function_flow: ['getSource', 'writeSource', 'notify'],
-  toLog: ['none'],
+  toLog: ['all'],
   desc: 'dev.js task list',
   maxTries: {
     wholeList: 2,
@@ -37,7 +37,6 @@ var i = 0;
     
     taskList = this.f_cleanup();
 
-    console.log(taskList);
   };
 
   taskList.start();
