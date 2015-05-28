@@ -55,6 +55,31 @@ describe('log', function (){
     
   });
 
+  describe('#finish log', function (){
+    it('logs about the finish along with the f_desc', function (done){
+      TaskList = f_.augment(TaskList, {
+        function_flow: ['getSource', 'writeSource', 'notify'],
+        to_log: ['all'],
+        desc: 'finish desc logger'
+      });
+
+      var taskList = new TaskList();
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+    });
+    it('logs about the finish without the f_desc', function (done){
+      TaskList = f_.augment(TaskList, {
+        function_flow: ['getSource', 'writeSource', 'notify'],
+        to_log: ['all']
+      });
+
+      var taskList = new TaskList();
+      taskList = f_.setup(taskList);
+      taskList.onFinish = done;
+      taskList.start();
+    });
+  });
 
   describe('#infinite retries', function (){
     it('^ should not log /max_tries information just current try', function (done){
