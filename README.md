@@ -26,7 +26,7 @@ Asynchronous Node.js made easy and fun!
 Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse f_ examples. Altogether they will cover everything f_ has to offer.
 
 ### Run tests and get coverage (lcov) report
-`npm run localTest`
+`npm run local_test`
 
 
 ### Basic usage
