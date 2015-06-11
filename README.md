@@ -94,7 +94,7 @@ taskListInstance.start();
 ---
 
 
-## Documentation (outdated)
+## Documentation
 
 
 ### Problem to be solved
