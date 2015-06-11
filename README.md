@@ -15,21 +15,28 @@ Asynchronous Node.js made easy and fun!
 
 
 ### Dependencies
+
 * [cls](https://github.com/opensoars/cls)
 * [ezlog](https://github.com/opensoars/ezlog)
 
 
 ### Install
+
 `npm install f_`
 
+
 ### Examples
+
 Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse f_ examples. Altogether they will cover everything f_ has to offer.
 
+
 ### Run tests and get coverage (lcov) report
+
 `npm run local_test`
 
 
 ### Basic usage
+
 ```js
 var f_ = require('f_');
 
@@ -70,40 +77,13 @@ taskListInstance.start();
 ---
 
 
-## Future documentation content
-
-1. Title
-2. Badges
-3. One liner
-4. Dependencies
-5. Install
-6. Use
-7. Documentation
-  1. Problem
-  2. Solution
-  3. Introduction
-    * Async and sync
-    * Small examples
-      * Not wanted
-      * Wanted
-  4. Full example covering complete usage (API)
-  5. Individual components
-8. Example usage
-
-
----
-
-
 ## Documentation
-
 
 ### Problem to be solved
 Writing asynchronous, maintainable, modular and loosely coupled programs in Node.js without some help from a library/framework is hard (if you do not want to end up with 'christmas tree' code which will get you into (callback) hell).
 
-
 ### How is `f_` going to solve this problem?
 Allow programmers to use a Node.js module with a simple API which will make separation of concerns (which results in loosely coupled programs), modular and asynchronous programming a breeze.
-
 
 ### Introduction
 Every (large) Node.js program has lots of asynchronous tasks such as:
@@ -126,6 +106,7 @@ When we look at the two lists above, we can categorize computational tasks into 
   fix below
 -->
 
+<!---
 ### API
 Everything `f_` offers will be used in the code example below. We will be using a class based approach (plain object not recommended). Since we will be initiating a lot of instances, so we will make use of JavaScript it's prototypal inheritance pattern.
 ```js
@@ -554,3 +535,29 @@ proto.writeGoogle = function (){
 };
 
 ```
+
+---
+
+
+## Future documentation content
+
+1. Title
+2. Badges
+3. One liner
+4. Dependencies
+5. Install
+6. Use
+7. Documentation
+  1. Problem
+  2. Solution
+  3. Introduction
+    * Async and sync
+    * Small examples
+      * Not wanted
+      * Wanted
+  4. Full example covering complete usage (API)
+  5. Individual components
+8. Example usage
+
+
+-->
