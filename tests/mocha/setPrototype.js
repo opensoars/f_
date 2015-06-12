@@ -7,32 +7,32 @@ var f_ = require(__dirname + './../../index.js'),
 
 describe('f_.setPrototype', function (){
 
-  describe('#undefined to_augment', function (){
-    it('should throw when no or undefined `to_augment` is given', function (done){
+  describe('#undefined to_set_on', function (){
+    it('should throw when no or undefined `to_set_on` is given', function (done){
       try { TaskList = f_.setPrototype(undefined); }
       catch(e){ done(); }
     });
 
-    it('should throw `!to_augment constructor|object given`', function (done){
+    it('should throw `!to_set_on constructor|object given`', function (done){
       try { TaskList = f_.setPrototype(undefined); }
       catch(e){
-        assert.equal(e, '!to_augment constructor|Object given');
+        assert.equal(e, '!to_set_on constructor|Object given');
         done();
       }
     });
-  }); // / undefined to_augment
+  }); // / undefined to_set_on
 
 
-  describe('#wrong to_augment type', function (){
-    it('should throw when `typeof to_augment` does not equal `function` OR `object` ', function (done){
+  describe('#wrong to_set_on type', function (){
+    it('should throw when `typeof to_set_on` does not equal `function` OR `object` ', function (done){
       try { TaskList = f_.setPrototype('wrong type'); }
       catch(e){ done(); }
     });
 
-    it('should throw `wrong to_augment type, !function`', function (done){
+    it('should throw `wrong to_set_on type, !function`', function (done){
       try { TaskList = f_.setPrototype('wrong type'); }
       catch(e){
-        assert.equal(e, 'wrong to_augment type, !function && !object');
+        assert.equal(e, 'wrong to_set_on type, !function && !object');
         done();
       }
     });
