@@ -4,27 +4,27 @@ var f_ = require(__dirname + './../../index.js'),
     TaskList = require('./../lib/TaskList.js');
 
 
-describe('f_.setup', function (){
+describe('f_.setInstance', function (){
 
 
   describe('#undefined instance', function (){
     it('should throw when no or undefined instance is given', function (done){
-      try { f_.setup(undefined); } catch(e){ done(); }
+      try { f_.setInstance(undefined); } catch(e){ done(); }
     });
 
     it('should throw `no instance given`', function (){
-      try { f_.setup(undefined); }
+      try { f_.setInstance(undefined); }
       catch(e){ assert.equal(e, 'no instance given'); }
     });
   });
 
   describe('#wrong instance type', function (){
     it('should throw when wrong instance type is given', function (done){
-      try { f_.setup('wrong type'); } catch(e){ done(); }
+      try { f_.setInstance('wrong type'); } catch(e){ done(); }
     });
 
     it("should throw `typeof instance !== 'object'`'", function (){
-      try { f_.setup('wrong type'); }
+      try { f_.setInstance('wrong type'); }
       catch(e){ assert.equal(e, "typeof instance !== 'object'"); }
     });
   });
@@ -34,7 +34,7 @@ describe('f_.setup', function (){
   describe('#method tries default', function (){
     it('should have set `f_.max_tries.getSource` to `0`', function (){
       
-      var taskList = f_.setup( new (f_.augment(TaskList, {
+      var taskList = f_.setInstance( new (f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify'],
         max_tries: { getSource: 2 }
       })) );
@@ -46,7 +46,7 @@ describe('f_.setup', function (){
 
   describe('method max_tries defaults', function (){
     it('should be set to `10`', function (){
-      var taskList = f_.setup( new (f_.augment(TaskList, {
+      var taskList = f_.setInstance( new (f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       })) );
 

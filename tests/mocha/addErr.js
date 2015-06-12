@@ -10,12 +10,12 @@ describe('addErr', function (){
   describe('#normal errors', function (){
 
     it('should add a description / `desc`', function (done){
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
 
       taskList.f_addErr('error description');
 
@@ -24,12 +24,12 @@ describe('addErr', function (){
     });
 
     it('should add an error object / `err`', function (done){
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
 
       taskList.f_addErr(undefined, new Error('error'));
 
@@ -42,24 +42,24 @@ describe('addErr', function (){
   describe('#empty errors', function (){
 
     it('should not fail when no arguments are given', function (done){
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
 
       taskList.f_addErr();
       done();
     });
 
     it('should add an empty string to desc when no desc argument is given', function (done){
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
 
       taskList.f_addErr();
       assert.equal(taskList.f_errs[0].desc, '');
@@ -68,12 +68,12 @@ describe('addErr', function (){
 
 
     it('should add an empty object to err when no err argument is given', function (done){
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
 
       taskList.f_addErr();
       assert.equal(taskList.f_errs[0].err.message, undefined);

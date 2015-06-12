@@ -9,11 +9,11 @@ describe('abort', function (){
 
     it('f_ should call `onAbort`', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup( new TaskList({ abort: true }) );
+      var taskList = f_.setInstance( new TaskList({ abort: true }) );
       taskList.onAbort = done;
       taskList.start();
     });
@@ -21,11 +21,11 @@ describe('abort', function (){
 
     it('f_ should have set f_status to `aborted`', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup( new TaskList({ abort: true }) );
+      var taskList = f_.setInstance( new TaskList({ abort: true }) );
 
       taskList.onAbort = function (){
         assert.equal(this.f_status, 'aborted');
@@ -41,12 +41,12 @@ describe('abort', function (){
   describe('#emptyErr', function (){
     it('f_ should be able to abort when no errors are given', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ emptyAbortErr: true });
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
       taskList.onAbort = done;
       taskList.start();
     });

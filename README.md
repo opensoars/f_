@@ -1,4 +1,4 @@
-f_ (f.low, flow)
+f_
 ==================
 
 
@@ -40,37 +40,48 @@ Click [here](https://github.com/opensoars/f_/tree/master/doc/examples) to browse
 ```js
 var f_ = require('f_');
 
-// Create constructor function
-var TaskList = function (){};
+/**
+ * @constructor
+ */
+var Tasklist = function (){};
 
-// We call this method our self, you can ofcourse
-// automate this process by calling f_next in the
-// constructor function
-TaskList.prototype.start = function (){
+/**
+ * A start method isn't necessary, f_next could be called when
+ * a tasklist instance is created.
+ */
+Tasklist.prototype.start = function (){
   this.f_next();
 };
 
-// Methods that are run by f_
-TaskList.prototype.firstMethod = function (){
+Tasklist.prototype.firstMethod = function (){
+  var self = this;
+
+  setTimeout(function (){
+    self.f_next();
+  }, 333);
+
+};
+
+/**
+ * Since this is the last method in function_flow, f_next results
+ * in finishing the tasklist.
+ */
+Tasklist.prototype.secondMethod = function (){
   this.f_next();
 };
 
-TaskList.prototype.secondMethod = function (){
-  this.f_next();
-};
 
-// Augment a task list constructor.
-TaskList = f_.augment(TaskList, {
-  functionFlow: ['firstMethod', 'secondMethod'],
+Tasklist = f_.setPrototype(Tasklist, {
+  function_flow: ['firstMethod', 'secondMethod'],
   toLog: ['all']
 });
 
-// Setup a task list instance.
-var taskListInstance = f_.setup( new TaskList() );
 
-// Call task list its self written start method.
-// taskListInstance.start(); will call f_next();
-taskListInstance.start();
+[1, 2, 3].forEach(function (n){
+  f_.setInstance( new Tasklist() ).start();
+});
+
+
 ```
 
 

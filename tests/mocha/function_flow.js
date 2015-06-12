@@ -9,19 +9,19 @@ describe('function_flow', function (){
   describe('#no next method', function (){
 
     it('should not throw', function (){
-      f_.setup( new (f_.augment(TaskList, {
+      f_.setInstance( new (f_.setPrototype(TaskList, {
         function_flow: ['this is not a method']
       })) ).start();
     });
 
     it('should abort', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['this is not a method']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
       taskList.onAbort = done;
       taskList.start();
 
@@ -29,11 +29,11 @@ describe('function_flow', function (){
 
     it('should set f_status to `aborted`', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['this is not a method']
       });
 
-      var taskList = f_.setup( new TaskList() );
+      var taskList = f_.setInstance( new TaskList() );
       taskList.onAbort = function (){
         assert.equal(this.f_status, 'aborted');
         done();
@@ -49,12 +49,12 @@ describe('function_flow', function (){
     describe('#f_i', function (){
       it('should have set f_i to to function_flow.length', function (done){
 
-        TaskList = f_.augment(TaskList, {
+        TaskList = f_.setPrototype(TaskList, {
           function_flow: ['getSource', 'writeSource', 'notify']
         });
 
         var taskList = new TaskList();
-        taskList = f_.setup(taskList);
+        taskList = f_.setInstance(taskList);
         taskList.onFinish = function (){
           assert.equal(this.f_i, this.f_function_flow.length);
           done();
@@ -69,12 +69,12 @@ describe('function_flow', function (){
 
         var infoGiven = false;
 
-        TaskList = f_.augment(TaskList, {
+        TaskList = f_.setPrototype(TaskList, {
           function_flow: ['getSource', 'writeSource', 'notify']
         });
 
         var taskList = new TaskList();
-        taskList = f_.setup(taskList);
+        taskList = f_.setInstance(taskList);
 
         taskList.onNext = function (info){
           if(info) infoGiven = true;
@@ -89,7 +89,7 @@ describe('function_flow', function (){
 
       it('should call all methods from function_flow', function (done){
         
-        TaskList = f_.augment(TaskList, {
+        TaskList = f_.setPrototype(TaskList, {
           function_flow: ['getSource', 'writeSource', 'notify']
         });
 
@@ -104,7 +104,7 @@ describe('function_flow', function (){
         }();
 
         var taskList = new TaskList();
-        taskList = f_.setup(taskList);
+        taskList = f_.setInstance(taskList);
 
         taskList.onNext = function (info){
           var nextMethod = info.method;

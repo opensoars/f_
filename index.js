@@ -14,12 +14,12 @@ module.exports = {
    * DEPENDENCIES
    * ./methods.js  Collection of all f_ methods
    */
-  augment: require('./lib/augment.js'),
+  setPrototype: require('./lib/setPrototype.js'),
 
 
   /**
    * DEPENDENCIES
    * NONE
    */
-  setup: require('./lib/setup.js')
+  setInstance: require('./lib/setInstance.js')
 };

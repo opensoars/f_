@@ -9,7 +9,7 @@ describe('events', function (){
   describe('#onFinish', function (){
     it('should be able to finish the task with no onFinish (using timeout to check)', function (done){
 
-      var taskList = f_.setup( new (f_.augment(TaskList, {
+      var taskList = f_.setInstance( new (f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       })) );
 
@@ -28,12 +28,12 @@ describe('events', function (){
   describe('#onAbort', function (){
     it('should be able to abort the task with no onAbort (using timeout to check)', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ abort: true });
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
       taskList.onAbort = undefined;
       taskList.start();
 
@@ -53,12 +53,12 @@ describe('events', function (){
 
     it('should call onNext and give it function_flow info', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
       taskList.onNext = function (info){
         if(info.f_i === TaskList.prototype.f_function_flow.length) done();
       }
@@ -67,12 +67,12 @@ describe('events', function (){
 
     it('should be able to call f_next with no onNext (using timeout to check)', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList();
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
       taskList.onNext = undefined;
       taskList.onFinish = done;
       taskList.start();
@@ -86,11 +86,11 @@ describe('events', function (){
 
     it('should call onRetry and give us an info object', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup(new TaskList({ retryAllOnce: true }));
+      var taskList = f_.setInstance(new TaskList({ retryAllOnce: true }));
       taskList.onRetry = function (info){
         assert.equal(typeof info, 'object');
         done();
@@ -100,12 +100,12 @@ describe('events', function (){
 
     it('should be able to `retryAll` with no onRetry', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryAllOnce: true });
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
       taskList.onRetry = undefined;
       taskList.onFinish = done;
       taskList.start();
@@ -115,11 +115,11 @@ describe('events', function (){
   describe('#retryThis', function (){
 
     it('should call onRetry and give an info object', function (done){
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup(new TaskList({ retryThisOnce: true }));
+      var taskList = f_.setInstance(new TaskList({ retryThisOnce: true }));
       taskList.onRetry = function (info){
         assert.equal(typeof info, 'object');
         done();
@@ -128,12 +128,12 @@ describe('events', function (){
     });
 
     it('should be able to `retryThis` with no onRetry', function (done){
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
       var taskList = new TaskList({ retryThisOnce: true });
-      taskList = f_.setup(taskList);
+      taskList = f_.setInstance(taskList);
       taskList.onRetry = undefined;
       taskList.onFinish = done;
       taskList.start();

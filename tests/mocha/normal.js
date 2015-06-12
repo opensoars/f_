@@ -9,11 +9,11 @@ describe('normal run', function (){
 
     it('should be `finished`', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup( new TaskList() );
+      var taskList = f_.setInstance( new TaskList() );
 
       taskList.onFinish = function (){
         assert.equal(this.f_status, 'finished');
@@ -29,11 +29,11 @@ describe('normal run', function (){
 
     it('f_ should call `onFinish`', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup( new TaskList() );
+      var taskList = f_.setInstance( new TaskList() );
 
       taskList.onFinish = done
 
@@ -45,11 +45,11 @@ describe('normal run', function (){
   describe('#async', function (){
     it('should be able to finish when we run async methods', function (done){
 
-      TaskList = f_.augment(TaskList, {
+      TaskList = f_.setPrototype(TaskList, {
         function_flow: ['getSource', 'writeSource', 'notify']
       });
 
-      var taskList = f_.setup( new TaskList({
+      var taskList = f_.setInstance( new TaskList({
          randomTimeout: true
       }) );
 
