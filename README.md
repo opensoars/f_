@@ -73,7 +73,7 @@ Tasklist.prototype.secondMethod = function (){
 
 Tasklist = f_.setPrototype(Tasklist, {
   function_flow: ['firstMethod', 'secondMethod'],
-  toLog: ['all']
+  to_log: ['all']
 });
 
 
