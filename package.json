@@ -30,5 +30,19 @@
     "url": "https://github.com/opensoars/f_"
   },
 
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+
+  "license": "MIT",
+
+  "author": "Sam [opensoars] <sam.dev@outlook.com> (https://opensoars.github.io/)",
+
+  "keywords": [
+    "async",
+    "asynchronous",
+    "utility",
+    "module",
+    "flow"
+  ],
+
+  "homepage": "http://opensoars.github.io/f_/"
 }
