@@ -1,7 +1,7 @@
 f_
 ==================
 
-[![Inline docs](http://inch-ci.org/github/opensoars/f_.svg?branch=master)](http://inch-ci.org/github/opensoars/f_)
+[![Inline docs](https://inch-ci.org/github/opensoars/f_.svg?branch=master)](https://inch-ci.org/github/opensoars/f_)
 [![Build Status](https://img.shields.io/travis/opensoars/f_.svg?style=flat)](https://travis-ci.org/opensoars/f_)
 [![Coverage Status](https://img.shields.io/coveralls/opensoars/f_.svg?style=flat)](https://coveralls.io/r/opensoars/f_)
 [![Dependency Status](https://david-dm.org/opensoars/f_.svg?style=flat)](https://david-dm.org/opensoars/f_)
