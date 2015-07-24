@@ -49,24 +49,23 @@ var Tasklist = function (){};
  * A start method isn't necessary, f_next could be called when
  * a tasklist instance is created.
  */
-Tasklist.prototype.start = function (){
+Tasklist.prototype.start = function () {
   this.f_next();
 };
 
-Tasklist.prototype.firstMethod = function (){
+Tasklist.prototype.firstMethod = function () {
   var self = this;
 
-  setTimeout(function (){
+  setTimeout(function () {
     self.f_next();
   }, 333);
-
 };
 
 /**
  * Since this is the last method in function_flow, f_next results
  * in finishing the tasklist.
  */
-Tasklist.prototype.secondMethod = function (){
+Tasklist.prototype.secondMethod = function () {
   this.f_next();
 };
 
@@ -77,7 +76,7 @@ Tasklist = f_.setPrototype(Tasklist, {
 });
 
 
-[1, 2, 3].forEach(function (n){
+[1, 2, 3].forEach(function (n) {
   f_.setInstance( new Tasklist() ).start();
 });
 
