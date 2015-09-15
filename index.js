@@ -22,7 +22,12 @@ var Download = require('./test/fixtures/Download');
 
 
 Download = f_.set.prototype(Download, {
-  prototype_options: true
+  prototype_options: true,
+
+  function_flow: [
+    'method1',
+    'method2'
+  ]
 });
 
 var download = f_.set.instance(new Download(), {
