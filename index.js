@@ -15,7 +15,7 @@ var f_ = {
 
 // TESTS below @TODO move to unit/integration tests
 
-var Download = require('./test/fixtures/Download');
+var Download = require('./tests/fixtures/Download');
 
 
 Download = f_.set.prototype(Download, {
