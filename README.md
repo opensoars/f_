@@ -1,6 +1,6 @@
 # f_ (wip)
 
-Async JS made easy.
+Async and modular application development made easy.
 
 ---
 

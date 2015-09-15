@@ -6,7 +6,8 @@ process.ROOT_REQUIRE = require;
 
 
 /**
- * @module
+ * Main f_ module, this is what you get when you require('f_').
+ * @namespacce
  */
 var f_ = {
   set: {
@@ -31,8 +32,9 @@ Download = f_.set.prototype(Download, {
 });
 
 var download = f_.set.instance(new Download(), {
-  data_namespace: 'd',
   instance_options: true
 });
 
 download.start();
+
+module.exports = f_;

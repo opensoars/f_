@@ -1,0 +1,48 @@
+{
+  "name": "f_",
+  "version": "0.0.17",
+
+  "description": "Async and modular application development made easy",
+
+  "scripts": {
+    "test": "node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha \"./tests/mocha/*.js\" && npm run coveralls",
+    "local_test": "node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha \"./tests/mocha/*.js\"",
+    "coveralls": "node node_modules/coveralls/bin/coveralls.js < coverage/lcov.info",
+    "doc": "node node_modules/jsdoc/jsdoc.js -c ./doc/config.json --readme readme.MD"
+  },
+
+  "engines": {
+    "node": ">=0.10"
+  },
+
+  "dependencies": {
+  },
+
+  "devDependencies": {
+    "mocha": ">=2.2.5",
+    "istanbul": ">=0.3.16",
+    "coveralls": ">=2.11.2",
+    "jsdoc": ">=3.3.2"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opensoars/f_"
+  },
+
+  "readmeFilename": "README.md",
+
+  "license": "MIT",
+
+  "author": "Sam [opensoars] <sam.opensoars@gmail.com> (https://opensoars.github.io/)",
+
+  "keywords": [
+    "async",
+    "asynchronous",
+    "control",
+    "flow",
+    "modular",
+    "loose",
+    "coupling"
+  ]
+}
