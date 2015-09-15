@@ -10,11 +10,7 @@ process.ROOT_REQUIRE = require;
  * @namespacce
  */
 var f_ = {
-  set: {
-    prototype: require('./lib/set/prototype'),
-    instance: require('./lib/set/instance'),
-    object: require('./lib/set/object')
-  }
+  set: require('./lib/set')
 };
 
 // TESTS below @TODO move to unit/integration tests
