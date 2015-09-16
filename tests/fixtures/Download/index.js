@@ -9,7 +9,6 @@ Download.prototype.start = function () {
 };
 Download.prototype.method1 = function () {
   console.log('method1 called', arguments);
-
   this.f_.next();
 };
 Download.prototype.method2 = function (test) {
