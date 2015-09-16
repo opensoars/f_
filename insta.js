@@ -7,11 +7,7 @@ var Download = require('./tests/fixtures/Download');
 Download = f_.set.prototype(Download, {
   prototype_options: true,
 
-  // Hmmmm, which one?!
-  /*function_flow: [
-    'method1',
-    'method2'
-  ],*/
+  // The options possibility is nice!
   function_flow: [
     { name: 'method1', max_tries: 10 },
     { name: 'method2', max_tries: '?' }
