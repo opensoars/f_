@@ -13,4 +13,3 @@ Async and modular application development made easy.
 [![devDependency Status](https://david-dm.org/opensoars/f_/dev-status.svg)](https://david-dm.org/opensoars/f_#info=devDependencies)
 
 ---
-
