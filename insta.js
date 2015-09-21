@@ -7,11 +7,22 @@ var Dl = f_.set.prototype(require('./tests/fixtures/Download'), {
   ]
 });
 
+
+
+
 var dl = f_.set.instance(new Dl());
 
 dl.start();
 
 dl.f_addErr('Fail');
+
+dl.f_log('Cool from insta.js');
+
+
+//console.log(dl);
+
+
+//console.log(dl);
 
 // console.log(dl);
 
