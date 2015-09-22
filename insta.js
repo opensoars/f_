@@ -1,6 +1,10 @@
 var f_ = require('./index.js');
 
-var Dl = f_.set.prototype(require('./tests/fixtures/Download'), {
+/**
+ * Download constructor
+ * @constructor
+ */
+var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
   function_flow: [
     { name: 'method1' },
     { name: 'method2' }
@@ -8,26 +12,23 @@ var Dl = f_.set.prototype(require('./tests/fixtures/Download'), {
 });
 
 
+var dl = f_.set.instance(new Download());
 
+//dl.on('log', function (log_obj) {
+//  console.log(log_obj);
+//});
 
-var dl = f_.set.instance(new Dl());
+dl.on('finish', function () {
+  console.log('finish');
+});
 
 dl.start();
-
 dl.f_addErr('Fail');
-
 dl.f_log('Cool from insta.js');
 
-
+//console.log(dl._events);
 //console.log(dl);
-
-
-//console.log(dl);
-
-// console.log(dl);
-
 //dl.start();
-
 
 /*var f_ = {
   set: {

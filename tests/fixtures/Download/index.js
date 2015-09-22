@@ -1,6 +1,3 @@
-/**
- * Download fixture. Used for dev and tests.
- */
 var Download = function Download() {};
 
 Download.prototype.start = function () {
