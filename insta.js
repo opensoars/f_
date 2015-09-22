@@ -1,9 +1,5 @@
 var f_ = require('./index.js');
 
-/**
- * Download constructor
- * @constructor
- */
 var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
   function_flow: [
     { name: 'method1' },
