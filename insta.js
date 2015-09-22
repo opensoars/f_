@@ -14,13 +14,19 @@ var dl = f_.set.instance(new Download());
 //  console.log(log_obj);
 //});
 
-dl.on('finish', function () {
-  console.log('finish');
-});
+//dl.on('finish', function () {
+//  console.log('finish');
+//});
+//
+//dl.on('retry', function () {
+//  console.log('retry');
+//});
 
 dl.start();
-dl.f_addErr('Fail');
+
 dl.f_log('Cool from insta.js');
+
+console.log(dl);
 
 //console.log(dl._events);
 //console.log(dl);
