@@ -10,6 +10,10 @@ var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
 
 var dl = f_.set.instance(new Download());
 
+dl.on('retryAll', function () {
+  console.log('retryAll');
+});
+
 //dl.on('log', function (log_obj) {
 //  console.log(log_obj);
 //});
@@ -17,16 +21,16 @@ var dl = f_.set.instance(new Download());
 //dl.on('finish', function () {
 //  console.log('finish');
 //});
-//
+
 //dl.on('retry', function () {
 //  console.log('retry');
 //});
 
 dl.start();
 
-dl.f_log('Cool from insta.js');
-
-console.log(dl);
+//dl.f_log('Cool from insta.js');
+  
+console.log(dl.f_function_flow);
 
 //console.log(dl._events);
 //console.log(dl);
