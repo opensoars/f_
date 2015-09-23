@@ -3,7 +3,7 @@ var f_ = require('./index.js');
 var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
   function_flow: [
     { name: 'method1' },
-    { name: 'method2' }
+    { name: 'method2', max_tries: 3}
   ]
 });
 
@@ -30,7 +30,7 @@ dl.start();
 
 //dl.f_log('Cool from insta.js');
   
-console.log(dl.f_function_flow);
+console.log(dl);
 
 //console.log(dl._events);
 //console.log(dl);
