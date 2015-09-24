@@ -14,11 +14,8 @@ Download.prototype.method2 = function (test) {
   //  : this.f_next()
   //console.log('method2 called', arguments);
   //this.f_next();
-
   this.f_log('Logged before retry');
-
   this.f_retryAll('Retry error message');
-
   //this.f_abort('Intentional abort');
 };
 

@@ -4,15 +4,16 @@ var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
   function_flow: [
     { name: 'method1' },
     { name: 'method2', max_tries: 3}
+  ],
+
+  keep_on_data_reset: [
+    'test'
   ]
 });
 
 
 var dl = f_.set.instance(new Download());
 
-dl.on('retryAll', function () {
-  console.log('retryAll');
-});
 
 //dl.on('log', function (log_obj) {
 //  console.log(log_obj);
