@@ -12,8 +12,8 @@ var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
 });
 
 
-var dl = f_.set.instance(new Download());
-
+var dl = f_.set.instance(new Download()),
+    dl2 = f_.set.instance(new Download());
 
 //dl.on('log', function (log_obj) {
 //  console.log(log_obj);
@@ -28,10 +28,12 @@ var dl = f_.set.instance(new Download());
 //});
 
 dl.start();
-
+dl2.start();
 //dl.f_log('Cool from insta.js');
   
-console.log(dl);
+console.log(dl.__proto__);
+
+
 
 //console.log(dl._events);
 //console.log(dl);
