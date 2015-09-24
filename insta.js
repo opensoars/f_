@@ -1,6 +1,6 @@
 var f_ = require('./index.js');
 
-var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
+var Download1 = f_.set.prototype(require('./tests/fixtures/Download'), {
   function_flow: [
     { name: 'method1' },
     { name: 'method2', max_tries: 3}
@@ -11,9 +11,20 @@ var Download = f_.set.prototype(require('./tests/fixtures/Download'), {
   ]
 });
 
+var Download2 = f_.set.prototype(require('./tests/fixtures/Download'), {
+  function_flow: [
+    { name: 'method1' },
+    { name: 'method2', max_tries: 5}
+  ],
 
-var dl = f_.set.instance(new Download()),
-    dl2 = f_.set.instance(new Download());
+  keep_on_data_reset: [
+    'test'
+  ]
+});
+
+
+var dl = f_.set.instance(new Download1()),
+    dl2 = f_.set.instance(new Download2());
 
 //dl.on('log', function (log_obj) {
 //  console.log(log_obj);
@@ -27,12 +38,12 @@ var dl = f_.set.instance(new Download()),
 //  console.log('retry');
 //});
 
-dl.start();
-dl2.start();
+//dl.start();
+//dl2.start();
 //dl.f_log('Cool from insta.js');
   
-console.log(dl.__proto__);
-
+//console.log('dl', dl.__proto__);
+//console.log('dl2', dl2.__proto__);
 
 
 //console.log(dl._events);
