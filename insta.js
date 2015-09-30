@@ -26,6 +26,12 @@ var Download2 = f_.set.prototype(require('./tests/fixtures/Download'), {
 var dl = f_.set.instance(new Download1()),
     dl2 = f_.set.instance(new Download2());
 
+dl2.on('next', function () {
+  console.log('keke');
+});
+
+dl.start();
+
 //dl.on('log', function (log_obj) {
 //  console.log(log_obj);
 //});
