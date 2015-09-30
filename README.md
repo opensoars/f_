@@ -2,10 +2,6 @@
 
 Async and modular application development made easy.
 
-
-Working on a better f_ atm, a lot more modular at the core!
-
-
 [![Build Status](https://travis-ci.org/opensoars/f_.svg)](https://travis-ci.org/opensoars/f_)
 [![Coverage Status](https://coveralls.io/repos/opensoars/f_/badge.svg?branch=master&service=github)](https://coveralls.io/github/opensoars/f_?branch=master)
 
@@ -18,3 +14,5 @@ Working on a better f_ atm, a lot more modular at the core!
 [![devDependency Status](https://david-dm.org/opensoars/f_/dev-status.svg)](https://david-dm.org/opensoars/f_#info=devDependencies)
 
 ---
+
+Working on a better f_ atm, a lot more modular at the core!
