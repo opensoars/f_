@@ -40,8 +40,8 @@ var Download = f_.getConstructor({
 
 
 var dl = new Download();
-
-console.log(dl);
+//dl.on('log', function (log_object) { console.log('log called', log_object); });
+//dl.f_log('test');
 
 //dl.f_err('Fail!');
 //console.log(dl);
