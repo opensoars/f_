@@ -8,7 +8,7 @@ function log(message) {
 
 var Download = f_.getConstructor({
 
-  data_namespace: 'd',
+  //data_namespace: 'd',
 
   initializer: function () {
     //this.f_log('Log from initializer');
@@ -56,7 +56,7 @@ var dl = new Download();
 
 dl.f_go();
 
-console.log(dl.f_err.data);
+console.log(dl);
 
 //dl.on('log', function (log_object) { console.log('log called', log_object); });
 //dl.f_log('test');
