@@ -37,5 +37,13 @@ describe('getConstructor', function (){
     });
   });
 
+  describe('it should not throw when all required dat is passed', function (){
+    describe('', function (){
+      it('', function (){
+        
+      });
+    });
+  });
+
 
 });
