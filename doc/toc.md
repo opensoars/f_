@@ -9,19 +9,20 @@ Asynchronous and modular Node.js made easy.
 <!--- TABLE_OF_CONTENTS -->
 
 * Introduction
-  - Asynchronous Node.js
-  - Modular Node.js
-  - Errors in Node.js
+  - Asynchronous programming
+  - Modular application designs
+  - Errors handling
   - Separation of concerns
   - Loosely coupled application logic
   - Maintainable code
   - Testable code
+  - Why I chose Node.js
 * Problem to solve
   - Abstract description of the problem
   - In depth description of the problem
 * Solution to the problem
-  - Abstract description of the problem
-  - In depth description of the problem
+  - Abstract description of the solution
+  - In depth description of the solution
 * Application building
   - Tools
     + Continuous integration
@@ -48,21 +49,33 @@ Asynchronous and modular Node.js made easy.
       * Feedback
     + Production release
 * API
-  - augment
-  - setup
-  - next
-  - retryAll
-  - retryThis
-  - retryFrom
-  - retryMethod
-  - abort
-  - finish
-  - resetNamespace
-  - addErr
-  - logErrStack
-  - cleanup
+  - getConstructor
+  - instance_modules
+    + err
+    + log
+    + history
+  - methods
+    + next
+    + retryAll
+    + abort
+    + finish
+<!---
+    + augment
+    + setup
+    + next
+    + retryAll
+    + retryThis
+    + retryFrom
+    + retryMethod
+    + abort
+    + finish
+    + resetNamespace
+    + addErr
+    + logErrStack
+    + cleanup
+-->
 * Flowcharts
-  - augment/setup
+  - getConstructor
   - next
   - Simple program
 * Examples
