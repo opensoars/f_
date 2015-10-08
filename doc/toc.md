@@ -1,6 +1,6 @@
 # f_
 
-Asynchronous and modular Node.js made easy.
+Asynchronous and modular Node.js application development made easy.
 
 ---
 
@@ -8,10 +8,11 @@ Asynchronous and modular Node.js made easy.
 
 <!--- TABLE_OF_CONTENTS -->
 
+* Preface
 * Introduction
   - Asynchronous programming
   - Modular application designs
-  - Errors handling
+  - Error handling
   - Separation of concerns
   - Loosely coupled application logic
   - Maintainable code
@@ -64,12 +65,9 @@ Asynchronous and modular Node.js made easy.
     + augment
     + setup
     + next
-    + retryAll
     + retryThis
     + retryFrom
     + retryMethod
-    + abort
-    + finish
     + resetNamespace
     + addErr
     + logErrStack
@@ -82,7 +80,7 @@ Asynchronous and modular Node.js made easy.
   - Simple program
 * Examples
   - Minimal
-  - Source code ripper
+  - Source code collector
   - HTTP request handler
   - Database interface
     + Description

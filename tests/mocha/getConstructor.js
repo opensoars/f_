@@ -35,15 +35,18 @@ describe('getConstructor', function (){
         }
       }
     });
-  });
 
-  describe('it should not throw when all required dat is passed', function (){
-    describe('', function (){
-      it('', function (){
-        
-      });
+    it("doesn't throw when all required data is passed", function (){
+      var has_thrown = false;
+      try {
+        f_.getConstructor({ function_flow: [] });
+      }
+      catch (e) {
+        has_thrown = true;
+      }
+      assert.equal(has_thrown, false);
     });
-  });
 
+  });
 
 });
