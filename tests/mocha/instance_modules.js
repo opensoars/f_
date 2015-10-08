@@ -3,7 +3,7 @@ var assert = require('assert');
 describe('instance_modules', function (){
   var f_ = require('./../../index.js');
 
-  describe('err', function (){
+  describe('#err', function (){
     it('adds err objects to the data array', function () {
       var test = new (f_.getConstructor({
         function_flow: []
@@ -30,7 +30,7 @@ describe('instance_modules', function (){
     });
   });
 
-  describe('log', function (){
+  describe('#log', function (){
     it('adds log objects to the data array', function () {
       var test = new (f_.getConstructor({
         function_flow: []
@@ -57,7 +57,7 @@ describe('instance_modules', function (){
     });
   });
 
-  describe('history', function (){
+  describe('#history', function (){
     it('gets filled with err_object and log_object', function () {
       var test = new (f_.getConstructor({
         function_flow: []

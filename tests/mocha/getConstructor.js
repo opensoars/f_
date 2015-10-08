@@ -10,7 +10,7 @@ describe('getConstructor', function (){
   });
 
 
-  describe('calling the function', function (){
+  describe('#calling the function', function (){
     var f_ = require('./../../index.js');
 
     it('throws when no options object is passed', function (done) {
