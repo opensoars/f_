@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('Err', function (){
+describe('Err (constructor)', function (){
 
   var Err = require('./../../lib/Err');
 
