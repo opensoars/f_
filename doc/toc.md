@@ -59,6 +59,7 @@ Asynchronous and modular Node.js made easy.
     + retryAll
     + abort
     + finish
+
 <!---
     + augment
     + setup
@@ -74,6 +75,7 @@ Asynchronous and modular Node.js made easy.
     + logErrStack
     + cleanup
 -->
+
 * Flowcharts
   - getConstructor
   - next
