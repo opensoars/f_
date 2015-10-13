@@ -7,7 +7,6 @@ Asynchronous and modular Node.js application development made easy.
 ## Table of contents
 
 <!--- TABLE_OF_CONTENTS -->
-
 * Preface
 * Introduction
   - Asynchronous programming
@@ -18,11 +17,7 @@ Asynchronous and modular Node.js application development made easy.
   - Testable code
   - Why Node.js
 * Problem to solve
-  - Abstract description of the problem
-  - In depth description of the problem
 * Solution to the problem
-  - Abstract description of the solution
-  - In depth description of the solution
 * Application development
   - Tools
     + Continuous integration
