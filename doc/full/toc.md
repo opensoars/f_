@@ -16,8 +16,8 @@ Asynchronous and modular Node.js application development made easy.
   - Maintainable code
   - Testable code
   - Why Node.js
-* Problem to solve
-* Solution to the problem
+  - Problem to solve
+  - Solution to the problem
 * Application development
   - Tools
     + Continuous integration
