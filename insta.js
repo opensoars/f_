@@ -16,6 +16,10 @@ var Download = f_.getConstructor({
     this.f_log('init');
   },
 
+  custom_prototype: {
+    test: 123
+  },
+
   function_flow: [
     {
       name: 'start',
@@ -46,7 +50,6 @@ var Download = f_.getConstructor({
     }
   ]
 });
-
 
 var dl = new Download();
 

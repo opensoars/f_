@@ -47,6 +47,17 @@ describe('getConstructor', function (){
       assert.equal(has_thrown, false);
     });
 
+    it('sets prototype data to the constructor when passed a custom_prototype object in the options object', function () {
+      var Constructor = f_.getConstructor({
+        custom_prototype: {
+          test: 123
+        },
+        function_flow: []
+      });
+
+      assert.equal(Constructor.prototype.test, 123);
+    });
+
   });
 
   describe('#returned constructor', function (){
