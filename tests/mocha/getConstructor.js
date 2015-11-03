@@ -49,4 +49,36 @@ describe('getConstructor', function (){
 
   });
 
+  describe('#returned constructor', function (){
+    var f_ = require('./../../index.js');
+
+    it('takes an optional options argument', function (){
+      var Constructor = f_.getConstructor({ function_flow: [] });
+
+      var has_thrown = false;
+      try {
+        var instance1 = new Constructor({}),
+            instance2 = new Constructor();
+      }
+      catch (e) {
+        has_thrown = true;
+      }
+      assert.equal(has_thrown, false);
+    });
+
+    it('calls the initializer function passed @ f_.getConstructor when a new instance is drawn', function (done) {
+      var has_initialized = false;
+      var Constructor = f_.getConstructor({
+        initializer: function () {
+          has_initialized = true;
+          done();
+        },
+        function_flow: []
+      });
+
+      new Constructor();
+    });
+
+  });
+
 });
