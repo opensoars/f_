@@ -10,10 +10,13 @@ var Download = f_.getConstructor({
 
   //data_namespace: 'd',
 
-  initializer: function () {
+  initializer: function (d) {
     //this.f_log('Log from initializer');
     //this.f_err('Err from initializer');
-    this.f_log('init');
+
+
+    console.log(d);
+    log('init');
   },
 
   custom_prototype: {
@@ -51,7 +54,11 @@ var Download = f_.getConstructor({
   ]
 });
 
-var dl = new Download();
+var dl = new Download({
+  custom_data: {
+    test: 123
+  }
+});
 
 //dl.on('abort', function (reason) {
 //  log(reason);

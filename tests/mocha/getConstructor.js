@@ -90,6 +90,22 @@ describe('getConstructor', function (){
       new Constructor();
     });
 
+    it('passes the custom_data passed when on `new` initialization', function (done) {
+      var Constructor = f_.getConstructor({
+        initializer: function (o) {
+          assert.equal(o.test, 123);
+          done();
+        },
+        function_flow: []
+      });
+
+      new Constructor({
+        custom_data: {
+          test: 123
+        }
+      });
+    })
+
   });
 
 });
