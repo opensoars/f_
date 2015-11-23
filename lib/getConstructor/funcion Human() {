@@ -1,0 +1,29 @@
+function setParent(Parent, Child) {
+  var parent_proto = Parent.prototype,
+      child_proto = Child.prototype;
+
+  
+}
+
+funcion Human() {
+
+}
+
+
+function Male() {
+
+}
+
+setParent(Human, Male);
+
+
+
+(function () {
+  
+  var sam = new Male({
+    age: 22
+
+
+  });
+
+}());
