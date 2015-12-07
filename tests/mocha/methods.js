@@ -41,9 +41,28 @@ describe('methods', function (){
     });
   });
 
+  describe('#next', function () {
+    it('calls all methods in the function_flow', function () {
+      var method1_called = false,
+          method2_called = false;
+
+      var instance = (new (f_.getConstructor({
+        function_flow: [
+          { name: 'one', function: function () { method1_called = true; } },
+          { name: 'two', function: function () { method2_called = true; } }
+        ]
+      }))).f_go();
+
+      instance.on('finish', function () {
+        assert.equal(method1_called, true);
+        assert.equal(method2_called, true);
+        done();
+      });
+    });
+  });
+
   describe('#go', function (){
     it('calls f_next with the passed arguments', function (done){
-      
       var test = new (f_.getConstructor({
         function_flow: [
           { name: 'one',
@@ -57,7 +76,6 @@ describe('methods', function (){
       }));
 
       test.f_go('test1', 'test2');
-
     });
   });
 
