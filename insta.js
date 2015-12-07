@@ -54,7 +54,9 @@ var Download = f_.getConstructor({
 var dl = new Download({
   custom_data: {
     test: 123
-  }
+  },
+
+  data_namespace: 'd'
 });
 
 //dl.on('abort', function (reason) {
@@ -62,8 +64,10 @@ var dl = new Download({
 //});
 
 
-
+console.log(dl);
 dl.f_go();
+
+
 
 //console.log(dl);
 
