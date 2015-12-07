@@ -13,9 +13,6 @@ var Download = f_.getConstructor({
   initializer: function (d) {
     //this.f_log('Log from initializer');
     //this.f_err('Err from initializer');
-
-
-    console.log(d);
     log('init');
   },
 
@@ -64,9 +61,11 @@ var dl = new Download({
 //  log(reason);
 //});
 
+
+
 dl.f_go();
 
-console.log(dl);
+//console.log(dl);
 
 //dl.on('log', function (log_object) { console.log('log called', log_object); });
 //dl.f_log('test');
