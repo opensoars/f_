@@ -1,17 +1,24 @@
 var f_ = require('./index.js');
 
-var Tasks = f_.getConstructor({
+var instance = new (f_.getConstructor({
   function_flow: [
-    { name: 'one', max_tries: 5, function: function () { this.f_retryAll(); } },
-    { name: 'two', function: function () { this.f_next(); } }
+    { name: 'one', function: function () { } },
+    { name: 'two', function: function () { } }
   ]
-});
+}));
 
-var tasks = new Tasks();
+//console.log(instance);
+instance.on('abort', function () {
+  console.log('aboert');
+})
 
-tasks.f_go();
 
-console.log(tasks);
+instance.f_go();
+instance.f_function_flow[1] = undefined;
+//console.log(instance.f_function_flow);
+instance.f_next();
+
+//console.log(instance);
 
 /*var f_ = require('./index.js');
 

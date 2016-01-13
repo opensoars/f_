@@ -46,7 +46,6 @@ describe('methods', function (){
       var method1_called = false,
           method2_called = false;
 
-
           // @TODO FIX
       var instance = (new (f_.getConstructor({
         function_flow: [
@@ -78,7 +77,8 @@ describe('methods', function (){
 
       instance.f_go();
     });
-    it('throws an error object when there is no function in function_flow (deletion?)', function (done) {
+
+    it('emits an error event/object when there is no function in function_flow (deletion?)', function (done) {
       var instance = new (f_.getConstructor({
         function_flow: [
           { name: 'one', function: function () { } },
@@ -91,9 +91,44 @@ describe('methods', function (){
       });
 
       instance.f_go();
-      instance.f_function_flow = [];
-      instance.f_go();
+      instance.f_function_flow[1] = undefined;
+      instance.f_next();
     });
+
+    it('emits an error event/object when there is no function in function_flow (deletion?)', function (done) {
+      var instance = new (f_.getConstructor({
+        function_flow: [
+          { name: 'one', function: function () { } },
+          { name: 'two', function: function () { } }
+        ]
+      }));
+
+      instance.on('abort', function (err) {
+        done();
+      });
+
+      instance.f_go();
+      instance.f_function_flow[1].name = undefined;
+      instance.f_next();
+    });
+
+    it('emits an error event/object when the next item in the function_flow is not a function', function (done) {
+      var instance = new (f_.getConstructor({
+        function_flow: [
+          { name: 'one', function: function () { } },
+          { name: 'two', function: function () { } }
+        ]
+      }));
+
+      instance.on('abort', function (err) {
+        done();
+      });
+
+      instance.f_go();
+      instance.f_function_flow[1] = { name: 'test', tries: 2, max_tries: 1 };
+      instance.f_next();
+    });
+
 
   });
 
