@@ -1,5 +1,20 @@
 var f_ = require('./index.js');
 
+var Tasks = f_.getConstructor({
+  function_flow: [
+    { name: 'one', function: function () { this.f_function_flow = undefined;this.f_next(); } },
+    { name: 'two', function: function () { this.f_next(); } }
+  ]
+});
+
+var tasks = new Tasks();
+
+tasks.f_go();
+
+console.log(tasks);
+
+/*var f_ = require('./index.js');
+
 
 function log(message) {
   console.log('[dl]', message);
@@ -76,4 +91,6 @@ dl.f_go();
 
 //dl.f_err('Fail!');
 //console.log(dl);
+
+*/
 

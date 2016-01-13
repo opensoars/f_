@@ -81,15 +81,18 @@ describe('methods', function (){
     it('throws an error object when there is no function in function_flow (deletion?)', function (done) {
       var instance = new (f_.getConstructor({
         function_flow: [
-          { name: 'one', function: function () { this.f_function_flow[1] = 'not a function'; this.f_next(); } },
-          { name: 'two', function: function () { this.f_next(); } }
+          { name: 'one', function: function () { } },
+          { name: 'two', function: function () { } }
         ]
       }));
 
       instance.on('abort', function (err) {
-        assert.equal(typeof err, 'object');
         done();
       });
+
+      instance.f_go();
+      instance.f_function_flow = [];
+      instance.f_go();
     });
 
   });
