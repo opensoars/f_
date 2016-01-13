@@ -12,6 +12,31 @@ Async and modular application development made easy.
 
 ---
 
-Working on a better f_ atm, a lot more modular at the core!
 
-## @TODO
+## Install
+
+`npm install f_`
+
+
+## Use
+
+```js
+const f_ = require('f_');
+
+let f_.getConstructor({
+  function_flow: [
+    {
+      name: 'method1',
+      function: function method1() {
+        this.f_next();
+      }
+    },
+    {
+      name: 'method2',
+      function: function method2() {
+        this.f_next();
+      }
+    }
+  ]
+});
+```
