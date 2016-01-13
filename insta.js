@@ -2,7 +2,7 @@ var f_ = require('./index.js');
 
 var Tasks = f_.getConstructor({
   function_flow: [
-    { name: 'one', function: function () { this.f_function_flow = undefined;this.f_next(); } },
+    { name: 'one', max_tries: 5, function: function () { this.f_retryAll(); } },
     { name: 'two', function: function () { this.f_next(); } }
   ]
 });
