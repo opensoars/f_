@@ -48,22 +48,12 @@ describe('methods', function (){
 
 
           // @TODO FIX
-
       var instance = (new (f_.getConstructor({
         function_flow: [
-          { name: 'one', function: function () { method1_called = true; } },
-          { name: 'two', function: function () { method2_called = true; } }
+          { name: 'one', function: function () { method1_called = true; this.f_next(); } },
+          { name: 'two', function: function () { method2_called = true; this.f_next(); } }
         ]
       }))).f_go();
-
-      var Tasks = f_.getConstructor({
-        function_flow: [
-          { name: 'one', function: function () { method1_called = true; } },
-          { name: 'two', function: function () { method2_called = true; } }
-        ]
-      });
-
-      console.log((new Tasks()).f_go());
 
       setTimeout(function () {
         assert.equal(method1_called, true);
@@ -75,15 +65,18 @@ describe('methods', function (){
       var method1_called = false,
           method2_called = false;
 
-      var instance = (new (f_.getConstructor({
+      var instance = new (f_.getConstructor({
         function_flow: [
-          { name: 'one', function: function () { this.f_next(); }},
-          { name: 'two', function: function () { this.f_next(); }}
+          { name: 'one', function: function () { method1_called = true; this.f_next(); } },
+          { name: 'two', function: function () { method2_called = true; this.f_next(); } }
         ]
-      }))).f_go();
+      }));
+
       instance.on('finish', function () {
         done();
       });
+
+      instance.f_go();
     });
 
   });
