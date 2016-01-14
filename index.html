@@ -1,54 +1,74 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="f_ : Asynchronous Node.js made easy and fun!">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>f_</title>
+    <meta charset="UTF-8">
+    <title>f_ by opensoars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">f_</h1>
+      <h2 class="project-tagline">Asynchronous Node.js made easy.</h2>
+      <a href="https://github.com/opensoars/f_" class="btn">View on GitHub</a>
+      <a href="https://github.com/opensoars/f_/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/opensoars/f_/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/opensoars/f_">View on GitHub</a>
-
-          <h1 id="project_title">f_</h1>
-          <h2 id="project_tagline">Asynchronous Node.js made easy and fun!</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/opensoars/f_/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/opensoars/f_/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="f_-wip" class="anchor" href="#f_-wip" aria-hidden="true"><span class="octicon octicon-link"></span></a>f_ (wip)</h1>
 
-<p>Async JS made easy.</p>
+<p>Async and modular application development made easy.</p>
+
+<p><a href="https://travis-ci.org/opensoars/f_"><img src="https://travis-ci.org/opensoars/f_.svg" alt="Build Status"></a>
+<a href="https://coveralls.io/github/opensoars/f_?branch=master"><img src="https://coveralls.io/repos/opensoars/f_/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a>
+<a href="http://inch-ci.org/github/opensoars/f_"><img src="http://inch-ci.org/github/opensoars/f_.svg?branch=master" alt="Inline docs"></a>
+<a href="https://www.codacy.com/app/sam_1700/f_"><img src="https://api.codacy.com/project/badge/f3e64501763645b9aa483bf83a4dd1d5" alt="Codacy Badge"></a>
+<a href="https://codeclimate.com/github/opensoars/f_"><img src="https://codeclimate.com/github/opensoars/f_/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://david-dm.org/opensoars/f_"><img src="https://david-dm.org/opensoars/f_.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/opensoars/f_#info=devDependencies"><img src="https://david-dm.org/opensoars/f_/dev-status.svg" alt="devDependency Status"></a></p>
 
 <hr>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">f_ maintained by <a href="https://github.com/opensoars">opensoars</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<p><code>npm install f_</code></p>
+
+<h2>
+<a id="use" class="anchor" href="#use" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">f_</span> <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>f_<span class="pl-pds">'</span></span>);
+
+<span class="pl-k">let</span> <span class="pl-smi">f_</span>.<span class="pl-en">getConstructor</span>({
+  function_flow<span class="pl-k">:</span> [
+    {
+      name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>method1<span class="pl-pds">'</span></span>,
+      <span class="pl-en">function</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">method1</span>() {
+        <span class="pl-v">this</span>.<span class="pl-en">f_next</span>();
+      }
+    },
+    {
+      name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>method2<span class="pl-pds">'</span></span>,
+      <span class="pl-en">function</span><span class="pl-k">:</span> <span class="pl-k">function</span> <span class="pl-en">method2</span>() {
+        <span class="pl-v">this</span>.<span class="pl-en">f_next</span>();
+      }
+    }
+  ]
+});</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/opensoars/f_">f_</a> is maintained by <a href="https://github.com/opensoars">opensoars</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
 
+  
   </body>
 </html>
