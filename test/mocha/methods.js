@@ -215,7 +215,82 @@ describe('methods', function (){
       });
 
       instance.f_go();
+    });
+  });
 
+  describe('#retryThis', function () {
+    it('restarts the f_ task list from where retryThis was called', function (done) {
+      var called_m2 = false;
+
+      var Constructor = f_.getConstructor({
+        function_flow: [
+          {
+            name: 'm1',
+            function: function () {
+              this.f_next();
+            },
+            max_tries: 5
+          },
+          {
+            name: 'm2',
+            function: function () {
+              if (called_m2) {
+                this.f_next();
+              }
+              else {
+                called_m2 = true;
+                this.f_retryThis();
+              }
+            },
+            max_tries: 5
+          }
+        ]
+      });
+
+      var instance = new Constructor();
+
+      instance.on('retryThis', function () {
+        assert.equal(called_m2, true);
+        done();
+      });
+
+      instance.f_go();
+    });
+
+    it('emits an retryThis/error event', function (done) {
+      var called_m2 = false;
+
+      var Constructor = f_.getConstructor({
+        function_flow: [
+          {
+            name: 'm1',
+            function: function () {
+              this.f_next();
+            },
+            max_tries: 5
+          },
+          {
+            name: 'm2',
+            function: function () {
+              if (called_m2) {
+                this.f_next();
+              }
+              else {
+                this.f_retryThis();
+              }
+            },
+            max_tries: 5
+          }
+        ]
+      });
+
+      var instance = new Constructor();
+
+      instance.on('retryThis', function () {
+        done();
+      });
+
+      instance.f_go();
     });
   });
 
