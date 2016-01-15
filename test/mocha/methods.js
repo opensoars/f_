@@ -276,6 +276,7 @@ describe('methods', function (){
                 this.f_next();
               }
               else {
+                called_m2 = true;
                 this.f_retryThis();
               }
             },
