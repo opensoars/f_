@@ -330,6 +330,7 @@ describe('methods', function (){
         var tried_twice = true;
 
         this.f_function_flow.forEach(function (flow) {
+          console.log(flow.tries);
           if (flow.tries !== 2) {
             tried_twice = false;
           }
@@ -341,7 +342,7 @@ describe('methods', function (){
       instance.f_go();
     });
   
-    it('sets the flow_i to the index of the method passed in function_flow', function (done) {
+    it('sets the flow_i to the index of the method passed in function_flow + 1', function (done) {
       var Constructor = f_.getConstructor({
         function_flow: [
           {
@@ -365,7 +366,7 @@ describe('methods', function (){
       instance.f_next();
       instance.f_retryFrom('m1');
 
-      assert.equal(instance.f_flow_i, 0);
+      assert.equal(instance.f_flow_i, 1);
       done();
     });
 
