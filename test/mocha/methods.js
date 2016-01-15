@@ -400,8 +400,34 @@ describe('methods', function (){
 
       instance.f_go();
     });
+    it('aborts when trying to call a function when its tries are exceeding its max_tries', function (done) {
+      var Constructor = f_.getConstructor({
+        function_flow: [
+          {
+            name: 'm1',
+            function: function () {
+              this.f_next();
+            },
+            max_tries: 1
+          },
+          {
+            name: 'm2',
+            function: function () {
+              this.f_retryFrom('m1');
+            },
+            max_tries: 1
+          }
+        ]
+      });
 
-  }); 
+      var instance = new Constructor();
 
+      instance.on('abort', function () {
+        done();
+      });
+
+      instance.f_go();
+    });
+  });
 
 });
