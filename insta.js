@@ -1,5 +1,7 @@
 var f_ = require('./index.js');
 
+retried = false;
+
 var instance = new (f_.getConstructor({
   function_flow: [
     {
@@ -12,7 +14,14 @@ var instance = new (f_.getConstructor({
     {
       name: 'two',
       function: function () {
-        this.f_next();
+       if (retried) {
+          this.f_next();
+        }
+        else {
+          retried = true;
+          this.f_retryFrom('one');
+        }
+
         //console.log(this.f_next());
       }
     }
@@ -22,6 +31,10 @@ var instance = new (f_.getConstructor({
 //console.log(instance);
 instance.on('finish', function () {
   console.log('finish');
+});
+
+instance.on('retryFrom', function () {
+  console.log('retryFrom');
 });
 
 instance.on('abort', function () {

@@ -294,4 +294,112 @@ describe('methods', function (){
     });
   });
 
+
+  describe('#retryFrom', function () {
+    it('restarts the f_task list from the method given as a string as argument 1', function (done) {
+      var called_m2 = false;
+
+      var Constructor = f_.getConstructor({
+        function_flow: [
+          {
+            name: 'm1',
+            function: function () {
+              this.f_next();
+            },
+            max_tries: 5
+          },
+          {
+            name: 'm2',
+            function: function () {
+              if (called_m2) {
+                this.f_next();
+              }
+              else {
+                called_m2 = true;
+                this.f_retryFrom('m1');
+              }
+            },
+            max_tries: 5
+          }
+        ]
+      });
+
+      var instance = new Constructor();
+
+      instance.on('finish', function () {
+        var tried_twice = true;
+
+        this.f_function_flow.forEach(function (flow) {
+          if (flow.tries !== 2) {
+            tried_twice = false;
+          }
+        });
+        assert.equal(tried_twice, true);
+        done();
+      });
+
+      instance.f_go();
+    });
+  
+    it('sets the flow_i to the index of the method passed in function_flow', function (done) {
+      var Constructor = f_.getConstructor({
+        function_flow: [
+          {
+            name: 'm1',
+            function: function () {
+            },
+            max_tries: 5
+          },
+          {
+            name: 'm2',
+            function: function () {
+            },
+            max_tries: 5
+          }
+        ]
+      });
+
+      var instance = new Constructor();
+
+      instance.f_go();
+      instance.f_next();
+      instance.f_retryFrom('m1');
+
+      assert.equal(instance.f_flow_i, 0);
+      done();
+    });
+
+    it('emits abort event/error when no function is found to call', function (done) {
+      var Constructor = f_.getConstructor({
+        function_flow: [
+          {
+            name: 'm1',
+            function: function () {
+              this.f_next();
+            },
+            max_tries: 5
+          },
+          {
+            name: 'm2',
+            function: function () {
+              this.m1 = undefined;
+              this.f_retryFrom('m1');
+            },
+            max_tries: 5
+          }
+        ]
+      });
+
+      var instance = new Constructor();
+
+      instance.on('abort', function () {
+        done();
+      });
+
+      instance.f_go();
+    });
+
+  }); 
+
+
 });
