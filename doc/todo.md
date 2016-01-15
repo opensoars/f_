@@ -1,12 +1,8 @@
 # Todo
 
-* Flowcharts simple program ?next?
-* More maintainence content
+* Flowcharts simple program and ?next?
 * Event descriptions in doc, API section called events
-
-* Add doc link to README.md
-* Put link to project site
+* Full doc and JSDoc links in README.md
 * Put coverage and doc links in github hosted f_ site
 * Check if every getConstructor(!!option!!) is documented
-* Remove insta.js
 * Update package.json
