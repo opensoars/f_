@@ -2,21 +2,33 @@ var f_ = require('./index.js');
 
 var instance = new (f_.getConstructor({
   function_flow: [
-    { name: 'one', function: function () { } },
-    { name: 'two', function: function () { } }
+    {
+      name: 'one',
+      function: function () {
+        this.f_next();
+        //console.log(this.f_next());
+      }
+    },
+    {
+      name: 'two',
+      function: function () {
+        this.f_next();
+        //console.log(this.f_next());
+      }
+    }
   ]
 }));
 
 //console.log(instance);
-instance.on('abort', function () {
-  console.log('aboert');
-})
+instance.on('finish', function () {
+  console.log('finish');
+});
 
+instance.on('abort', function () {
+  console.log('abort');
+});
 
 instance.f_go();
-instance.f_function_flow[1] = undefined;
-//console.log(instance.f_function_flow);
-instance.f_next();
 
 //console.log(instance);
 
