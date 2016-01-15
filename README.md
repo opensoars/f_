@@ -40,3 +40,5 @@ let f_.getConstructor({
   ]
 });
 ```
+
+For more information, check out the documentation.

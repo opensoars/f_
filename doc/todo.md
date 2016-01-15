@@ -1,6 +1,6 @@
 # Todo
 
-* Flowcharts
+* Flowcharts simple program ?next?
 * More maintainence content
 * Event descriptions in doc, API section called events
 * Implement retryMethod, Test retryMethod
