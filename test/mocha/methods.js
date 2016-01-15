@@ -249,7 +249,7 @@ describe('methods', function (){
 
       var instance = new Constructor();
 
-      instance.on('retryThis', function () {
+      instance.on('finish', function () {
         assert.equal(called_m2, true);
         done();
       });
