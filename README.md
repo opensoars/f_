@@ -23,7 +23,7 @@ Async and modular application development made easy.
 ```js
 const f_ = require('f_');
 
-let f_.getConstructor({
+let task_list = f_.getConstructor({
   function_flow: [
     {
       name: 'method1',
